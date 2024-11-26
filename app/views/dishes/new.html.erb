@@ -5,3 +5,12 @@
 
   <%= f.button :submit %>
 <% end %>
+
+<% if @meal.dishes %>
+  <strong>Plats ajoutés</strong>
+  <ul>
+    <% @meal.dishes.each do |dish| %>
+      <li><%= dish.course_type %> : <%= dish.name %></li>
+    <% end %>
+  </ul>
+<% end %>
