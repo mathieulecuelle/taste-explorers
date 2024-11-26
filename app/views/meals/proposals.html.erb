@@ -1,4 +1,4 @@
-<h1>Tous les dîners</h1>
+<h1>Nous vous recommandons ces <%= @meals.size %> repas</h1>
 <% @meals.each do |meal| %>
 <ul>
   <li>Titre : <%= link_to meal.title, meal_path(meal) %></li>

@@ -4,8 +4,16 @@ class MealsController < ApplicationController
     @meals = Meal.all
   end
 
+  def proposals
+    # On devra ici filtrer par allergie / préférence alimentaire
+    @meals = Meal.last(3)
+  end
+
   def show
     @meal = Meal.find(params[:id])
+  end
+
+  def invite
   end
 
   def new
@@ -22,12 +30,21 @@ class MealsController < ApplicationController
   end
 
   def edit
+    @meal = Meal.find(params[:id])
   end
 
   def update
+    @meal = Meal.find(params[:id])
+    @meal.update(meal_params)
+
+    redirect_to meal_path(@meal)
   end
 
   def destroy
+    @meal = Meal.find(params[:id])
+    @meal.destroy
+
+    redirect_to meals_path, status: :see_other
   end
 
   private
