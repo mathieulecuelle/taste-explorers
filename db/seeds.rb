@@ -18,6 +18,8 @@ Faker::Config.locale = 'fr'
 Booking.destroy_all
 Meal.destroy_all
 User.destroy_all
+Dish.destroy_all
+
 
 # Create 10 users
 10.times do
@@ -189,4 +191,36 @@ meals = Meal.all
   )
 end
 
-puts "Seeded #{User.count} users, #{Meal.count} meals, and #{Booking.count} bookings."
+# Créer 10 plats sans question_id
+10.times do |i|
+  # On génère au moins 1 entrée, 1 plat et 1 dessert pour chaque repas
+  dishes = []
+  dishes << { course_type: "entrée", name: "Salade de tomates", meal_id: meals[i].id }
+  dishes << { course_type: "plat", name: "Steak frites", meal_id: meals[i].id }
+  dishes << { course_type: "dessert", name: "Crème brûlée", meal_id: meals[i].id }
+
+  # On ajoute entre 0 et 2 plats supplémentaires de types aléatoires
+  additional_types = ["entrée", "plat", "dessert"]
+  (3 + rand(3)).times do
+    type = additional_types.sample
+    case type
+    when "entrée"
+      name = ["Velouté de courgettes", "Rillettes de saumon", "Bruschetta"].sample
+    when "plat"
+      name = ["Tartare de bœuf", "Poisson grillé", "Curry de légumes"].sample
+    when "dessert"
+      name = ["Mousse au chocolat", "Tarte aux pommes", "Macarons"].sample
+    end
+    dishes << { course_type: type, name: name, meal_id: meals[i].id }
+  end
+
+  # Créer tous les plats pour le repas
+  dishes.each do |dish|
+    Dish.create(dish)
+  end
+end
+
+puts "10 repas avec entre 3 et 5 plats (au moins 1 entrée, 1 plat, 1 dessert) créés avec succès !"
+
+
+puts "Seeded #{User.count} users, #{Meal.count} meals, and #{Booking.count} bookings with #{Dish.count} dishes."

@@ -4,3 +4,7 @@
   <li>Titre: <%= @meal.title %></li>
   <li>Description: <%= @meal.description %></li>
 </ul>
+
+<%= link_to "Generate quiz", meal_questions_path(@meal.id),
+ data: {turbo_method: :post}
+%>
