@@ -1,0 +1,53 @@
+.cards{
+  display: flex;
+
+}
+
+.cards-content{
+  display: flex;
+  flex-direction: column;
+  gap:$S;
+  width: 240px;
+  padding-block: $M;
+  padding-left: $S;
+  padding-right: $XS;
+  border-radius: $M 0px 0px $M;
+  border: 1px solid #FBFBFB;
+  background-color: $light;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.cards-text{
+  gap:$S;
+}
+
+.card-infos{
+  display: flex;
+  align-items: center;
+}
+
+
+.cards-img{
+  position: relative;
+  width:110px;
+}
+.card-img{
+  border-radius: 0px $M $M 0px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.tag{
+  font-size: 13px;
+  position: absolute;
+  left:$XXL;
+  top:$S;
+  padding-inline:5px;
+  padding-block:2px;
+  border-radius: 5px;
+}
+
+.tag-city{
+  background-color: $yellow;
+  color: $dark;
+
+}
