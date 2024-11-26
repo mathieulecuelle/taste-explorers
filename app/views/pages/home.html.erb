@@ -8,8 +8,10 @@
       <div>Rechercher une adresse</div>
       <i class="fa-solid fa-magnifying-glass"></i>
     </div>
+    <%= link_to proposals_meals_path do %>
+      <div class="button btn-one">Valider</div>
+    <% end %>
   </div>
-  <div class="button btn-one">Valider</div>
 </div>
 
 <%= link_to "Se connecter", new_user_session_path %> / <%= link_to "Se déconnecter", destroy_user_session_path %>

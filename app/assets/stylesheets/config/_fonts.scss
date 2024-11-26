@@ -5,3 +5,19 @@
 $body-font: "Overpass", "Helvetica", "sans-serif";
 $headers-font: "Rambla", "Helvetica", "sans-serif";
 $headers1-font: "Nunito Sans", "Helvetica", "sans-serif";
+
+
+.p-bold{
+  font-family: $body-font;
+  font-size: 18px;
+  margin: 0 auto;
+  line-height: normal;
+}
+
+.p-normal{
+  font-family: $body-font;
+  font-size: 16px;
+  margin: 0 auto;
+  line-height: normal;
+}
+
