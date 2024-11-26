@@ -28,4 +28,6 @@ Rails.application.routes.draw do
 
   # Dashboard routes
   get "/dashboard", to: "dashboard#show"
+
+  
 end

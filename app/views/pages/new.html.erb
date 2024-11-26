@@ -1,0 +1,7 @@
+<h2>Réserver un repas</h2>
+
+<%= form_with model: [@meal, @booking], local: true do |form| %>
+  <div class="actions">
+    <%= form.submit "Réserver" %>
+  </div>
+<% end %>
