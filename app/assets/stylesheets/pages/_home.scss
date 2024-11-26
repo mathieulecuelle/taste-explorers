@@ -1,1 +1,11 @@
 // Specific CSS for your home-page
+
+body{
+  background-color: $light;
+}
+
+.content-home{
+  display: flex;
+  flex-direction: column;
+  gap: $L ;
+}
