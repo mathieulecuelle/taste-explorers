@@ -1,0 +1,7 @@
+<h1>Ajouter un plat</h1>
+<%= simple_form_for [@meal, @dish] do |f| %>
+  <%= f.input :course_type %>
+  <%= f.input :name %>
+
+  <%= f.button :submit %>
+<% end %>

@@ -21,10 +21,12 @@ Rails.application.routes.draw do
     end
 
     # Nested resources
+    resources :dishes, only: [:new, :create]
     resources :bookings, only: [:new, :create]
     resources :questions, only: [:create]
   end
 
   # Dashboard routes
   get "/dashboard", to: "dashboard#show"
+
 end
