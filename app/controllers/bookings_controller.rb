@@ -23,30 +23,21 @@ class BookingsController < ApplicationController
   def create
     @booking = @meal.bookings.build(user: current_user, status: "accepted")
 
-    if @booking.save
+    @booking.save
       redirect_to dashboard_path, notice: 'Votre réservation a été créée avec succès.'
-    else
-      flash.now[:alert] = 'Erreur lors de la création de la réservation.'
-      render :new, status: :unprocessable_entity
-    end
+
   end
 
   def update
-    if @booking.update(booking_params)
+    @booking.update(booking_params)
       redirect_to dashboard_path, notice: 'La réservation a été mise à jour.'
-    else
-      flash.now[:alert] = 'Erreur lors de la mise à jour de la réservation.'
-      render :show, status: :unprocessable_entity
-    end
   end
 
   def destroy
-    if @booking.user == current_user || @booking.meal.user == current_user
+    @booking.user == current_user || @booking.meal.user == current_user
       @booking.destroy
       redirect_to dashboard_path, notice: 'La réservation a été annulée.'
-    else
-      redirect_to dashboard_path, alert: 'Vous n\'avez pas la permission d\'annuler cette réservation.'
-    end
+
   end
 
   private
@@ -54,19 +45,29 @@ class BookingsController < ApplicationController
   # Trouve le repas associé à la réservation
   def set_meal
     @meal = Meal.find(params[:meal_id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to meals_path, alert: 'Repas introuvable.'
   end
 
   # Trouve une réservation spécifique
   def set_booking
     @booking = Booking.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to dashboard_path, alert: 'Réservation introuvable.'
   end
 
   # Filtre les paramètres autorisés pour une réservation
   def booking_params
     params.require(:booking).permit(:status)
   end
+
+
+
+
+
+  def confirm
+    @user_name = "Guillaume" # Exemple de donnée utilisateur
+    @date = DateTime.new(2024, 8, 1, 20, 30) # Exemple de date
+    @location = "Nantes"
+    @reservation_price = 21
+    @service_fee = 3
+    @total_price = @reservation_price + @service_fee
+  end
+
 end
