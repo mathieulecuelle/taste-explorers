@@ -1,0 +1,19 @@
+.button{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: $M;
+  padding-block: $S;
+  border-radius: $S;
+}
+
+.btn-one{
+ background-color: $orange;
+ color:$light;
+}
+
+
+.btn-second{
+  background-color: $yellow;
+  color:$dark;
+}
