@@ -2,11 +2,15 @@
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
+@import "config/spaces";
+
 
 // External libraries
 @import "bootstrap";
 @import "font-awesome";
 
 // Your CSS partials
+@import "components/input";
 @import "components/index";
 @import "pages/index";
+@import "pages/home";
