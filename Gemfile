@@ -6,6 +6,8 @@ gem "dotenv-rails"
 gem "cloudinary"
 gem "geocoder"
 gem "devise"
+gem "solid_cache"
+gem "ruby-openai"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.5"
