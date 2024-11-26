@@ -25,7 +25,6 @@ Rails.application.routes.draw do
     resources :questions, only: [:create]
   end
 
-
   # Dashboard routes
   get "/dashboard", to: "dashboard#show"
 

@@ -14,6 +14,14 @@ class MealsController < ApplicationController
   end
 
   def invite
+    # Le contenu de l'email qui sera utilisé comme modèle
+    @email = {
+      objet: "Vous avez été invité",
+      contenu: "On vous a invité à un dîner sur Taste Explorer"
+    }
+    if params[:email]
+      # TODO : envoyer un email à params[:email]
+    end
   end
 
   def new
@@ -22,10 +30,11 @@ class MealsController < ApplicationController
 
   def create
     @meal = Meal.new(meal_params)
+    @meal.user = current_user
     if @meal.save
       redirect_to meal_path(@meal)
     else
-      render :new, statuts: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -50,7 +59,7 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(meal).permit(:title, :description, :duration, :location, :price_per_person, :maximum_guests, :date)
+    params.require(:meal).permit(:title, :description, :duration, :location, :price_per_person, :maximum_guests, :date)
   end
 
 end
