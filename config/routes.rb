@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     member do
       get :invite
       get :memo
+      post :duplicate
     end
 
     # Nested resources
@@ -26,14 +27,5 @@ Rails.application.routes.draw do
 
 
   # Dashboard routes
-  get "/dashboard", to: "bookings#index"
-  
-  namespace :dashboard do
-    resources :bookings, only: [:show]
-    resources :meals, only: [:create] # Crée une route claire pour les meals
-  end
-
-
-  # User profile routes
-  resource :user, only: [:edit, :update]
+  get "/dashboard", to: "dashboard#show"
 end
