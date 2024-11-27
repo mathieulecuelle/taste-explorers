@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-
   def new
     @booking = Booking.new
     @booking.meal = Meal.find(params[:meal_id])
@@ -15,4 +14,9 @@ class BookingsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+  
+    #  A RAJOUTER le "":photos" dans la méthode plus tard
+  # def booking_params
+  #   params.require(:article).permit(:photos)
+  # end
 end
