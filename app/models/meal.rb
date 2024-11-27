@@ -8,6 +8,7 @@ class Meal < ApplicationRecord
   validates :duration, numericality: { only_integer: true, greater_than: 0 }
   validates :price_per_person, numericality: { greater_than_or_equal_to: 0 }
   validates :maximum_guests, numericality: { only_integer: true, greater_than: 0 }
+  validates :title, length: { maximum: 30 }
 
   def questions_exist?
     dishes.joins(:questions).exists?
