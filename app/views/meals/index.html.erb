@@ -6,10 +6,11 @@
   </div>
   <div class="cards-taste">
     <% @meals.each do |meal| %>
+    <%= link_to meal_path(meal) do%>
     <div class="cards">
       <div class="cards-content">
         <div class="card-text">
-          <p class="p-bold"><%= link_to meal.title, meal_path(meal) %></p>
+          <p class="p-bold"><%=meal.title%></p>
           <p class="p-normal"><%= meal.description %></p>
           </div>
           <div class="card-infos">
@@ -25,6 +26,7 @@
       <%= image_tag "japon.png", alt: "logo-taste_explorers", width: 110, class:"card-img" %>
       </div>
     </div>
+      <% end %>
     <% end %>
     </div>
 </div>

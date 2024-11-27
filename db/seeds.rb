@@ -63,41 +63,9 @@ end
 
 
 # Create 10 meals
+# Create 10 meals
 Meal.create!(
-  title: "Dédé fait goûter ses frites",
-  description: Faker::Lorem.paragraph(sentence_count: 2),
-  duration: rand(30..180), # Duration in minutes
-  location: Faker::Address.city,
-  price_per_person: rand(10..100).to_f, # Price as a decimal
-  maximum_guests: rand(1..20),
-  date: Faker::Date.forward(days: 30),
-  user: users.sample # Assign a random user as the creator of the meal
-)
-
-Meal.create!(
-  title: "Découvrez la vraie cuisine thaï!",
-  description: Faker::Lorem.paragraph(sentence_count: 2),
-  duration: rand(30..180), # Duration in minutes
-  location: Faker::Address.city,
-  price_per_person: rand(10..100).to_f, # Price as a decimal
-  maximum_guests: rand(1..20),
-  date: Faker::Date.forward(days: 30),
-  user: users.sample # Assign a random user as the creator of the meal
-)
-
-Meal.create!(
-  title: "Plongez dans les saveurs authentiques de l'Afrique",
-  description: Faker::Lorem.paragraph(sentence_count: 2),
-  duration: rand(30..180), # Duration in minutes
-  location: Faker::Address.city,
-  price_per_person: rand(10..100).to_f, # Price as a decimal
-  maximum_guests: rand(1..20),
-  date: Faker::Date.forward(days: 30),
-  user: users.sample # Assign a random user as the creator of the meal
-)
-
-Meal.create!(
-  title: "Voyage gustatif en Italie avec Marco",
+  title: "Goûtez les frites de Dédé",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
   location: Faker::Address.city,
@@ -108,7 +76,7 @@ Meal.create!(
 )
 
 Meal.create!(
-  title: "Les secrets de la cuisine japonaise révélés par Yuki",
+  title: "Découvrez la cuisine thaï authentique",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
   location: Faker::Address.city,
@@ -119,7 +87,7 @@ Meal.create!(
 )
 
 Meal.create!(
-  title: "Une soirée tapas espagnoles avec Carmen",
+  title: "Saveurs authentiques de l’Afrique",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
   location: Faker::Address.city,
@@ -130,7 +98,7 @@ Meal.create!(
 )
 
 Meal.create!(
-  title: "Dégustation de spécialités indiennes par Raj",
+  title: "Voyage culinaire en Italie avec Marco",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
   location: Faker::Address.city,
@@ -141,7 +109,7 @@ Meal.create!(
 )
 
 Meal.create!(
-  title: "Le goût authentique du Mexique avec Maria",
+  title: "Secrets de cuisine japonaise avec Yuki",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
   location: Faker::Address.city,
@@ -152,7 +120,40 @@ Meal.create!(
 )
 
 Meal.create!(
-  title: "Un dîner français traditionnel chez Pierre",
+  title: "Soirée tapas espagnoles avec Carmen",
+  description: Faker::Lorem.paragraph(sentence_count: 2),
+  duration: rand(30..180),
+  location: Faker::Address.city,
+  price_per_person: rand(10..100).to_f,
+  maximum_guests: rand(1..20),
+  date: Faker::Date.forward(days: 30),
+  user: users.sample
+)
+
+Meal.create!(
+  title: "Spécialités indiennes par le chef Raj",
+  description: Faker::Lorem.paragraph(sentence_count: 2),
+  duration: rand(30..180),
+  location: Faker::Address.city,
+  price_per_person: rand(10..100).to_f,
+  maximum_guests: rand(1..20),
+  date: Faker::Date.forward(days: 30),
+  user: users.sample
+)
+
+Meal.create!(
+  title: "Saveurs authentiques du Mexique avec Maria",
+  description: Faker::Lorem.paragraph(sentence_count: 2),
+  duration: rand(30..180),
+  location: Faker::Address.city,
+  price_per_person: rand(10..100).to_f,
+  maximum_guests: rand(1..20),
+  date: Faker::Date.forward(days: 30),
+  user: users.sample
+)
+
+Meal.create!(
+  title: "Dîner français traditionnel chez Pierre",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
   location: Faker::Address.city,
@@ -174,7 +175,7 @@ Meal.create!(
 )
 
 Meal.create!(
-  title: "Délices grecs à la table de Nikos",
+  title: "Délices grecs avec Nikos",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
   location: Faker::Address.city,
@@ -185,28 +186,26 @@ Meal.create!(
 )
 
 Meal.create!(
-  title: "Une soirée à la découverte de la cuisine vietnamienne avec Linh",
+  title: "Cuisine vietnamienne avec Linh",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
   location: Faker::Address.city,
   price_per_person: rand(10..100).to_f,
   maximum_guests: rand(1..20),
-  date: Faker::Date.forward(days:30),
+  date: Faker::Date.forward(days: 30),
   user: users.sample
 )
 
 Meal.create!(
-  title:"Les saveurs épicées du Brésil par Carlos",
+  title: "Saveurs épicées du Brésil par Carlos",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
-  location:Faker::Address.city,
+  location: Faker::Address.city,
   price_per_person: rand(10..100).to_f,
   maximum_guests: rand(1..20),
-  date:Faker::Date.forward(days:30),
-  user:users.sample
+  date: Faker::Date.forward(days: 30),
+  user: users.sample
 )
-
-
 
 meals = Meal.all
 

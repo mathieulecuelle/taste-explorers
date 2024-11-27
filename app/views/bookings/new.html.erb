@@ -1,9 +1,7 @@
-<h1>Notre selection de repas</h1>
+<h3>Confirmation</h3>
 
-<p>Nous vous avons sélectionné 3 repas qui vous conviendrait</p>
+<p>Vous êtes sur le point de réserver votre place, Guillaume</p>
 
 <%= simple_form_for [@meal, @booking] do |form| %>
-  <div class="actions">
-    <%= form.submit "Réserver" %>
-  </div>
+    <%= form.submit "Confirmer ma venue", class:"button btn-one"%>
 <% end %>
