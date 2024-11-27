@@ -26,3 +26,22 @@ $headers1-font: "Nunito Sans", "Helvetica", "sans-serif";
   margin: 0 auto;
   line-height: normal;
 }
+
+.p-icon{
+  font-family: $body-font;
+  font-size: 20px;
+  margin: 0 auto;
+  line-height: normal;
+}
+
+.mini-p{
+  font-size: 12px;
+  margin: 0 auto;
+}
+
+.heading-1{
+  font-family: $headers1-font;
+  font-size:30px;
+  font-weight: bold;
+  margin:0 auto;
+}
