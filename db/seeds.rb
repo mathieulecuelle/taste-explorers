@@ -19,6 +19,7 @@ Question.destroy_all
 Dish.destroy_all
 Booking.destroy_all
 Meal.destroy_all
+Preference.destroy_all
 User.destroy_all
 
 # Create 10 users
@@ -31,8 +32,35 @@ User.destroy_all
     address: Faker::Address.full_address
   )
 end
-
 users = User.all
+
+
+# Pour chaque utilisateur, créer des préférences aléatoires
+ingredient_excludes = [
+  'fruits de mer', 'poisson', 'oeuf', 'alcool', 'fruit à coque', 'brocoli'
+]
+regimes = [
+  'sans produit laitier', 'sans gluten', 'sans porc', 'vegan', 'végétarien', 'pesco-végétarien'
+]
+
+# Pour chaque utilisateur, créer des préférences aléatoires
+users.find_each do |user|
+  # Choisir un type aléatoire entre 'ingrédient_exclure' ou 'régime'
+  preference_type = ['ingrédient_exclure', 'régime'].sample
+
+  if preference_type == 'ingrédient_exclure'
+    # Sélectionner entre 1 et 3 ingrédients à exclure
+    selected_excludes = ingredient_excludes.sample(rand(1..3))
+    selected_excludes.each { |exclude| user.preferences.create!(preference_type: preference_type, name: exclude) }
+  else
+    # Sélectionner un régime au hasard
+    selected_regime = regimes.sample
+    user.preferences.create!(preference_type: preference_type, name: selected_regime)
+  end
+end
+
+
+
 
 # Create 10 meals
 Meal.create!(
@@ -185,7 +213,7 @@ meals = Meal.all
 # Create 10 bookings
 10.times do
   Booking.create!(
-    status: ['pending', 'confirmed', 'canceled'].sample, # Random status
+    status: ['en-cours', 'confirmée', 'annulée','terminée'].sample, # Random status
     meal: meals.sample, # Assign a random meal
     user: users.sample # Assign a random user who made the booking
   )
