@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   # Permet à Devise de prendre en charge le champ `photo`
   def configure_permitted_parameters
     # Permet à Devise de gérer l'upload de la photo lors de l'inscription (sign_up)
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:photo])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:photo, :first_name, :last_name])
 
     # Permet à Devise de gérer l'upload de la photo lors de la mise à jour du profil (account_update)
     devise_parameter_sanitizer.permit(:account_update, keys: [:photo])
