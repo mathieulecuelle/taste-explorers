@@ -1,9 +1,33 @@
 <h1>A propos de ce repas</h1>
 
+<%= image%>
+
+
 <ul>
   <li>Titre: <%= @meal.title %></li>
   <li>Description: <%= @meal.description %></li>
 </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <% if @meal.questions_exist? %>
   <%= link_to "Generate quiz", "#",
