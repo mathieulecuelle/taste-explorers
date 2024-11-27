@@ -42,3 +42,30 @@
 .meal-heading{
   margin-bottom: 10px;
 }
+
+
+.banner-hote{
+  display: flex;
+  justify-content: center;
+  background-color: $yellow;
+  color: $dark;
+  padding-block: $S;
+  padding-inline: $XXL;
+  gap: $XXL;
+}
+
+.img-hote{
+  width: 75px;
+  height: 75px;
+  border-radius: 50px;
+  object-fit: cover;
+  z-index:0;
+}
+
+.element-banner-hote{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+}
