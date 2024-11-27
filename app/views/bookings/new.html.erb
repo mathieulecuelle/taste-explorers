@@ -2,7 +2,7 @@
 
 <p>Nous vous avons sélectionné 3 repas qui vous conviendrait</p>
 
-<%= form_with model: [@meal, @booking], local: true do |form| %>
+<%= simple_form_for [@meal, @booking] do |form| %>
   <div class="actions">
     <%= form.submit "Réserver" %>
   </div>
