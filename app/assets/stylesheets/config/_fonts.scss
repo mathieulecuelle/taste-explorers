@@ -1,16 +1,23 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Overpass:ital,wght@0,100..900;1,100..900&family=Rambla:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+$body-font: "Overpass", "Helvetica", "sans-serif";
+$headers-font: "Rambla", "Helvetica", "sans-serif";
+$headers1-font: "Nunito Sans", "Helvetica", "sans-serif";
 
-// To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+
+.p-bold{
+  font-family: $body-font;
+  font-size: 18px;
+  margin: 0 auto;
+  line-height: normal;
+}
+
+.p-normal{
+  font-family: $body-font;
+  font-size: 16px;
+  margin: 0 auto;
+  line-height: normal;
+}
+

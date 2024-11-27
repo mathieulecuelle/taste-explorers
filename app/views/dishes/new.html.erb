@@ -1,0 +1,16 @@
+<h1>Ajouter un plat</h1>
+<%= simple_form_for [@meal, @dish] do |f| %>
+  <%= f.input :course_type %>
+  <%= f.input :name %>
+
+  <%= f.button :submit %>
+<% end %>
+
+<% if @meal.dishes %>
+  <strong>Plats ajoutés</strong>
+  <ul>
+    <% @meal.dishes.each do |dish| %>
+      <li><%= dish.course_type %> : <%= dish.name %></li>
+    <% end %>
+  </ul>
+<% end %>

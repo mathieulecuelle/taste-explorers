@@ -1,1 +1,27 @@
 // Specific CSS for your home-page
+
+body{
+  background-color: $light;
+}
+
+.content-home{
+  display: flex;
+  flex-direction: column;
+  gap: $L ;
+  justify-content: center;
+}
+
+a{
+  color: $dark;
+  text-decoration: none;
+}
+
+.container-taste{
+  margin-inline: $L;
+}
+
+.index-meals{
+  display: flex;
+  flex-direction: column;
+  gap:$L;
+}

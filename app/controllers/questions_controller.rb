@@ -4,28 +4,40 @@ class QuestionsController < ApplicationController
   def create
     @meal.dishes.each do |dish|
       client = OpenAI::Client.new
-      chatgpt_response = client.chat(
+      response = client.chat(
         parameters: {
           model: "gpt-4",
           messages: [
             {
               role: "user",
-              content: "Generate a quick quiz with 5 questions/answers related to the dish: #{dish.name} that includes cultural and historical aspects. Each line should contain the question and related answer separated by :"
+              content: <<~MESSAGE
+                Generate a quick quiz with 5 questions/answers related to the dish "#{dish.name}" that includes cultural and historical aspects.
+                Each line should contain the question, then ";", then 3 possible answers separated by ';', and after that the answer in string of the correct answer in parenthesis.
+              MESSAGE
             }
           ]
         }
       )
+      # Example of response OpenAI :::
+      # "What is traditionally included in the French dish \"Salade de tomates\", and where does the dish originate from?; French fries and America; Fresh tomatoes and Belgium; Fresh tomatoes and France; (Fresh tomatoes and France)"
+      questions_and_answers = response["choices"][0]["message"]["content"]
+      questions_and_answers.split("\n").each do |qa|
+        question_and_options, correct_answer = qa.split(" (")
+        correct_answer = correct_answer.delete(")").strip if correct_answer
 
-      @questions_and_answers = chatgpt_response["choices"][0]["message"]["content"]
-      @questions_and_answers.split("\n").each do |qa|
-        # Créez des objets Question associés au plat
-        # Ici, nous supposons que chaque "qa" est une ligne séparée avec une question et une réponse
-        question, answer = qa.split(": ")
-        @meal.questions.create(question: question, answer: answer) if question && answer
+        parts = question_and_options.split("; ")
+        question = parts[0].strip
+        options = parts[1..].join("; ").chomp(";").strip
+
+        q = Question.create!(
+          question: question,
+          options_answers: options,
+          answer: correct_answer,
+          dish_id: dish.id
+        )
       end
     end
-
-    redirect_to meal_path(@meal), notice: "Questions generated successfully!"
+    redirect_to meal_path(@meal), notice: "Quiz généré avec succès!"
   end
 
   private
