@@ -1,12 +1,53 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+// NAVBAR
+.navbar{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+
+// NAVBAR CLASSIQUE
+.navbar-simple{
+  display:flex;
+  justify-content: center;
+  gap: $XXL;
+  align-items: center;
+  padding-inline: $S;
+  padding-block: $M;
+  background-color: $light;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.fixed{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.nav-icon{
+  font-size: $XL;
+}
+
+.more-icon{
+  background-color: $orange;
+  color: $light;
+  padding-inline: 6px;
+  padding-block: $XS;
+  border-radius: 22px;
+}
+
+
+// NAVBAR RÉSERVATION
+
+.resabar{
+  display:flex;
+  justify-content: center;
+  gap: $XXL;
+  align-items: center;
+  padding-inline: $S;
+  padding-block: $M;
+  background-color: $light;
 }

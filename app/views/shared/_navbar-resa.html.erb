@@ -1,7 +1,16 @@
-  <div class="navbar-simple fixed">
+<div class="navbar">
+  <div class="resabar">
+    <p>💸 21€</p>
+    <p>📅 1 Août</p>
+    <%= link_to new_meal_booking_path(meal) do %>
+    <div class="button btn-one">Réserver</div>
+    <% end %>
+  </div>
+  <div class="navbar-simple">
     <i class="fa-solid fa-house nav-icon"></i>
     <i class="fa-solid fa-map nav-icon"></i>
     <i class="fa-solid fa-plus nav-icon more-icon"></i>
     <i class="fa-solid fa-calendar nav-icon"></i>
     <i class="fa-solid fa-user nav-icon"></i>
   </div>
+</div>
