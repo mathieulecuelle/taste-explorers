@@ -34,32 +34,7 @@
       class: "btn btn-primary disabled",
       aria_disabled: "true" %>
 <% else %>
-  <%= link_to "Generate quiz", meal_questions_path(@meal.id),
+  <%= link_to "Generate quiz", generate_quiz_path(@meal.id),
       data: { turbo_method: :post },
       class: "btn btn-primary" %>
-<% end %>
-
-<% if @meal.questions.any? %>
-  <table style="border: 1px solid black">
-    <thead>
-      <tr style="border: 1px solid black">
-        <th style="border: 1px solid black">Plat</th>
-        <th style="border: 1px solid black">Question</th>
-        <th style="border: 1px solid black">Réponses</th>
-        <th style="border: 1px solid black">Réponse correcte</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @meal.questions.each do |question| %>
-        <tr style="border: 1px solid black">
-         <td style="border: 1px solid black"><%= question.dish.name %></td>
-          <td style="border: 1px solid  black"><%= question.question %></td>
-          <td style="border: 1px solid black"><%= question.options_answers %></td>
-          <td style="border: 1px solid black"><%= question.answer %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>Aucune question disponible pour ce repas.</p>
 <% end %>
