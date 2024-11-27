@@ -1,6 +1,30 @@
 <h3>Confirmation</h3>
 
-<p>Vous êtes sur le point de réserver votre place, Guillaume</p>
+<p>Vous êtes sur le point de réserver votre place, <%= current_user.first_name %> </p>
+
+<h2>Récapitulatif</h2>
+<ul>
+  <li>
+    <strong>📅 Date :</strong> <%= @booking.meal.date %>
+  </li>
+  <li>
+    <strong>📍 Lieu :</strong> <%= @booking.meal.location %>
+  </li>
+</ul>
+
+<h3>Réservation</h3>
+<ul>
+  <li>
+    <strong>Prix :</strong> <%= @booking.meal.price_per_person %>€
+  </li>
+  <li>
+    <strong>Frais de service :</strong> 0€
+  </li>
+  <li>
+    <strong>Total :</strong> <%= @booking.meal.price_per_person %>€
+  </li>
+</ul>
+
 
 <%= simple_form_for [@meal, @booking] do |form| %>
     <%= form.submit "Confirmer ma venue", class:"button btn-one"%>
