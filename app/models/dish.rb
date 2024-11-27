@@ -2,6 +2,10 @@ class Dish < ApplicationRecord
   belongs_to :meal
   has_many :questions, dependent: :destroy
 
-  validates :course_type, presence: true, inclusion: { in: %w[entrée plat dessert] }
+
+  COURSE_TYPES = ['Entrée', 'Plat', 'Dessert'].freeze
+  validates :course_type, inclusion: { in: COURSE_TYPES }
+  
   validates :name, presence: true
+
 end
