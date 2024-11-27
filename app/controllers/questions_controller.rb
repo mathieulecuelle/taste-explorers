@@ -11,8 +11,7 @@ class QuestionsController < ApplicationController
             {
               role: "user",
               content: <<~MESSAGE
-                Generate a quick quiz with 5 questions/answers related to the dish "#{dish.name}" that includes cultural and historical aspects.
-                Each line should contain the question, then ";", then 3 possible answers separated by ';', and after that the answer in string of the correct answer in parenthesis.
+                Générer un quiz rapide avec 5 questions/réponses liées au plat "#{dish.name}" qui inclut des aspects culturels et historiques. Chaque ligne doit contenir la question, puis un ";" suivi de 3 réponses possibles séparées par des ';', et ensuite la réponse correcte entre parenthèses.
               MESSAGE
             }
           ]
