@@ -8,7 +8,7 @@ class DishesController < ApplicationController
     @dish = Dish.new(dish_params)
     @dish.meal = Meal.find(params[:meal_id])
     if @dish.save
-      redirect_to new_meal_dish_path(@meal)
+      redirect_to new_meal_dish_path(@dish.meal)
     else
       render :new, status: :unprocessable_entity
     end
