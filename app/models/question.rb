@@ -1,6 +1,7 @@
 class Question < ApplicationRecord
-  has_many :dishes
+  belongs_to :dish
 
   validates :question, presence: true
+  validates :options_answers, presence: true
   validates :answer, presence: true
 end
