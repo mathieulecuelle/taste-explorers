@@ -1,4 +1,4 @@
 class Dish < ApplicationRecord
   belongs_to :meal
-  belongs_to :question, optional: true, dependent: :destroy
+  has_many :questions, dependent: :destroy
 end
