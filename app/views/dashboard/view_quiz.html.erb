@@ -1,0 +1,43 @@
+<h1>QUIZ !!! <%= @meal.title %></h1>
+
+<% if @meal.dishes.any? %>
+  <h2><%= @dish.name %></h2> <!-- Affiche le nom du plat actuel -->
+  <h3><i>"<%= @dish.memo %>"</i></h2> <!-- Affiche le nom du plat actuel -->
+
+  <% if @questions.any? %>
+    <table style="border: 1px solid black">
+      <thead>
+        <tr style="border: 1px solid black">
+          <th style="border: 1px solid black">Question</th>
+          <th style="border: 1px solid black">Réponses</th>
+          <th style="border: 1px solid black">Réponse correcte</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @questions.each do |question| %>
+          <tr style="border: 1px solid black">
+            <td style="border: 1px solid black"><%= question.question %></td>
+            <td style="border: 1px solid black"><%= question.options_answers %></td>
+            <td style="border: 1px solid black"><%= question.answer %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>Aucune question disponible pour ce plat.</p>
+  <% end %>
+
+
+  <% if @dish_index > 0 %>
+    <%= link_to 'Plat précédent', view_quiz_path(@meal.id, dish_id: @dish_index - 1), class: 'btn btn-primary' %>
+  <% end %>
+
+  <% if @dish_index + 1 < @meal.dishes.count %>
+    <%= link_to 'Plat suivant', view_quiz_path(@meal.id, dish_id: @dish_index + 1), class: 'btn btn-primary' %>
+  <% else %>
+     <br><%= link_to 'Quitter le quiz', dashboard_path, class: 'btn btn-info' %>
+  <% end %>
+
+<% else %>
+  <p>Aucun plat disponible pour ce repas.</p>
+<% end %>
