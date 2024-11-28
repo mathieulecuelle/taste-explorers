@@ -64,4 +64,5 @@ class DashboardController < ApplicationController
   def set_meal
     @meal = Meal.find(params[:meal_id])
   end
+
 end

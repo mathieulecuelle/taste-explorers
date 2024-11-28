@@ -5,7 +5,7 @@
 <h2>Récapitulatif</h2>
 <ul>
   <li>
-    <strong>📅 Date :</strong> <%= @booking.meal.date %>
+    <strong>📅 Date et heure :</strong> <%= @booking.meal.date %>
   </li>
   <li>
     <strong>📍 Lieu :</strong> <%= @booking.meal.location %>
@@ -18,10 +18,10 @@
     <strong>Prix :</strong> <%= @booking.meal.price_per_person %>€
   </li>
   <li>
-    <strong>Frais de service :</strong> 0€
+    <strong>Frais de service :</strong> 25€
   </li>
   <li>
-    <strong>Total :</strong> <%= @booking.meal.price_per_person %>€
+    <strong>Total :</strong> <%= @booking.meal.price_per_person + 25 %>€
   </li>
 </ul>
 
