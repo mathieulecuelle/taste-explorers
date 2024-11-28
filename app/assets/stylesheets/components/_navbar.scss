@@ -6,6 +6,9 @@
   bottom: 0;
   left: 0;
   width: 100%;
+  background-color: $light;
+  border-top: solid #dfdfdf 0.5px;
+  border-bottom: solid #dfdfdf 0.5px;
 }
 
 
@@ -18,6 +21,7 @@
   padding-inline: $S;
   padding-block: $M;
   background-color: $light;
+
 }
 
 .fixed{
@@ -43,8 +47,6 @@
 // NAVBAR RÉSERVATION
 
 .resabar{
-  border-top: solid #dfdfdf 0.5px;
-  border-bottom: solid #dfdfdf 0.5px;
   display:flex;
   justify-content: center;
   gap: $XXL;

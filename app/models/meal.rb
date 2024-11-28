@@ -9,10 +9,13 @@ class Meal < ApplicationRecord
   validates :price_per_person, numericality: { greater_than_or_equal_to: 0 }
   validates :maximum_guests, numericality: { only_integer: true, greater_than: 0 }
   validates :title, length: { maximum: 50 }
+  validates :heure, presence: true
 
   def questions_exist?
     dishes.joins(:questions).exists?
   end
 
   has_one_attached :photo
+  geocoded_by :location, latitude: :gps_latitude, longitude: :gps_longitude
+  after_validation :geocode, if: :will_save_change_to_location?
 end
