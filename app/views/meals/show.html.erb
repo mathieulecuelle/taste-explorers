@@ -1,40 +1,41 @@
-<h1>A propos de ce repas</h1>
-
-
-
-
-<ul>
-  <li>Titre: <%= @meal.title %></li>
-  <li>Description: <%= @meal.description %></li>
-</ul>
-
-
 <% if @meal.photo.attached? %>
-  <%= cl_image_tag @meal.photo.key, height: 400, width: 600, crop: :fill, class: 'd-block w-100', style: 'object-fit: cover; border-radius: 15px;' %>
+   <%= cl_image_tag @meal.photo.key, alt: "Photo du repas #{@meal.title}", class: "img-meal" %>
 <% else %>
-  <p>No picture available for this meal.</p>
+  <p>Aucune photo disponible pour ce repas</p>
 <% end %>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div class="meal">
+  <h1 class="heading-1 meal-heading"><%= @meal.title %></h1>
+  <div class="banner-meal no-border">
+    <div class="element-banner-meal">
+      <p class="p-bold">🇮🇳</p>
+      <p class="p-light"><%= @meal.inspiration %></p>
+    </div>
+    <div class="element-banner-meal element-gap">
+      <p class="p-bold">🌾</p>
+      <p class="p-light">Sans gluten</p>
+    </div>
+    <div class="element-banner-meal element-gap">
+      <p class="p-bold">⏱️</p>
+      <p class="p-light"><%= @meal.duration %> heures</p>
+    </div>
+  </div>
+  <div class="texts-meal">
+    <p class="p-bold margin-element-meal-heading"><%= @meal.description %></p>
+    <p class="p-bold margin-element-meal">🧍‍♂️<%= @meal.maximum_guests %></p>
+    <p class="p-bold margin-element-meal">🍽️ 4plats</p>
+  </div>
+  <div class="banner-hote no-border">
+      <%= image_tag "japon.png", alt: "photo du repas", class: "img-hote" %>
+    <div class="element-banner-hote">
+      <p class="p-bold">Mathieu</p>
+    </div>
+    <div class="element-banner-hote">
+      <p class="p-bold">★★★★★</p>
+      <p class="p-light">Sans gluten</p>
+    </div>
+  </div>
+</div>
 <% if @meal.questions_exist? %>
   <%= link_to "Generate quiz", "#",
       class: "btn btn-primary disabled",
