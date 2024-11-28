@@ -85,13 +85,6 @@
               <p>Aucune photo disponible pour ce repas</p>
             <% end %>
             <p><%= meal.location %></p>
-            <% if meal.date.to_date == Date.today && meal.heure >= Time.now.strftime("%H:%M") %>
-              <% if !meal.questions_exist? %>
-                <%= link_to "Generate quiz", generate_quiz_path(meal.id),
-                    data: { turbo_method: :post },
-                    class: "btn btn-dark" %>
-              <% end %>
-            <% end %>
           </div>
           <br>
         <% end %>

@@ -1,6 +1,14 @@
-.header-confirmation{
+.header-ariane{
   display: flex;
-  align-content: center;
+  align-items: center;
+  gap: 105px;
+}
+
+.return{
+  padding: $S;
+  background-color: $orange;
+  border-radius: 50%;
+  color:$light;
 }
 
 .banner-confirmation{
@@ -10,14 +18,6 @@
   padding-inline: $M;
 }
 
-.return{
-  rotate: 90;
-  padding-inline: 5px;
-  padding-block: 5px;
-  background-color: $orange;
-  border-radius: $M;
-  color:$light;
-}
 
 .factures{
   margin-top: 35px;
