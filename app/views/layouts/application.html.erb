@@ -12,7 +12,13 @@
 
   <body>
     <div class="container-taste">
-    <%= yield %>
+      <%= yield %>
     </div>
+      <% if controller_name == 'meals' && action_name == 'show' %>
+      <%= render "shared/navbar-resa", meal: @meal %>
+      <% else %>
+      <%= render "shared/navbar"%>
+      <% end %>
+
   </body>
 </html>

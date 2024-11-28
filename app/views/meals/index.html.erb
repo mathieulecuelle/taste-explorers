@@ -6,25 +6,27 @@
   </div>
   <div class="cards-taste">
     <% @meals.each do |meal| %>
+    <%= link_to meal_path(meal) do%>
     <div class="cards">
       <div class="cards-content">
         <div class="card-text">
-          <p class="p-bold"><%= link_to meal.title, meal_path(meal) %></p>
+          <p class="p-bold"><%=meal.title%></p>
           <p class="p-normal"><%= meal.description %></p>
           </div>
           <div class="card-infos">
-            <p class="p-bold">📅 29 juillet</p>
-            <p class="p-bold">💸39€</p>
-            <p class="p-bold">🧍‍♂️4</p>
+            <p class="p-bold">📅<%= meal.date %></p>
+            <p class="p-bold">💸<%= meal.price_per_person %></p>
+            <p class="p-bold">🧍‍♂️<%= meal.maximum_guests %></p>
           </div>
       </div>
       <div class="cards-img">
       <div class="tag tag-city">
-        Nantes
+        <%= meal.location %></p>
       </div>
       <%= image_tag "japon.png", alt: "logo-taste_explorers", width: 110, class:"card-img" %>
       </div>
     </div>
+      <% end %>
     <% end %>
     </div>
 </div>

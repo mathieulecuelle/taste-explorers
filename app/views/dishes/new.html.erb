@@ -1,16 +1,17 @@
 <h1>Ajouter un plat</h1>
-<%= simple_form_for [@meal, @dish] do |f| %>
-  <%= f.input :course_type %>
+<%= simple_form_for [@meal, @dish], url: meal_dishes_path(@meal) do |f| %>
+  <%= f.input :course_type, collection: Dish::COURSE_TYPES, include_blank: false %>
   <%= f.input :name %>
 
   <%= f.button :submit %>
 <% end %>
 
-<% if @meal.dishes %>
+<% if @meal.dishes.count>0 %>
   <strong>Plats ajoutés</strong>
   <ul>
     <% @meal.dishes.each do |dish| %>
       <li><%= dish.course_type %> : <%= dish.name %></li>
     <% end %>
   </ul>
+  <%= link_to "quitter la création de plat", root_path %>
 <% end %>

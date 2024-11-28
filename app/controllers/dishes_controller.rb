@@ -1,4 +1,7 @@
 class DishesController < ApplicationController
+
+  before_action :set_meal
+  
   def new
     @meal = Meal.find(params[:meal_id])
     @dish = Dish.new
@@ -15,6 +18,10 @@ class DishesController < ApplicationController
   end
 
   private
+
+  def set_meal
+    @meal = Meal.find(params[:meal_id])
+  end
 
   def dish_params
     params.require(:dish).permit(:course_type, :name)

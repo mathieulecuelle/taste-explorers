@@ -1,0 +1,26 @@
+<div class="navbar">
+  <div class="resabar">
+    <p class="p-bold">💸 21€</p>
+    <p class="p-bold">📅 1 Août</p>
+    <%= link_to new_meal_booking_path(meal) do %>
+    <div class="button btn-one">Réserver</div>
+    <% end %>
+  </div>
+  <div class="navbar-simple">
+    <%=link_to root_path do%>
+    <i class="fa-solid fa-house nav-icon"></i>
+    <% end %>
+    <%=link_to root_path do%>
+    <i class="fa-solid fa-map nav-icon"></i>
+    <% end %>
+    <%=link_to new_meal_path do%>
+    <i class="fa-solid fa-plus nav-icon more-icon"></i>
+    <% end %>
+    <%=link_to dashboard_path do%>
+    <i class="fa-solid fa-calendar nav-icon"></i>
+    <% end %>
+    <%=link_to root_path do%>
+    <i class="fa-solid fa-user nav-icon"></i>
+    <% end %>
+  </div>
+</div>

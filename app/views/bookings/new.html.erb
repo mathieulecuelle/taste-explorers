@@ -1,9 +1,31 @@
-<h1>Notre selection de repas</h1>
+<h3>Confirmation</h3>
 
-<p>Nous vous avons sélectionné 3 repas qui vous conviendrait</p>
+<p>Vous êtes sur le point de réserver votre place, <%= current_user.first_name %> </p>
 
-<%= simple_form_for [@meal, @booking] do |form| %>
-  <div class="actions">
-    <%= form.submit "Réserver" %>
-  </div>
+<h2>Récapitulatif</h2>
+<ul>
+  <li>
+    <strong>📅 Date et heure :</strong> <%= @booking.meal.date %>
+  </li>
+  <li>
+    <strong>📍 Lieu :</strong> <%= @booking.meal.location %>
+  </li>
+</ul>
+
+<h3>Réservation</h3>
+<ul>
+  <li>
+    <strong>Prix :</strong> <%= @booking.meal.price_per_person %>€
+  </li>
+  <li>
+    <strong>Frais de service :</strong> 25€
+  </li>
+  <li>
+    <strong>Total :</strong> <%= @booking.meal.price_per_person + 25 %>€
+  </li>
+</ul>
+
+
+<%= simple_form_for [@meal, @booking] url: root_path do |form| %>
+    <%= form.submit "Confirmer ma venue", class:"button btn-one"%>
 <% end %>

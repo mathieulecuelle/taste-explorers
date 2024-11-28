@@ -7,4 +7,10 @@ class User < ApplicationRecord
   has_many :preferences, dependent: :destroy
   has_many :bookings, dependent: :destroy
   has_many :meals, dependent: :destroy
+
+  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :encrypted_password, presence: true
+  validates :first_name, :last_name, presence: true
+
+  has_one_attached :photo
 end
