@@ -34,7 +34,6 @@ User.destroy_all
 end
 users = User.all
 
-
 # Pour chaque utilisateur, créer des préférences aléatoires
 ingredient_excludes = [
   'fruits de mer', 'poisson', 'oeuf', 'alcool', 'fruit à coque', 'brocoli'
@@ -45,24 +44,17 @@ regimes = [
 
 # Pour chaque utilisateur, créer des préférences aléatoires
 users.find_each do |user|
-  # Choisir un type aléatoire entre 'ingrédient_exclure' ou 'régime'
-  preference_type = ['ingrédient_exclure', 'régime'].sample
+  # Sélectionner entre 1 et 3 ingrédients à exclure
+  preference_type = 'ingrédient_exclure'
+  selected_excludes = ingredient_excludes.sample(rand(1..3))
+  selected_excludes.each { |exclude| user.preferences.create!(preference_type: preference_type, name: exclude) }
 
-  if preference_type == 'ingrédient_exclure'
-    # Sélectionner entre 1 et 3 ingrédients à exclure
-    selected_excludes = ingredient_excludes.sample(rand(1..3))
-    selected_excludes.each { |exclude| user.preferences.create!(preference_type: preference_type, name: exclude) }
-  else
-    # Sélectionner un régime au hasard
-    selected_regime = regimes.sample
-    user.preferences.create!(preference_type: preference_type, name: selected_regime)
-  end
+  # Sélectionner un régime au hasard
+  preference_type = 'régime'
+  selected_regime = regimes.sample
+  user.preferences.create!(preference_type: preference_type, name: selected_regime)
 end
 
-
-
-
-# Create 10 meals
 # Create 10 meals
 Meal.create!(
   title: "Goûtez les frites de Dédé",
@@ -72,7 +64,9 @@ Meal.create!(
   price_per_person: rand(10..100).to_f,
   maximum_guests: rand(1..20),
   date: Faker::Date.forward(days: 30),
-  user: users.sample
+  user: users.sample,
+  inspiration: "Breton", # Basé sur le titre
+  heure: Time.new(2024, 1, 1, rand(18..22), 0, 0) # Heure aléatoire entre 18h et 22h
 )
 
 Meal.create!(
@@ -83,7 +77,9 @@ Meal.create!(
   price_per_person: rand(10..100).to_f,
   maximum_guests: rand(1..20),
   date: Faker::Date.forward(days: 30),
-  user: users.sample
+  user: users.sample,
+  inspiration: "Thaïlandaise", # Basé sur la cuisine thaï
+  heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
 
 Meal.create!(
@@ -94,7 +90,9 @@ Meal.create!(
   price_per_person: rand(10..100).to_f,
   maximum_guests: rand(1..20),
   date: Faker::Date.forward(days: 30),
-  user: users.sample
+  user: users.sample,
+  inspiration: "Africaine", # Basé sur la cuisine africaine
+  heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
 
 Meal.create!(
@@ -105,7 +103,9 @@ Meal.create!(
   price_per_person: rand(10..100).to_f,
   maximum_guests: rand(1..20),
   date: Faker::Date.forward(days: 30),
-  user: users.sample
+  user: users.sample,
+  inspiration: "Italienne", # Cuisine italienne
+  heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
 
 Meal.create!(
@@ -116,7 +116,9 @@ Meal.create!(
   price_per_person: rand(10..100).to_f,
   maximum_guests: rand(1..20),
   date: Faker::Date.forward(days: 30),
-  user: users.sample
+  user: users.sample,
+  inspiration: "Japonaise", # Cuisine japonaise
+  heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
 
 Meal.create!(
@@ -127,7 +129,9 @@ Meal.create!(
   price_per_person: rand(10..100).to_f,
   maximum_guests: rand(1..20),
   date: Faker::Date.forward(days: 30),
-  user: users.sample
+  user: users.sample,
+  inspiration: "Espagnole", # Cuisine espagnole
+  heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
 
 Meal.create!(
@@ -138,7 +142,9 @@ Meal.create!(
   price_per_person: rand(10..100).to_f,
   maximum_guests: rand(1..20),
   date: Faker::Date.forward(days: 30),
-  user: users.sample
+  user: users.sample,
+  inspiration: "Indienne", # Cuisine indienne
+  heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
 
 Meal.create!(
@@ -149,7 +155,9 @@ Meal.create!(
   price_per_person: rand(10..100).to_f,
   maximum_guests: rand(1..20),
   date: Faker::Date.forward(days: 30),
-  user: users.sample
+  user: users.sample,
+  inspiration: "Mexicaine", # Cuisine mexicaine
+  heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
 
 Meal.create!(
@@ -160,7 +168,9 @@ Meal.create!(
   price_per_person: rand(10..100).to_f,
   maximum_guests: rand(1..20),
   date: Faker::Date.forward(days: 30),
-  user: users.sample
+  user: users.sample,
+  inspiration: "Française", # Cuisine française
+  heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
 
 Meal.create!(
@@ -171,7 +181,9 @@ Meal.create!(
   price_per_person: rand(10..100).to_f,
   maximum_guests: rand(1..20),
   date: Faker::Date.forward(days: 30),
-  user: users.sample
+  user: users.sample,
+  inspiration: "Moyen-Orientale", # Cuisine du Moyen-Orient
+  heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
 
 Meal.create!(
@@ -182,7 +194,9 @@ Meal.create!(
   price_per_person: rand(10..100).to_f,
   maximum_guests: rand(1..20),
   date: Faker::Date.forward(days: 30),
-  user: users.sample
+  user: users.sample,
+  inspiration: "Grecque", # Cuisine grecque
+  heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
 
 Meal.create!(
@@ -193,7 +207,9 @@ Meal.create!(
   price_per_person: rand(10..100).to_f,
   maximum_guests: rand(1..20),
   date: Faker::Date.forward(days: 30),
-  user: users.sample
+  user: users.sample,
+  inspiration: "Vietnamienne", # Cuisine vietnamienne
+  heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
 
 Meal.create!(
@@ -204,9 +220,10 @@ Meal.create!(
   price_per_person: rand(10..100).to_f,
   maximum_guests: rand(1..20),
   date: Faker::Date.forward(days: 30),
-  user: users.sample
+  user: users.sample,
+  inspiration: "Brésilienne", # Cuisine brésilienne
+  heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
-
 meals = Meal.all
 
 # Create 10 bookings
@@ -217,19 +234,21 @@ meals = Meal.all
     user: users.sample # Assign a random user who made the booking
   )
 end
+bookings = Booking.all
 
 # Créer 10 plats sans question_id
 10.times do |i|
   # On génère au moins 1 entrée, 1 plat et 1 dessert pour chaque repas
   dishes = []
-  dishes << { course_type: "entrée", name: "Salade de tomates", meal_id: meals[i].id }
-  dishes << { course_type: "plat", name: "Steak frites", meal_id: meals[i].id }
-  dishes << { course_type: "dessert", name: "Crème brûlée", meal_id: meals[i].id }
+  dishes << { course_type: "Entrée", name: "Salade de tomates", meal_id: meals[i].id }
+  dishes << { course_type: "Plat", name: "Steak frites", meal_id: meals[i].id }
+  dishes << { course_type: "Dessert", name: "Crème brûlée", meal_id: meals[i].id }
 
   # Créer tous les plats pour le repas
   dishes.each do |dish|
-    Dish.create(dish)
+    Dish.create!(dish)
   end
 end
+dishes = Dish.all
 
 puts "Seeded #{User.count} users, #{Meal.count} meals, and #{Booking.count} bookings with #{Dish.count} dishes."
