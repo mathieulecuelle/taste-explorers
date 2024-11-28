@@ -10,7 +10,7 @@ class Meal < ApplicationRecord
   validates :maximum_guests, numericality: { only_integer: true, greater_than: 0 }
   validates :heure, presence: true
   validates :date, presence: true
-  validates :inspiration, presence: true, length:{ maximum: 10 }
+  validates :inspiration, presence: true, length:{ maximum: 20 }
 
   def questions_exist?
     dishes.joins(:questions).exists?
