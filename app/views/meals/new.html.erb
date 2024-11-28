@@ -1,10 +1,13 @@
 <%= simple_form_for @meal do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
+  <%= f.input :inspiration %>
+  <%= f.input :date %>
+  <%= f.input :heure %>
   <%= f.input :duration %>
   <%= f.input :location %>
   <%= f.input :price_per_person %>
   <%= f.input :maximum_guests %>
-  <%= f.input :date %>
+  <%= f.input :photo, as: :file %>
   <%= f.button :submit %>
 <% end %>
