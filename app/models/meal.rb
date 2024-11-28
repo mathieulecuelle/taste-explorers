@@ -16,4 +16,6 @@ class Meal < ApplicationRecord
   end
 
   has_one_attached :photo
+  geocoded_by :location, latitude: :gps_latitude, longitude: :gps_longitude
+  after_validation :geocode, if: :will_save_change_to_location?
 end
