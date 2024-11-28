@@ -1,4 +1,26 @@
-<h3>Confirmation</h3>
+<div>
+  <div class="header-confirmation">
+    <p class="p-ariane">Confirmation</p>
+    <i class="fa-solid fa-arrow-right"></i>
+  </div>
+  <div class="banner-confirmation">
+    <h2>Vous êtes sur le point de réserver votre place, <%= current_user.first_name %></h2>
+  </div>
+  <div class="facturation-confirmation">
+    <h3>Récapitulatif</h3>
+    <div class="facturation-texts">
+    <p class="p-bold">📅 <%= @booking.meal.date %></p>
+    <p class="p-bold">📍 <%= @booking.meal.location %></p>
+    </div>
+    <div class="factures">
+      <p class="p-light"><strong>Prix :</strong> <%= @booking.meal.price_per_person %>€</p>
+      <p><strong>Frais de service :</strong> 25€</p>
+      <strong>Total :</strong> <%= @booking.meal.price_per_person + 25 %>€
+    </div>
+  </div>
+
+</div>
+
 
 <p>Vous êtes sur le point de réserver votre place, <%= current_user.first_name %> </p>
 
