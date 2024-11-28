@@ -1,6 +1,6 @@
 <h1>A propos de ce repas</h1>
 
-<%= image%>
+
 
 
 <ul>
@@ -8,6 +8,12 @@
   <li>Description: <%= @meal.description %></li>
 </ul>
 
+
+<% if @meal.photo.attached? %>
+  <%= cl_image_tag @meal.photo.key, height: 400, width: 600, crop: :fill, class: 'd-block w-100', style: 'object-fit: cover; border-radius: 15px;' %>
+<% else %>
+  <p>No picture available for this meal.</p>
+<% end %>
 
 
 

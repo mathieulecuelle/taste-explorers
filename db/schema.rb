@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_27_142948) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_27_164238) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,6 +76,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_27_142948) do
     t.decimal "gps_longitude"
     t.decimal "gps_latitude"
     t.string "inspiration"
+    t.time "heure"
     t.index ["user_id"], name: "index_meals_on_user_id"
   end
 
