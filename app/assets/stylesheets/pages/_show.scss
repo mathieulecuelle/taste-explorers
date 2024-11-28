@@ -47,11 +47,13 @@
 .banner-hote{
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: $yellow;
   color: $dark;
   padding-block: $S;
   padding-inline: $XXL;
   gap: $XXL;
+  margin-top: $M;
 }
 
 .img-hote{
@@ -68,4 +70,8 @@
   justify-content: center;
   align-items: center;
   height: 35px;
+}
+
+.section-localisation{
+
 }
