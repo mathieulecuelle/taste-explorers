@@ -1,0 +1,58 @@
+.header-confirmation{
+  display: flex;
+  align-content: center;
+}
+
+.banner-confirmation{
+  background-color: $yellow-450;
+  color: $dark;
+  padding-block: $XL;
+  padding-inline: $M;
+}
+
+.return{
+  rotate: 90;
+  padding-inline: 5px;
+  padding-block: 5px;
+  background-color: $orange;
+  border-radius: $M;
+  color:$light;
+}
+
+.factures{
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  gap:$S;
+
+}
+
+.line{
+  border: solid $light-gray 1px;
+}
+
+.text-facture{
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-facture{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  gap: $M;
+}
+
+.button-facture{
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.page-facture{
+  display: flex;
+  flex-direction: column;
+  gap:$XL;
+}
