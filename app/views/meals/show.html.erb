@@ -44,17 +44,3 @@
 
 
 </div>
-
-
-
-
-
-<% if @meal.questions_exist? %>
-  <%= link_to "Generate quiz", "#",
-      class: "btn btn-primary disabled",
-      aria_disabled: "true" %>
-<% else %>
-  <%= link_to "Generate quiz", generate_quiz_path(@meal.id),
-      data: { turbo_method: :post },
-      class: "btn btn-primary" %>
-<% end %>

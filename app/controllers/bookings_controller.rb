@@ -6,10 +6,10 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(user: current_user, status: "accepted")
+    @booking = Booking.new(user: current_user, status: "confirmée")
     @booking.meal = Meal.find(params[:meal_id])
     if @booking.save
-      redirect_to dashboard_path, notice: "Réservation confirmée !"
+      redirect_to invite_meal_path(@booking.meal), notice: "Réservation confirmée !"
     else
       render :new, status: :unprocessable_entity
     end
