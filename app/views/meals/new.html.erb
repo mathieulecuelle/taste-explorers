@@ -2,7 +2,7 @@
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.input :inspiration %>
-  <%= f.input :date %>
+  <%= f.input :date, as: :string, input_html: { data: { controller: "datepicker-norange" } } %>
   <%= f.input :heure %>
   <%= f.input :duration %>
   <%= f.input :location %>

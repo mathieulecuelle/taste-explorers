@@ -1,9 +1,10 @@
 class MealsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
 
   def index
     @meals = Meal.all
     @markers = @meals.geocoded.map do |meal|
-      {
+      { 
         lat: meal.gps_latitude,
         lng: meal.gps_longitude
       }

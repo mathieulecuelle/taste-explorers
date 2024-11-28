@@ -11,6 +11,7 @@
 
 # db/seeds.rb
 
+require 'open-uri'
 require 'faker'
 Faker::Config.locale = 'fr'
 
@@ -55,8 +56,11 @@ users.find_each do |user|
   user.preferences.create!(preference_type: preference_type, name: selected_regime)
 end
 
+
+
 # Create 10 meals
-Meal.create!(
+photo = URI.parse("https://i.postimg.cc/bN099LBs/frites.jpg").open
+meal = Meal.create!(
   title: "Goûtez les frites de Dédé",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
@@ -68,8 +72,12 @@ Meal.create!(
   inspiration: "Breton", # Basé sur le titre
   heure: Time.new(2024, 1, 1, rand(18..22), 0, 0) # Heure aléatoire entre 18h et 22h
 )
+meal.photo.attach(io: photo, filename: "frites.jpg", content_type: "image/jpeg")
+meal.save!
+puts "image uploadée"
 
-Meal.create!(
+photo = URI.parse("https://i.postimg.cc/L41Tnmkk/thai.jpg").open
+meal = Meal.create!(
   title: "Découvrez la cuisine thaï authentique",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
@@ -81,8 +89,12 @@ Meal.create!(
   inspiration: "Thaïlandaise", # Basé sur la cuisine thaï
   heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
+meal.photo.attach(io: photo, filename: "thai.jpg", content_type: "image/jpeg")
+meal.save!
+puts "image uploadée"
 
-Meal.create!(
+photo = URI.parse("https://i.postimg.cc/yYCTR2nM/africa.jpg").open
+meal = Meal.create!(
   title: "Saveurs authentiques de l’Afrique",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
@@ -94,8 +106,12 @@ Meal.create!(
   inspiration: "Africaine", # Basé sur la cuisine africaine
   heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
+meal.photo.attach(io: photo, filename: "afri.jpg", content_type: "image/jpeg")
+meal.save!
+puts "image uploadée"
 
-Meal.create!(
+photo = URI.parse("https://i.postimg.cc/d3rmX9QN/italy.jpg").open
+meal = Meal.create!(
   title: "Voyage culinaire en Italie avec Marco",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
@@ -107,8 +123,12 @@ Meal.create!(
   inspiration: "Italienne", # Cuisine italienne
   heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
+meal.photo.attach(io: photo, filename: "italy.jpg", content_type: "image/jpeg")
+meal.save!
+puts "image uploadée"
 
-Meal.create!(
+photo = URI.parse("https://i.postimg.cc/mD0y8n4F/jap.jpg").open
+meal = Meal.create!(
   title: "Secrets de cuisine japonaise avec Yuki",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
@@ -120,8 +140,12 @@ Meal.create!(
   inspiration: "Japonaise", # Cuisine japonaise
   heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
+meal.photo.attach(io: photo, filename: "jap.jpg", content_type: "image/jpeg")
+meal.save!
+puts "image uploadée"
 
-Meal.create!(
+photo = URI.parse("https://i.postimg.cc/fL3v7NGN/spanish.jpg").open
+meal = Meal.create!(
   title: "Soirée tapas espagnoles avec Carmen",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
@@ -133,8 +157,12 @@ Meal.create!(
   inspiration: "Espagnole", # Cuisine espagnole
   heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
+meal.photo.attach(io: photo, filename: "spanish.jpg", content_type: "image/jpeg")
+meal.save!
+puts "image uploadée"
 
-Meal.create!(
+photo = URI.parse("https://i.postimg.cc/zf2jRBP7/indian.jpg").open
+meal = Meal.create!(
   title: "Spécialités indiennes par le chef Raj",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
@@ -146,8 +174,12 @@ Meal.create!(
   inspiration: "Indienne", # Cuisine indienne
   heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
+meal.photo.attach(io: photo, filename: "indian.jpg", content_type: "image/jpeg")
+meal.save!
+puts "image uploadée"
 
-Meal.create!(
+photo = URI.parse("https://i.postimg.cc/BQ2MwJXZ/mexican.jpg").open
+meal = Meal.create!(
   title: "Saveurs authentiques du Mexique avec Maria",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
@@ -159,8 +191,12 @@ Meal.create!(
   inspiration: "Mexicaine", # Cuisine mexicaine
   heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
+meal.photo.attach(io: photo, filename: "mexican.jpg", content_type: "image/jpeg")
+meal.save!
+puts "image uploadée"
 
-Meal.create!(
+photo = URI.parse("https://i.postimg.cc/8zHwNwRq/french.jpg").open
+meal = Meal.create!(
   title: "Dîner français traditionnel chez Pierre",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
@@ -172,8 +208,12 @@ Meal.create!(
   inspiration: "Française", # Cuisine française
   heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
+meal.photo.attach(io: photo, filename: "francais.jpg", content_type: "image/jpeg")
+meal.save!
+puts "image uploadée"
 
-Meal.create!(
+photo = URI.parse("https://i.postimg.cc/Hk5KRqvt/moyen-orient.jpg").open
+meal = Meal.create!(
   title: "Saveurs du Moyen-Orient avec Leila",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
@@ -185,8 +225,12 @@ Meal.create!(
   inspiration: "Moyen-Orientale", # Cuisine du Moyen-Orient
   heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
+meal.photo.attach(io: photo, filename: "nophotoss.jpg", content_type: "image/jpeg")
+meal.save!
+puts "image uploadée"
 
-Meal.create!(
+photo = URI.parse("https://i.postimg.cc/Dzw6Zs5m/greek.jpg").open
+meal = Meal.create!(
   title: "Délices grecs avec Nikos",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
@@ -198,8 +242,12 @@ Meal.create!(
   inspiration: "Grecque", # Cuisine grecque
   heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
+meal.photo.attach(io: photo, filename: "greek.jpg", content_type: "image/jpeg")
+meal.save!
+puts "image uploadée"
 
-Meal.create!(
+photo = URI.parse("https://i.postimg.cc/JnJhCLP1/viettt.jpg").open
+meal = Meal.create!(
   title: "Cuisine vietnamienne avec Linh",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
@@ -211,8 +259,12 @@ Meal.create!(
   inspiration: "Vietnamienne", # Cuisine vietnamienne
   heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
+meal.photo.attach(io: photo, filename: "viet.jpg", content_type: "image/jpeg")
+meal.save!
+puts "image uploadée"
 
-Meal.create!(
+photo = URI.parse("https://i.postimg.cc/HWq62rWP/brazil.jpg").open
+meal = Meal.create!(
   title: "Saveurs épicées du Brésil par Carlos",
   description: Faker::Lorem.paragraph(sentence_count: 2),
   duration: rand(30..180),
@@ -224,6 +276,10 @@ Meal.create!(
   inspiration: "Brésilienne", # Cuisine brésilienne
   heure: Time.new(2024, 1, 1, rand(18..22), 0, 0)
 )
+meal.photo.attach(io: photo, filename: "brazil.jpg", content_type: "image/jpeg")
+meal.save!
+puts "image uploadée"
+
 meals = Meal.all
 
 # Create 10 bookings
