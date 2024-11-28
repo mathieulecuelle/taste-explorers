@@ -3,5 +3,5 @@ class Booking < ApplicationRecord
   belongs_to :user
 
   validates :status, presence: true, inclusion: { in: %w[en-cours confirmée annulée terminée] }
-  has_many :photos
+  has_many_attached :photos
 end

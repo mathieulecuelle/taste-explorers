@@ -2,6 +2,14 @@ class DashboardController < ApplicationController
   before_action :set_meal, except: [:show]
 
   def show
+    @section = params[:section] || 'organiser'
+    if @section == 'organiser'
+      @meals = current_user.meals
+      @meals_pasts = current_user.meals.where("date < ?", Date.today)
+    else  # @section == 'reservations'
+      @bookings = current_user.bookings
+      @bookings_pasts = current_user.bookings.joins(:meal).where('meals.date < ?', Date.today)
+    end
   end
 
   def view_quiz
