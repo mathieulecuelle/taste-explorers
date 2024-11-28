@@ -29,3 +29,4 @@ pin "xtend" # @4.0.2
 # Remplacez les pins existants pour mapbox-gl et mapbox-gl-geocoder
 pin "mapbox-gl", to: "https://esm.sh/mapbox-gl@3.1.2"
 pin "@mapbox/mapbox-gl-geocoder", to: "https://esm.sh/@mapbox/mapbox-gl-geocoder@5.0.0"
+pin "flatpickr", to: "https://ga.jspm.io/npm:flatpickr@4.6.13/dist/esm/index.js"

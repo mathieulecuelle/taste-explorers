@@ -3,36 +3,39 @@
     <div class="d-flex justify-content-center">
       <%= image_tag "Logo.png", alt: "logo-taste_explorers", width: 200 %>
     </div>
-    <h1>Bienvenue ! </h1>
-    <div class="input d-flex align-items-center justify-content-between">
-      <%= simple_form_for :search, url: meals_path, method: :get do |f| %>
-        <div class="form-group">
-          <%= f.input :address,
-            input_html: { data: { address_autocomplete_target: "address" }, class: "d-none" },
-            wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}},
-            label: "Adresse",
-            placeholder: "Entrez une adresse" %>
-        </div>
-        <div class="form-group">
-          <%= f.input :date, as: :date, label: "Date" %>
-        </div>
-        <div class="form-group">
-          <%= f.submit "Rechercher", class: "button btn-one" %>
-        </div>
-      <% end %>
+    <h1>Bienvenue !</h1>
 
+      <div data-controller="datepicker">
+        <%= simple_form_for :search, url: meals_path, method: :get do |f| %>
+          <div class="form-group">
+            <%= f.input :address,
+              input_html: { data: { address_autocomplete_target: "address" }, class: "d-none" },
+              wrapper_html: { data: { controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"] } },
+              label: "Où habitez-vous ?",
+              placeholder: "Entrez une adresse" %>
+          </div>
+          <div class="form-group">
+            <%= text_field_tag :date_range, nil,
+              data: {
+                datepicker_target: "dateRange"
+              },
+              placeholder: "Select date range",
+              class: "form-control",
+              readonly: true %>
+            <%= f.input :start_date, as: :hidden, input_html: { data: { datepicker_target: "startDate" } } %>
+            <%= f.input :end_date, as: :hidden, input_html: { data: { datepicker_target: "endDate" } } %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Rechercher", class: "button btn-one" %>
+          </div>
+        <% end %>
+      </div>
 
-    </div>
     <%= link_to proposals_meals_path do %>
       <!--<div class="button btn-one">Valider</div>-->
     <% end %>
   </div>
 </div>
-
-
-
-
-
 
 <%= link_to "Se connecter", new_user_session_path %> / <%= link_to "Se déconnecter", destroy_user_session_path, data: { "turbo-method": :delete } %>
 
