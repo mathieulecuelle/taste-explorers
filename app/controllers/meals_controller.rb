@@ -3,12 +3,6 @@ class MealsController < ApplicationController
 
   def index
     @meals = Meal.all
-    @markers = @meals.geocoded.map do |meal|
-      { 
-        lat: meal.gps_latitude,
-        lng: meal.gps_longitude
-      }
-    end
   end
 
   def proposals
@@ -18,6 +12,10 @@ class MealsController < ApplicationController
 
   def show
     @meal = Meal.find(params[:id])
+    @marker = {
+      lat: @meal.gps_latitude,
+      lng: @meal.gps_longitude
+    }
   end
 
   def invite
