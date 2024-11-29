@@ -13,8 +13,7 @@ class MealsController < ApplicationController
       if location
         latitude, longitude = location
         # Filtrer les meals dans un rayon de 5 km et dans la plage de dates
-        @meals = Meal.near([latitude, longitude], 5)
-                     .where(date: start_date..end_date)
+        @meals = Meal.near([latitude, longitude], 5).where(date: start_date..end_date)
       else
         # Si l'adresse n'est pas valide, retourner aucun meal ou tous les meals
         @meals = Meal.none
@@ -28,7 +27,28 @@ class MealsController < ApplicationController
 
   def proposals
     # On devra ici filtrer par allergie / préférence alimentaire
-    @meals = Meal.last(3)
+
+    if params[:search].present?
+      address = params[:search][:address]
+      start_date = params[:search][:start_date]
+      end_date = params[:search][:end_date]
+
+      # Géocodage de l'adresse pour obtenir les coordonnées
+      location = Geocoder.coordinates(address)
+
+      if location
+        latitude, longitude = location
+        # Filtrer les meals dans un rayon de 5 km et dans la plage de dates
+        @meals = Meal.near([latitude, longitude], 5).where(date: start_date..end_date)
+      else
+        # Si l'adresse n'est pas valide, retourner aucun meal ou tous les meals
+        @meals = Meal.none
+        flash[:alert] = "Adresse invalide. Veuillez réessayer."
+      end
+    else
+      # Si aucun paramètre de recherche n'est fourni, afficher tous les meals
+      @meals = Meal.last(3)
+    end
   end
 
   def show
