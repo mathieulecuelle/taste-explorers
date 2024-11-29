@@ -18,3 +18,19 @@
   background-color: $yellow;
   color:$dark;
 }
+
+.tag-filtre{
+  border-radius: $XS;
+  background-color: $light-gray;
+  color: $dark;
+  padding-inline: $S;
+  padding-block: $XS ;
+}
+
+.tag-active{
+  border-radius: $XS;
+  background-color: $orange;
+  color: $light;
+  padding-inline: $S;
+  padding-block: $XS ;
+}
