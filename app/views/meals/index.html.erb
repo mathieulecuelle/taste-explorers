@@ -11,11 +11,11 @@
       <div class="cards-content">
         <div class="card-text">
           <p class="p-bold"><%=meal.title%></p>
-          <p class="p-normal"><%= meal.description %></p>
+          <p class="p-normal"><%= truncate(meal.description, length: 30, separator: ' ') %></p>
           </div>
           <div class="card-infos">
-            <p class="p-bold">📅<%= meal.date %></p>
-            <p class="p-bold">💸<%= meal.price_per_person %></p>
+            <p class="p-bold">📅 <%= meal.date.strftime("%-d %b").downcase + "." %></p>
+            <p class="p-bold">💸 <%= number_to_currency(meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
             <p class="p-bold">🧍‍♂️<%= meal.maximum_guests %></p>
           </div>
       </div>

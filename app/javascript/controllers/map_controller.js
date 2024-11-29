@@ -17,6 +17,7 @@ export default class extends Controller {
     this.map.addControl(new mapboxgl.NavigationControl())
     this.#addMarkerToMap()
     this.#fitMapToMarker()
+    this.map.scrollZoom.disable();
   }
 
   #addMarkerToMap() {
