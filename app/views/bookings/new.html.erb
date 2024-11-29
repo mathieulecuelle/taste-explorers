@@ -32,7 +32,7 @@
     </div>
   </div>
   <div class="button-facture">
-  <%= simple_form_for [@meal, @booking], url: meal_bookings_path do |form| %>
+  <%= simple_form_for [@meal, @booking], url: dashboard_path do |form| %>
     <%= form.submit "Confirmer ma venue", class:"button btn-one"%>
   <% end %>
   </div>
