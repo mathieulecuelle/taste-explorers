@@ -5,8 +5,8 @@
 </div>
 
 <div>
-  <%= link_to 'J\'organise', dashboard_path(section: 'organiser'), class: "btn #{'btn-primary' if @section == 'organiser'} #{'btn-info' unless @section == 'organiser'}" %>
-  <%= link_to 'Mes résas', dashboard_path(section: 'reservations'), class: "btn #{'btn-primary' if @section == 'reservations'} #{'btn-info' unless @section == 'reservations'}" %>
+  <%= link_to 'Hots', dashboard_path(section: 'organiser'), class: "btn #{'btn-primary' if @section == 'organiser'} #{'btn-info' unless @section == 'organiser'}" %>
+  <%= link_to 'Guest', dashboard_path(section: 'reservations'), class: "btn #{'btn-primary' if @section == 'reservations'} #{'btn-info' unless @section == 'reservations'}" %>
 </div>
 
 
@@ -31,7 +31,7 @@
             <p class="p-bold"><%= current_user %></p>
           </div>
           <div class="img-guests">
-             <p class="p-bold">Invités :</p>
+             <p class="p-bold">Invités:</p>
           <% meal.guests.each do |guest| %>
             <p><%= guest.name %></p>
           </div>
@@ -51,7 +51,6 @@
             <p><%= booking.meal.description %></p>
             <p><%= booking.meal.maximum_guests %></p>
             <p><%= booking.meal.location %></p>
-            <p><%= booking.status %></p>
           </div>
           <br>
   <% end %>
@@ -59,7 +58,7 @@
 
 
 
-  <% if @section == 'organiser'%>
+<% if @section == 'organiser'%>
           <div class="meal-card">
             <h4><%= meal.title %></h4>
             <p><%= meal.description %></p>
