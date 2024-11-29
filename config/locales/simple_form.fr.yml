@@ -1,0 +1,20 @@
+fr:
+  simple_form:
+    yes: 'Oui'
+    no: 'Non'
+    required:
+      text: 'obligatoire'
+      mark: '*'
+    error_notification:
+      default_message: "Veuillez corriger les problèmes ci-dessous :"
+    labels:
+      meal:
+        title: "Titre"
+        description: "Description"
+        duration: "Durée"
+        location: "Lieu"
+        price_per_person: "Prix par personne"
+        maximum_guests: "Nombre maximum d'invités"
+        date: "Date"
+        inspiration: "Inspiration"
+        heure: "Heure"

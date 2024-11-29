@@ -6,7 +6,7 @@
     <h1>Bienvenue !</h1>
 
       <div data-controller="datepicker">
-        <%= simple_form_for :search, url: meals_path, method: :get do |f| %>
+        <%= simple_form_for :search, url: proposals_meals_path, method: :get do |f| %>
           <div class="form-group">
             <%= f.input :address,
               input_html: { data: { address_autocomplete_target: "address" }, class: "d-none" },
