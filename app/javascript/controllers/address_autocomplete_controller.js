@@ -14,7 +14,6 @@ export default class extends Controller {
     this.geocoder.on("result", event => this.#setInputValue(event))
     this.geocoder.on("clear", () => this.#clearInputValue())
 
-
     this.#addTargetIcon();
   }
 
@@ -74,6 +73,7 @@ export default class extends Controller {
         if (data.features && data.features.length > 0) {
           const address = data.features[0].place_name;
           this.#updateGeocoderInput(address);
+          this.addressTarget.value = address;
         } else {
           this.#updateGeocoderInput("Adresse non trouvée");
         }
@@ -88,7 +88,7 @@ export default class extends Controller {
     const geocoderInput = this.element.querySelector('.mapboxgl-ctrl-geocoder--input');
     if (geocoderInput) {
       const targetIcon = document.createElement('span');
-      targetIcon.innerHTML = '📍'; // Vous pouvez utiliser une icône personnalisée ici
+      targetIcon.innerHTML = '📍';
       targetIcon.classList.add('geocoder-target-icon');
       targetIcon.style.cursor = 'pointer';
       targetIcon.style.position = 'absolute';
