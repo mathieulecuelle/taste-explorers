@@ -18,3 +18,34 @@
   background-color: $yellow;
   color:$dark;
 }
+
+.tag-filtre{
+  border-radius: $XS;
+  background-color: $light-gray;
+  color: $dark;
+  padding-inline: $S;
+  padding-block: $XS ;
+}
+
+.tag-active{
+  border-radius: $XS;
+  background-color: $orange;
+  color: $light;
+  padding-inline: $S;
+  padding-block: $XS ;
+}
+
+.quiz{
+  position: relative;
+  bottom: $S;
+  left: 50px;
+}
+
+.btn-quiz{
+  position:absolute;
+  border-radius: $XS;
+  background-color: $red;
+  color: $light;
+  padding-inline: $S;
+  padding-block: $XS ;
+}

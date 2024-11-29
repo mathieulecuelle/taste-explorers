@@ -19,14 +19,16 @@
               data: {
                 datepicker_target: "dateRange"
               },
-              placeholder: "Select date range",
+              placeholder: "Chosissez vos disponibilités",
               class: "form-control",
               readonly: true %>
             <%= f.input :start_date, as: :hidden, input_html: { data: { datepicker_target: "startDate" } } %>
             <%= f.input :end_date, as: :hidden, input_html: { data: { datepicker_target: "endDate" } } %>
           </div>
           <div class="form-group">
+            <div class="d-flex justify-content-center">
             <%= f.submit "Rechercher", class: "button btn-one" %>
+            </div>
           </div>
         <% end %>
       </div>
