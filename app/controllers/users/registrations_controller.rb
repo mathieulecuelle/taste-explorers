@@ -1,23 +1,43 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  def sign_up_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :address, :photo)
-  end
-
-  def after_sign_up_path_for(resource)
-    edit_preferences_user_path(resource)
-  end
-
-  def create
-    super do |resource|
-      if resource.persisted?
-        redirect_to edit_preferences_user_path(resource) and return
+  # Méthode de mise à jour
+  def update
+    # Si l'utilisateur tente de modifier son mot de passe, nous utilisons update_with_password
+    if params[:user][:password].present? || params[:user][:password_confirmation].present?
+      if resource.update_with_password(user_params)
+        handle_preferences_update
+        redirect_to root_path, notice: "Profil mis à jour avec succès."
       else
-        render :new and return
+        render :edit
+      end
+    else
+      if resource.update(user_params)
+        handle_preferences_update
+        redirect_to root_path, notice: "Profil mis à jour avec succès."
+      else
+        render :edit
       end
     end
   end
+
+  private
+
+  # Méthode pour mettre à jour les préférences
+  def handle_preferences_update
+    if params[:user][:preferences].present?
+      resource.preferences.each do |preference|
+        preference.update(preference_type: params[:user][:preference_type], name: params[:user][:preferences][:name])
+      end
+    end
+  end
+
+  # Strong parameters
+  def user_params
+    params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation, preferences: [:name])
+  end
+
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 

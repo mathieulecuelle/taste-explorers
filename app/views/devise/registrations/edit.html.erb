@@ -26,6 +26,34 @@
               label: "Confirmation mot de passe",
               input_html: { autocomplete: "new-password" } %>
   <%= f.input :photo, as: :file, label: "Photo de profil" %>
+
+  <div class="form-inputs">
+    <h3>Préférences</h3>
+
+    <%# Grouper les préférences par type %>
+    <% grouped_preferences = resource.preferences.group_by(&:preference_type) %>
+
+    <% grouped_preferences.each do |preference_type, preferences| %>
+          <h4>
+        <% if preference_type == 'ingrédient_exclure' %>
+          Ingrédients à exclure
+        <% else %>
+          Allergies
+        <% end %>
+      </h4>
+
+      <%# Afficher les préférences pour ce type %>
+      <% preferences.each do |preference| %>
+        <div class="preference-fields">
+          <%= f.simple_fields_for :preferences, preference do |p| %>
+            <%= p.input :name, label: "Nom associé", input_html: { value: preference.name } %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+
+  </div>
+
 </div>
 
 <div class="form-actions">

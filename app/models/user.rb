@@ -5,9 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :preferences, dependent: :destroy
-   # Autoriser les préférences imbriquées
-  accepts_nested_attributes_for :preferences, allow_destroy: true
-
   has_many :bookings, dependent: :destroy
   has_many :meals, dependent: :destroy
 
