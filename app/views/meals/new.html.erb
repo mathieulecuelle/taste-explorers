@@ -2,6 +2,7 @@
 <%= simple_form_for @meal do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
+  <p class="p-conditions">🚨 À ne pas donner trop d’informations à vos futurs convives</p>
   <%= f.input :inspiration %>
   <%= f.input :date, as: :string, input_html: { data: { controller: "datepicker-norange" } } %>
   <%= f.input :heure %>
@@ -11,9 +12,11 @@
               wrapper_html: { data: { controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"] } },
               label: "Où habitez-vous ?",
               placeholder: "Entrez une adresse" %>
+  <p class="p-conditions">🚨 Nous afficherons uniquement un rayon autour de chez vous sur l’application. Les utilisateurs la recevront précisément dès la réservation validée.</p>
   <%= f.input :price_per_person %>
   <%= f.input :maximum_guests %>
   <%= f.input :photo, as: :file %>
+  <p class="p-conditions">🚨 Ne mettez pas une photo de vos plats, uniquement de l'inspiration </p>
   <div class="d-flex justify-content-center">
   <%= f.button :submit, value: "Proposer mon repas", class: "button btn-one" %>
   </div>

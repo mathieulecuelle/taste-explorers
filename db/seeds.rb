@@ -12,7 +12,26 @@ Meal.destroy_all
 Preference.destroy_all
 User.destroy_all
 
-# Create specific users
+# Créer une liste d'adresses spécifiques
+specific_addresses = [
+  "3 rue Dobrée, 44100 Nantes",
+  "25 quai François Mitterrand, 44100 Nantes",
+  "20 rue des Carmes, 44100 Nantes",
+  "1 rue du Cheval Blanc, 44100 Nantes",
+  "10 rue Cacault, 44100 Nantes",
+  "6 allée Duquesne, 44100 Nantes",
+  "Passage Pommeraye, 44100 Nantes",
+  "23 bis rue Racine, 44100 Nantes",
+  "22 rue des Carmes, 44100 Nantes",
+  "1 rue de la Bâtière, 44100 Nantes",
+  "15 rue de la Fosse, 44100 Nantes",
+  "8 rue de l'Hôtel de Ville, 44100 Nantes",
+  "4 rue de la République, 44100 Nantes",
+  "12 rue du Maréchal Joffre, 44100 Nantes",
+  "5 place Royale, 44100 Nantes"
+]
+
+# Créer des utilisateurs spécifiques
 specific_users = [
   { first_name: 'Guillaume', email: 'gui@taste.com' },
   { first_name: 'Mathieu', email: 'mat@taste.com' },
@@ -31,7 +50,7 @@ specific_users.each do |u|
 end
 users_us = User.all
 
-# Create 10 generic users
+# Créer 10 utilisateurs génériques
 10.times do
   User.create!(
     email: Faker::Internet.unique.email,
@@ -158,13 +177,19 @@ meals_data = [
   }
 ]
 
-meals_data.each do |meal_data|
+# S'assurer que le nombre d'adresses correspond au nombre de repas
+if specific_addresses.size < meals_data.size
+  puts "Erreur : Il y a moins d'adresses spécifiques que de repas."
+  exit
+end
+
+meals_data.each_with_index do |meal_data, index|
   photo = URI.parse(meal_data[:photo_url]).open
   meal = Meal.create!(
     title: meal_data[:title],
     description: meal_data[:description],
     duration: rand(30..180),
-    location: "#{Faker::Address.city}, France",
+    location: specific_addresses[index], # Utiliser l'adresse spécifique
     price_per_person: rand(10..100).to_f,
     maximum_guests: rand(1..20),
     date: Faker::Date.forward(days: 30),
@@ -182,9 +207,9 @@ meals = Meal.all
 # Create 10 bookings
 10.times do
   Booking.create!(
-    status: ['en-cours', 'confirmée', 'annulée','terminée'].sample, # Random status
-    meal: meals.sample, # Assign a random meal
-    user: users.sample # Assign a random user who made the booking
+    status: ['en-cours', 'confirmée', 'annulée','terminée'].sample, # Statut aléatoire
+    meal: meals.sample, # Assignation aléatoire d'un repas
+    user: users.sample # Assignation aléatoire d'un utilisateur
   )
 end
 bookings = Booking.all
