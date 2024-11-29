@@ -20,8 +20,6 @@
           </div>
       </div>
       <div class="cards-img">
-      <div class="tag tag-city">
-      </div>
       <% if meal.photo.attached? %>
         <%= cl_image_tag meal.photo.key, alt: "logo-taste_explorers", width: 110, class:"card-img" %>
       <% else %>
