@@ -23,12 +23,12 @@ class DashboardController < ApplicationController
       client = OpenAI::Client.new
       response = client.chat(
         parameters: {
-          model: "gpt-4",
+          model: "gpt-3.5-turbo",
           messages: [
             {
               role: "user",
               content: <<~MESSAGE
-                Génére un résumé de 2 lignes maximum expliquant l'histoire et la culture du plat "#{dish.name}"; ensuite saute une ligne et génère un quiz rapide avec 3 questions/réponses liées au plat "#{dish.name}" qui inclut des aspects culturels et historiques. Chaque ligne doit contenir la question, puis un ";" suivi de 3 réponses possibles séparées par des ';', et ensuite la réponse correcte entre parenthèses.
+                Génére un résumé de 3 lignes maximum mettant l'accent sur l'histoire et la culture du plat "#{dish.name}"; ensuite saute une ligne et génère un quiz rapide avec 3 questions/réponses liées au plat "#{dish.name}" qui inclut des aspects culturels et historiques. Chaque ligne doit contenir la question, puis un ";" suivi de 3 réponses possibles séparées par des ';', et ensuite la réponse correcte entre parenthèses.
               MESSAGE
             }
           ]

@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
   # Devise routes
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+
+  # Routes pour l'édition et la mise à jour des préférences
+  resources :users, only: [] do
+    member do
+      get 'edit_preferences'    # Permet de modifier les préférences
+      patch 'update_preferences' # Permet de mettre à jour les préférences
+    end
+  end
 
   # Health check route
   get "up", to: "rails/health#show", as: :rails_health_check

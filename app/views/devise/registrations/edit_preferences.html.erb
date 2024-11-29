@@ -1,0 +1,19 @@
+<h2>Ajouter des régimes</h2>
+
+<%= simple_form_for(@user, url: update_preferences_user_path(@user), method: :patch) do |f| %>
+  <%= f.error_notification %>
+
+  <h3>Régimes particuliers</h3>
+
+  <!-- Champs pour les régimes -->
+  <%= f.simple_fields_for :preferences do |p| %>
+    <div class="preference-field">
+      <%= p.input :name, label: "Nom du régime", placeholder: "Entrez un régime" %>
+      <%= p.input :reference_type, as: :hidden, input_html: { value: 'régime' } %>
+    </div>
+  <% end %>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Ajouter le régime" %>
+  </div>
+<% end %>
