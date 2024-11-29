@@ -1,4 +1,5 @@
 class MealsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
 
   def index
     @meals = Meal.all
@@ -17,6 +18,10 @@ class MealsController < ApplicationController
 
   def show
     @meal = Meal.find(params[:id])
+    @marker = {
+      lat: @meal.gps_latitude,
+      lng: @meal.gps_longitude
+    }
   end
 
   def invite

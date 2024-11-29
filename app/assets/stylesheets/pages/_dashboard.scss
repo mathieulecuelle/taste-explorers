@@ -1,0 +1,22 @@
+.banner-dashboard{
+  display: flex;
+  align-items: center;
+  background-color: $yellow-450;
+  color: $dark;
+  padding-block: $XL;
+  padding-inline: $M;
+  gap:$M;
+}
+
+.img-profil{
+  width:80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 100px;
+}
+
+.filtre-dashboard{
+  display: flex;
+  gap:$S;
+  margin-block: $M;
+}

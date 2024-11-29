@@ -52,3 +52,23 @@ $headers1-font: "Nunito Sans", "Helvetica", "sans-serif";
   font-weight: bold;
   margin:0 auto;
 }
+
+.text-width{
+  width: 270px;
+}
+
+.h2{
+  font-family: $headers-font;
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.h2-bold{
+  font-family: $headers-font;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.underline{
+  text-decoration: underline;
+}

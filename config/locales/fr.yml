@@ -1,0 +1,54 @@
+fr:
+  hello: "Bonjour"
+
+  # Traductions pour les attributs des modèles
+  activerecord:
+    models:
+      user: "Utilisateur"
+      meal: "Repas"
+      booking: "Réservation"
+      dish: "Plat"
+    attributes:
+      user:
+        email: "Email"
+        password: "Mot de passe"
+        first_name: "Prénom"
+        last_name: "Nom de famille"
+        address: "Adresse"
+      meal:
+        title: "Titre"
+        description: "Description"
+        duration: "Durée"
+        location: "Lieu"
+        price_per_person: "Prix par personne"
+        maximum_guests: "Nombre maximum d'invités"
+        date: "Date"
+        inspiration: "Inspiration"
+        heure: "Heure"
+      booking:
+        status: "Statut"
+        meal: "Repas"
+        user: "Utilisateur"
+      dish:
+        course_type: "Type de plat"
+        name: "Nom"
+        meal: "Repas"
+
+  # Messages d'erreur
+  errors:
+    messages:
+      record_invalid: "Les données fournies sont invalides."
+      taken: "a déjà été pris(e)."
+      blank: "ne peut pas être vide."
+      invalid: "n'est pas valide."
+
+  # Autres traductions spécifiques à votre application
+  meals:
+    index:
+      title: "Tous nos repas"
+      search: "Rechercher un repas"
+    show:
+      back: "Retour aux repas"
+    form:
+      new: "Nouveau repas"
+      edit: "Modifier le repas"
