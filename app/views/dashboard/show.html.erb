@@ -15,8 +15,8 @@
 </div>
 
 <div class="filtre-dashboard">
-  <%= link_to 'J\'organise', dashboard_path(section: 'organiser'), class: "tag-filtre #{'tag-active' if @section == 'organiser'} #{'tag-filtre' unless @section == 'organiser'}" %>
   <%= link_to 'Mes résas', dashboard_path(section: 'reservations'), class: "tag-filtre #{'tag-active' if @section == 'reservations'} #{'tag-filtre' unless @section == 'reservations'}" %>
+  <%= link_to 'J\'organise', dashboard_path(section: 'organiser'), class: "tag-filtre #{'tag-active' if @section == 'organiser'} #{'tag-filtre' unless @section == 'organiser'}" %>
 </div>
 
 <div>
