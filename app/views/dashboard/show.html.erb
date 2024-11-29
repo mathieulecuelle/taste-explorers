@@ -1,5 +1,10 @@
 <div class="banner-dashboard no-border">
-  <%= cl_image_tag current_user.photo.key, alt: "Photo de profil #{current_user.last_name} #{current_user.first_name}", class: "img-profil" %>
+  <% if current_user.photo.attached? %>
+    <%= cl_image_tag current_user.photo.key, alt: "Photo de profil #{current_user.last_name} #{current_user.first_name}", class: "img-profil" %>
+  <% else %>
+    <p>Aucune photo</p>
+  <% end %>
+
   <br>
   <div class="banner-texts">
     <h2 class="h2-bold"><%= current_user.first_name %> <%= current_user.last_name %></h2>
@@ -39,11 +44,13 @@
                 <% else %>
                   <p>Aucune photo disponible pour ce repas</p>
                 <% end %>
-                <% if !meal.questions_exist? %>
-                  <%= link_to "Generate quiz", generate_quiz_path(meal.id),
-                      data: { turbo_method: :post },
-                      class: "btn btn-dark" %>
-                <% end %>
+                <div class="quiz">
+                  <% if !meal.questions_exist? %>
+                    <%= link_to "Quiz", generate_quiz_path(meal.id),
+                        data: { turbo_method: :post },
+                        class: "btn-quiz" %>
+                  <% end %>
+                </div>
               </div>
             </div>
             <br>
@@ -75,7 +82,7 @@
                 <% if booking.photos.attached? %>
                   <%= cl_image_tag booking.photos.first.key, alt: "Photo de la réservation #{booking.id}", class: "img-meal" %>
                 <% else %>
-                  <p>Aucune photo(s) disponible pour cette réservation</p>
+                  <p>Aucune photo(s) sur cette réservation</p>
                 <% end %>
               </div>
             </div>
@@ -112,6 +119,13 @@
                 <% else %>
                   <p>Aucune photo disponible pour ce repas</p>
                 <% end %>
+                <% if meal.date.to_date == Date.today && meal.heure >= Time.now.strftime("%H:%M") %>
+                  <% if !meal.questions_exist? %>
+                    <%= link_to "Generate quiz", generate_quiz_path(meal.id),
+                        data: { turbo_method: :post },
+                        class: "btn btn-dark" %>
+                  <% end %>
+                <% end %>
               </div>
             </div>
             <br>
@@ -143,7 +157,7 @@
                 <% if booking.photos.attached? %>
                   <%= cl_image_tag booking.photos.first.key, alt: "Photo de la réservation #{booking.id}", class: "img-meal" %>
                 <% else %>
-                  <p>Aucune photo(s) disponible pour cette réservation</p>
+                  <p>Aucune photo(s) sur cette réservation</p>
                 <% end %>
               </div>
             </div>
@@ -155,4 +169,3 @@
       <p>Aucune réservation passée.</p>
     <% end %>
   <% end %>
-</div>

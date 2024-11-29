@@ -34,3 +34,18 @@
   padding-inline: $S;
   padding-block: $XS ;
 }
+
+.quiz{
+  position: relative;
+  bottom: $S;
+  left: 50px;
+}
+
+.btn-quiz{
+  position:absolute;
+  border-radius: $XS;
+  background-color: $red;
+  color: $light;
+  padding-inline: $S;
+  padding-block: $XS ;
+}
