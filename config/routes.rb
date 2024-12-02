@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     # Nested resources
     resources :dishes, only: [:new, :create]
     resources :bookings, only: [:new, :create]
+    get '/bookings/confirmation', to: 'bookings#confirmation', as: 'booking_confirmation'
+    get '/bookings/confirmation', to: 'bookings#validate', as: 'booking_validate'
   end
 
   # Dashboard routes
