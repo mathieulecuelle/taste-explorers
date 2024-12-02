@@ -38,7 +38,7 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :cloudinary
-  
+
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
   # config.action_cable.url = "wss://example.com/cable"
@@ -70,7 +70,9 @@ Rails.application.configure do
 
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  # config.active_job.queue_adapter = :resque
+  config.active_job.queue_adapter = :solid_queue
+  #config.solid_queue.connects_to = { database: { writing: :queue } }
+
   # config.active_job.queue_name_prefix = "taste_explorers_production"
 
   config.action_mailer.perform_caching = false
