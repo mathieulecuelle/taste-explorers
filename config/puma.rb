@@ -13,7 +13,7 @@ threads min_threads_count, max_threads_count
 
 rails_env = ENV.fetch("RAILS_ENV") { "development" }
 
-if Rails.env.development?
+if rails_env == "development"
   plugin :solid_queue
 end
 
