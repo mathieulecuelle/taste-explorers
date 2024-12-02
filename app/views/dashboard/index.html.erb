@@ -2,14 +2,19 @@
   <% if current_user.photo.attached? %>
     <%= cl_image_tag current_user.photo.key, alt: "Photo de profil #{current_user.last_name} #{current_user.first_name}", class: "img-profil" %>
   <% else %>
-    <p>Aucune photo</p>
+    <%= image_tag 'user_default.png', alt: "#{current_user.first_name} #{current_user.last_name}", class: "img-profil" %>
   <% end %>
 
   <br>
   <div class="banner-texts">
-    <h2 class="h2-bold"><%= current_user.first_name %> <%= current_user.last_name %></h2>
     <%= link_to edit_user_registration_path do %>
-      <p class="p-light underline">Modifier mon profil</p>
+    <div class="profile-element">
+    <h2 class="h2-bold"><%= current_user.first_name %> <%= current_user.last_name %></h2>
+    <i class="fa-solid fa-pen edit-pen"></i>
+    </div>
+    <% end %>
+    <%= link_to destroy_user_session_path, data: { "turbo-method": :delete } do %>
+      <p class="p-light underline">Se déconnecter</p>
     <% end %>
   </div>
 </div>
@@ -21,15 +26,23 @@
 
 <div>
   <% if @section == 'organiser' %>
-    <h3>Mes repas à venir</h3>
     <% if @meals.present? %>
-      <div class="cards-taste">
+    <h3>Mes repas à venir</h3>
+      <div class="cards-taste-dashboard">
         <% @meals.each do |meal| %>
           <% if meal.present? %>
-            <div class="cards">
-              <div class="cards-content">
+                  <% if !meal.questions_exist? %>
+                    <%= link_to generate_quiz_path(meal.id),
+                        data: { turbo_method: :post } do %>
+                        <div class="quiz">
+                        <p class="p-quiz">Lancer le quiz </p>
+                        </div>
+                        <% end %>
+                  <% end %>
+          <%= link_to dashboard_show_path(section: 'organiser', id: meal.id) do%>
+            <div class="cards-dashboard">
+              <div class="cards-content-dashboard">
                 <div class="card-text">
-                  <%= link_to 'Détail de la card', dashboard_show_path(section: 'organiser', id: meal.id) %>
                   <p class="p-bold"><%= meal.title %></p>
                   <p class="p-normal"><%= truncate(meal.description, length: 30, separator: ' ') %></p>
                 </div>
@@ -39,38 +52,38 @@
                   <p class="p-bold">🧍‍♂️<%= meal.maximum_guests %></p>
                 </div>
               </div>
-              <div class="cards-img">
+              <div class="cards-img-dashboard">
                 <% if meal.photo.attached? %>
                   <%= cl_image_tag meal.photo.key, alt: "Photo du repas #{meal.title}", class: "card-img" %>
                 <% else %>
-                  <p>Aucune photo disponible pour ce repas</p>
+                  <%= image_tag 'pas_photo.png', alt: "#{current_user.first_name} #{current_user.last_name}", class: "card-img" %>
+
                 <% end %>
-                <div class="quiz">
-                  <% if !meal.questions_exist? %>
-                    <%= link_to "Quiz", generate_quiz_path(meal.id),
-                        data: { turbo_method: :post },
-                        class: "btn-quiz" %>
-                  <% end %>
-                </div>
               </div>
             </div>
+            <% end %>
             <br>
           <% end %>
         <% end %>
       </div>
     <% else %>
-      <p>Aucun repas à venir.</p>
+    <%= link_to new_meal_path do%>
+      <div class="card-nomeal">
+          <p class="title-nomeal">À ton tour d'organiser !</p>
+          <%= image_tag 'poster-repas.webp', alt: "Photo du repas", class: "card-nomeal-img" %>
+      </div>
+    <%end%>
     <% end %>
   <% else %>
-    <h3>Mes réservations à venir</h3>
     <% if @bookings.present? %>
+    <h3>Mes réservations à venir</h3>
       <div class="cards-taste">
         <% @bookings.each do |booking| %>
           <% if booking.present? %>
+            <%= link_to dashboard_show_path(section: 'reservations', id: booking.id) do%>
             <div class="cards">
               <div class="cards-content">
                 <div class="card-text">
-                  <%= link_to 'Détail de la card', dashboard_show_path(section: 'reservations', id: booking.id) %>
                   <p class="p-bold"><%= booking.meal.title%></p>
                   <p class="p-normal"><%= truncate(booking.meal.description, length: 30, separator: ' ') %></p>
                 </div>
@@ -88,12 +101,18 @@
                 <% end %>
               </div>
             </div>
+            <% end %>
             <br>
           <% end %>
         <% end %>
       </div>
     <% else %>
-      <p>Aucune réservation à venir.</p>
+    <%= link_to root_path do%>
+      <div class="card-nomeal">
+          <p class="title-nomeal">Participes à un repas !</p>
+          <%= image_tag 'rejoindre-repas.webp', alt: "Photo du repas", class: "card-nomeal-img" %>
+      </div>
+    <%end%>
     <% end %>
   <% end %>
 

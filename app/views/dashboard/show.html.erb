@@ -55,7 +55,7 @@
             <%= image_tag url_for(participant.photo), alt: "Photo de #{participant.first_name} #{participant.last_name}", class: "img-hote" %>
           <% else %>
             <!-- CLARISSE A CHANGER LE NOM DE LA PHOTO PAR DEFAUT -->
-            <%= image_tag 'japon.png', alt: "Photo de #{participant.first_name} #{participant.last_name}", class: "img-hote" %>
+            <%= image_tag 'user_default.png', alt: "#{participant.first_name} #{participant.last_name}", class: "img-hote" %>
           <% end %>
         <% end %>
       <div>
