@@ -19,40 +19,45 @@
       <div class="quiz-title">
         <h3><%= @dish.name %></h3> <!-- Affiche le nom du plat actuel -->
       </div>
-    </div>
+  </div> <!-- Fermeture de .banner-confirmation -->
 
-    <div class="quiz-container">
-      <% if @questions.any? %>
-        <% @questions.each do |question| %>
-        <%=question.answer%>
-          <div class="quiz-component">
-            <p class="quiz-question p-bold"><%= question.question %></p>
-            <div class="quiz-reponses">
-              <% question.options_answers.split(';').each do |option| %>
-                <p class="p-bold quiz-reponse <%= 'correct-answer' if option.strip == question.answer %>">
-                  <%= option.strip %>
-                </p>
-              <% end %>
+      <div class="quiz-container" id="quiz-container">
+        <% if @questions.any? %>
+          <% @questions.each do |question| %>
+            <%= question.answer %>
+            <div class="quiz-component">
+              <p class="quiz-question p-bold"><%= question.question %></p>
+              <div class="quiz-reponses">
+                <% question.options_answers.split(';').each do |option| %>
+                  <p class="p-bold quiz-reponse <%= 'correct-answer' if option.strip == question.answer %>">
+                    <%= option.strip %>
+                  </p>
+                <% end %>
+              </div>
             </div>
+          <% end %>
+        <% else %>
+          <div class="loading-container d-flex flex-column justify-content-center align-items-center min-vh-50">
+            <p>Le quiz est en cours de génération...</p>
+            <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
           </div>
         <% end %>
-      <% else %>
-        <p>Aucune question disponible pour ce plat.</p>
-      <% end %>
-    </div>
+      </div>
 
-    <div class="quiz-buttons">
-    <% if @dish_index + 1 < @meal.dishes.count %>
-      <%= link_to 'Plat suivant', view_quiz_path(@meal.id, dish_id: @dish_index + 1), class: 'button btn-one' %>
+      <div class="quiz-buttons">
+        <% if @dish_index + 1 < @meal.dishes.count %>
+          <%= link_to 'Plat suivant', view_quiz_path(@meal.id, dish_id: @dish_index + 1), class: 'button btn-one' %>
+        <% else %>
+          <br>
+          <%= link_to 'Quitter le quiz', dashboard_path, class: 'button btn-one' %>
+        <% end %>
+      </div>
+
+      <% if @dish_index > 0 %>
+        <%= link_to 'Plat précédent', view_quiz_path(@meal.id, dish_id: @dish_index - 1), class: 'button btn-line' %>
+      <% end %>
     <% else %>
-      <br>
-      <%= link_to 'Quitter le quiz', dashboard_path, class: 'button btn-one' %>
-    <% end %>
-  <% else %>
-    <p>Aucun plat disponible pour ce repas.</p>
-  <% end %>
-  <% if @dish_index > 0 %>
-      <%= link_to 'Plat précédent', view_quiz_path(@meal.id, dish_id: @dish_index - 1), class: 'button btn-line' %>
+      <p>Aucun plat disponible pour ce repas.</p>
     <% end %>
   </div>
 </div>
