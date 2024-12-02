@@ -1,7 +1,7 @@
 <div class="navbar">
   <div class="resabar">
-    <p class="p-bold">💸 21€</p>
-    <p class="p-bold">📅 1 Août</p>
+    <p class="p-bold">💸 <%= number_to_currency(meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
+    <p class="p-bold">📅 <%= "#{meal.date.strftime('%d/%m/%Y')}" %></p>
     <%= link_to new_meal_booking_path(meal) do %>
     <div class="button btn-one">Réserver</div>
     <% end %>
