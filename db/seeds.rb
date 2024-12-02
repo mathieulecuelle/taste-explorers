@@ -48,6 +48,7 @@ specific_users.each do |u|
     address: Faker::Address.full_address
   )
 end
+users_us = User.all
 
 # Créer 10 utilisateurs génériques
 10.times do
@@ -71,6 +72,18 @@ regimes = [
 
 # Créer des préférences pour chaque utilisateur
 users.find_each do |user|
+  # Sélectionner entre 1 et 3 ingrédients à exclure
+  preference_type = 'ingrédient_exclure'
+  selected_excludes = ingredient_excludes.sample(rand(1..3))
+  selected_excludes.each { |exclude| user.preferences.create!(preference_type: preference_type, name: exclude) }
+
+  # Sélectionner un régime au hasard
+  preference_type = 'régime'
+  selected_regime = regimes.sample
+  user.preferences.create!(preference_type: preference_type, name: selected_regime)
+end
+
+users_us.find_each do |user|
   # Sélectionner entre 1 et 3 ingrédients à exclure
   preference_type = 'ingrédient_exclure'
   selected_excludes = ingredient_excludes.sample(rand(1..3))
