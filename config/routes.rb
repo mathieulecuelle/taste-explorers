@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   # Devise routes
-  devise_for :users, controllers: {
-    registrations: 'users/registrations'
-  }
+  devise_for :users
+
+  # devise_for :users, controllers: {
+  #   registrations: 'users/registrations'
+  # }
 
   # Health check route
   get "up", to: "rails/health#show", as: :rails_health_check
@@ -32,6 +34,4 @@ Rails.application.routes.draw do
   get "/dashboard", to: "dashboard#show"
   get "/dashboard/:meal_id", to: "dashboard#view_quiz", as: "view_quiz"
   post "/dashboard/:meal_id", to: "dashboard#generate_quiz", as: "generate_quiz"
-
-
 end
