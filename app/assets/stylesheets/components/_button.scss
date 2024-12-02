@@ -13,6 +13,11 @@
  border: none;
 }
 
+.btn-line{
+  border: solid $orange 1px;
+  color:$orange;
+  background-color: $light;
+ }
 
 .btn-second{
   background-color: $yellow;
@@ -49,3 +54,4 @@
   padding-inline: $S;
   padding-block: $XS ;
 }
+
