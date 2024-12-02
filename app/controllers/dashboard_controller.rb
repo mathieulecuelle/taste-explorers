@@ -2,7 +2,7 @@ class DashboardController < ApplicationController
   before_action :set_meal, except: [:show, :index]
 
   def index
-    @section = params[:section] || 'organiser'
+    @section = params[:section] || 'reservations'
     if @section == 'organiser'
       @meals = current_user.meals
       @meals_pasts = current_user.meals.where("date < ?", Date.today)
@@ -37,7 +37,6 @@ class DashboardController < ApplicationController
 
   def generate_quiz
     GenerateQuizJob.perform_later(@meal.id)
-
     redirect_to view_quiz_path(@meal.id), notice: "Quiz généré avec succès!"
   end
 

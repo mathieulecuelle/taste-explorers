@@ -98,8 +98,8 @@
   <% end %>
 
   <% if @section == 'organiser' %>
-    <h3>Mes repas passés</h3>
     <% if @meals_pasts.present? %>
+      <h3>Mes repas passés</h3>
       <div class="cards-taste">
         <% @meals_pasts.each do |meal| %>
           <% if meal.present? %>
@@ -135,12 +135,10 @@
           <% end %>
         <% end %>
       </div>
-    <% else %>
-      <p>Aucun repas passé.</p>
     <% end %>
   <% else %>
-    <h3>Mes réservations passées</h3>
     <% if @bookings_pasts.present? %>
+      <h3>Mes réservations passées</h3>
       <div class="cards-taste">
         <% @bookings_pasts.each do |booking| %>
           <% if booking.present? %>
@@ -169,7 +167,5 @@
           <% end %>
         <% end %>
       </div>
-    <% else %>
-      <p>Aucune réservation passée.</p>
     <% end %>
   <% end %>
