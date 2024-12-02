@@ -9,6 +9,7 @@ gem "devise"
 gem "solid_cache"
 gem "ruby-openai"
 gem "faker"
+gem "solid_queue"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.5"
