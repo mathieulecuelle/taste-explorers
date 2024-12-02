@@ -3,9 +3,10 @@
     <div class="d-flex justify-content-center">
       <%= image_tag "Logo.png", alt: "logo-taste_explorers", width: 200 %>
     </div>
-    <h1>Bienvenue !</h1>
+    <div class="form-home" style="width: 308px; margin:auto;">
+    <h1>Bienvenue <%= current_user.first_name %></h1>
 
-      <div data-controller="datepicker">
+      <div data-controller="datepicker" >
         <%= simple_form_for :search, url: proposals_meals_path, method: :get do |f| %>
           <div class="form-group">
             <%= f.input :address,
@@ -32,16 +33,9 @@
           </div>
         <% end %>
       </div>
-
+    </div>
     <%= link_to proposals_meals_path do %>
       <!--<div class="button btn-one">Valider</div>-->
     <% end %>
   </div>
 </div>
-
-<%= link_to "Se connecter", new_user_session_path %> / <%= link_to "Se déconnecter", destroy_user_session_path, data: { "turbo-method": :delete } %>
-
-<br>
-<%= link_to "Voir tous les repas", meals_path %> / <%= link_to "Proposer un dîner", new_meal_path %>
-<br>
-<%= link_to "Voir mes 3 propositions de repas", proposals_meals_path %>
