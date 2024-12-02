@@ -13,4 +13,9 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
 
   has_one_attached :photo
+
+  # Méthode pour obtenir la première préférence de type 'régime'
+  def diet_preference
+    preferences.find_by(preference_type: 'régime')
+  end
 end

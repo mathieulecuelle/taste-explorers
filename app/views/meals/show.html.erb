@@ -13,7 +13,14 @@
     </div>
     <div class="element-banner-meal element-gap">
       <p class="p-bold">🌾</p>
-      <p class="p-light">Sans gluten</p>
+      <p class="p-light">
+        <% diet_preference = @meal.user.diet_preference %>
+        <% if diet_preference.present? %>
+          <%= diet_preference.name %>
+        <% else %>
+          Aucune préférence trouvée.
+        <% end %>
+      </p>
     </div>
     <div class="element-banner-meal element-gap">
       <p class="p-bold">⏱️</p>
@@ -22,21 +29,26 @@
   </div>
   <div class="texts-meal">
     <p class="p-bold margin-element-meal-heading"><%= @meal.description %></p>
-    <p class="p-bold margin-element-meal">🧍‍♂️<%= @meal.maximum_guests %></p>
-    <p class="p-bold margin-element-meal">🍽️ 4plats</p>
+    <p class="p-bold margin-element-meal">🧍‍♂️<%= @meal.maximum_guests %> personnes</p>
+    <p class="p-bold margin-element-meal">🍽️ <%= @meal.dishes.count %> plats</p>
   </div>
   <div class="banner-hote no-border">
-      <%= image_tag "japon.png", alt: "photo du repas", class: "img-hote" %>
+    <% if @meal.user.photo.attached? %>
+      <%= image_tag url_for(@meal.user.photo), alt: "Photo de #{@meal.user.first_name} #{@meal.user.last_name}", class: "img-hote" %>
+    <% else %>
+        <!-- CLARISSE A CHANGER LE NOM DE LA PHOTO PAR DEFAUT -->
+      <%= image_tag 'japon.png', alt: "Photo de #{@meal.user.first_name} #{@meal.user.last_name}", class: "img-hote" %>
+    <% end %>
     <div class="element-banner-hote">
-      <p class="p-bold">Mathieu</p>
+      <p class="p-bold"><%= @meal.user.first_name %></p>
     </div>
     <div class="element-banner-hote">
       <p class="p-bold">★★★★★</p>
-      <p class="p-light">Sans gluten</p>
+      <p class="p-light">24 commentaires</p>
     </div>
   </div>
    <div class="section-localisation">
-    <h2>La Localisation</h2>
+    <h2>Localisation</h2>
     <div>
     <!-- Map -->
     <div style="width: 100%; height: 400px;"
