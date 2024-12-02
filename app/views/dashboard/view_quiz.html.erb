@@ -1,43 +1,58 @@
-<h1>QUIZ !!! <%= @meal.title %></h1>
-
-<% if @meal.dishes.any? %>
-  <h2><%= @dish.name %></h2> <!-- Affiche le nom du plat actuel -->
-  <h3><i>"<%= @dish.memo %>"</i></h2> <!-- Affiche le nom du plat actuel -->
-
-  <% if @questions.any? %>
-    <table style="border: 1px solid black">
-      <thead>
-        <tr style="border: 1px solid black">
-          <th style="border: 1px solid black">Question</th>
-          <th style="border: 1px solid black">Réponses</th>
-          <th style="border: 1px solid black">Réponse correcte</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @questions.each do |question| %>
-          <tr style="border: 1px solid black">
-            <td style="border: 1px solid black"><%= question.question %></td>
-            <td style="border: 1px solid black"><%= question.options_answers %></td>
-            <td style="border: 1px solid black"><%= question.answer %></td>
-          </tr>
+<div class="page-quiz">
+  <div class="quiz-header">
+    <div class="header-ariane-quiz">
+      <% if @dish_index > 0 %>
+        <%= link_to view_quiz_path(@meal.id, dish_id: @dish_index - 1) do %>
+          <i class="fa-solid fa-arrow-right fa-rotate-180 return"></i>
         <% end %>
-      </tbody>
-    </table>
+      <% else %>
+        <%= link_to dashboard_path do %>
+          <i class="fa-solid fa-arrow-right fa-rotate-180 return"></i>
+        <% end %>
+      <% end %>
+      <p class="p-light">Quiz</p>
+    </div>
+  </div>
+
+  <div class="banner-confirmation no-border">
+    <% if @meal.dishes.any? %>
+      <div class="quiz-title">
+        <h3><%= @dish.name %></h3> <!-- Affiche le nom du plat actuel -->
+      </div>
+    </div>
+
+    <div class="quiz-container">
+      <% if @questions.any? %>
+        <% @questions.each do |question| %>
+        <%=question.answer%>
+          <div class="quiz-component">
+            <p class="quiz-question p-bold"><%= question.question %></p>
+            <div class="quiz-reponses">
+              <% question.options_answers.split(';').each do |option| %>
+                <p class="p-bold quiz-reponse <%= 'correct-answer' if option.strip == question.answer %>">
+                  <%= option.strip %>
+                </p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>Aucune question disponible pour ce plat.</p>
+      <% end %>
+    </div>
+
+    <div class="quiz-buttons">
+    <% if @dish_index + 1 < @meal.dishes.count %>
+      <%= link_to 'Plat suivant', view_quiz_path(@meal.id, dish_id: @dish_index + 1), class: 'button btn-one' %>
+    <% else %>
+      <br>
+      <%= link_to 'Quitter le quiz', dashboard_path, class: 'button btn-one' %>
+    <% end %>
   <% else %>
-    <p>Aucune question disponible pour ce plat.</p>
+    <p>Aucun plat disponible pour ce repas.</p>
   <% end %>
-
-
   <% if @dish_index > 0 %>
-    <%= link_to 'Plat précédent', view_quiz_path(@meal.id, dish_id: @dish_index - 1), class: 'btn btn-primary' %>
-  <% end %>
-
-  <% if @dish_index + 1 < @meal.dishes.count %>
-    <%= link_to 'Plat suivant', view_quiz_path(@meal.id, dish_id: @dish_index + 1), class: 'btn btn-primary' %>
-  <% else %>
-     <br><%= link_to 'Quitter le quiz', dashboard_path, class: 'btn btn-info' %>
-  <% end %>
-
-<% else %>
-  <p>Aucun plat disponible pour ce repas.</p>
-<% end %>
+      <%= link_to 'Plat précédent', view_quiz_path(@meal.id, dish_id: @dish_index - 1), class: 'button btn-line' %>
+    <% end %>
+  </div>
+</div>

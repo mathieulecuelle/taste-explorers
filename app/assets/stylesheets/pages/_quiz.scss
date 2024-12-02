@@ -1,0 +1,101 @@
+.page-quiz{
+  display: flex;
+  flex-direction: column;
+  gap: $L;
+}
+
+.quiz-header{
+  margin-top: $L;
+}
+
+.header-ariane-quiz{
+  display: flex;
+  align-items: center;
+  gap: 125px;
+}
+
+.quiz-title{
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: $M;
+  font-size: $L;
+}
+
+.memo-quiz{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.p-memo{
+  font-family: $body-font;
+  font-size: $M;
+  margin: 0;
+}
+
+.quiz-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: $L;
+}
+
+.quiz-component{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-inline: $L;
+  padding-block: $M;
+  border-radius: $L;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: solid #dddddd 0.5px;
+}
+
+.quiz-question{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: $dark;
+  margin-bottom: $M;
+}
+
+.correct-answer{
+  background-color: $green-light !important;
+}
+
+.quiz-reponse{
+  border-radius: $XS;
+  background-color: $yellow-400;
+  color: $dark;
+  padding-inline: 20px;
+  padding-block: 5px;
+  flex: 1 1 calc(30% - 10px);
+  text-align: center;
+}
+
+.quiz-reponses{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 200px;
+  padding: 5px 10px;
+  align-items: center;
+  gap: 10px;
+}
+
+.quiz-buttons{
+  margin-top: $L;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap:$S;
+}
