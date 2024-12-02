@@ -59,17 +59,6 @@ class MealsController < ApplicationController
     }
   end
 
-  def invite
-    # Le contenu de l'email qui sera utilisé comme modèle
-    @email = {
-      objet: "Vous avez été invité",
-      contenu: "On vous a invité à un dîner sur Taste Explorer"
-    }
-    if params[:email]
-      # TODO : envoyer un email à params[:email]
-    end
-  end
-
   def new
     @meal = Meal.new
   end
