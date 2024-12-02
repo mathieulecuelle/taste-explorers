@@ -41,17 +41,17 @@
 }
 
 .quiz{
-  position: relative;
-  bottom: $S;
-  left: 50px;
+  width: 100%;
+  background-color: $green-light;
+  border-radius: 20px 20px 0px 0px;
 }
 
-.btn-quiz{
-  position:absolute;
-  border-radius: $XS;
-  background-color: $red;
+.p-quiz{
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
   color: $light;
-  padding-inline: $S;
-  padding-block: $XS ;
+  padding-inline: $L;
+  padding-block: $M ;
+  margin:0;
 }
-

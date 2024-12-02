@@ -37,7 +37,7 @@
       <%= image_tag url_for(@meal.user.photo), alt: "Photo de #{@meal.user.first_name} #{@meal.user.last_name}", class: "img-hote" %>
     <% else %>
         <!-- CLARISSE A CHANGER LE NOM DE LA PHOTO PAR DEFAUT -->
-      <%= image_tag 'japon.png', alt: "Photo de #{@meal.user.first_name} #{@meal.user.last_name}", class: "img-hote" %>
+      <%= image_tag 'user_default.png', alt: "#{current_user.first_name} #{current_user.last_name}", class: "img-hote" %>
     <% end %>
     <div class="element-banner-hote">
       <p class="p-bold"><%= @meal.user.first_name %></p>
