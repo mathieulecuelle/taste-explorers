@@ -1,0 +1,175 @@
+<div class="banner-dashboard no-border">
+  <% if current_user.photo.attached? %>
+    <%= cl_image_tag current_user.photo.key, alt: "Photo de profil #{current_user.last_name} #{current_user.first_name}", class: "img-profil" %>
+  <% else %>
+    <p>Aucune photo</p>
+  <% end %>
+
+  <br>
+  <div class="banner-texts">
+    <h2 class="h2-bold"><%= current_user.first_name %> <%= current_user.last_name %></h2>
+    <%= link_to edit_user_registration_path do %>
+      <p class="p-light underline">Modifier mon profil</p>
+    <% end %>
+  </div>
+</div>
+
+<div class="filtre-dashboard">
+  <%= link_to 'Mes résas', dashboard_path(section: 'reservations'), class: "tag-filtre #{'tag-active' if @section == 'reservations'} #{'tag-filtre' unless @section == 'reservations'}" %>
+  <%= link_to 'J\'organise', dashboard_path(section: 'organiser'), class: "tag-filtre #{'tag-active' if @section == 'organiser'} #{'tag-filtre' unless @section == 'organiser'}" %>
+</div>
+
+<div>
+  <% if @section == 'organiser' %>
+    <h3>Mes repas à venir</h3>
+    <% if @meals.present? %>
+      <div class="cards-taste">
+        <% @meals.each do |meal| %>
+          <% if meal.present? %>
+            <div class="cards">
+              <div class="cards-content">
+                <div class="card-text">
+                  <%= link_to 'Détail de la card', dashboard_show_path(section: 'organiser', id: meal.id) %>
+                  <p class="p-bold"><%= meal.title %></p>
+                  <p class="p-normal"><%= truncate(meal.description, length: 30, separator: ' ') %></p>
+                </div>
+                <div class="card-infos">
+                  <p class="p-bold">📅<%= meal.date.strftime("%-d %b").downcase + "." %></p>
+                  <p class="p-bold">💸<%= number_to_currency(meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
+                  <p class="p-bold">🧍‍♂️<%= meal.maximum_guests %></p>
+                </div>
+              </div>
+              <div class="cards-img">
+                <% if meal.photo.attached? %>
+                  <%= cl_image_tag meal.photo.key, alt: "Photo du repas #{meal.title}", class: "card-img" %>
+                <% else %>
+                  <p>Aucune photo disponible pour ce repas</p>
+                <% end %>
+                <div class="quiz">
+                  <% if !meal.questions_exist? %>
+                    <%= link_to "Quiz", generate_quiz_path(meal.id),
+                        data: { turbo_method: :post },
+                        class: "btn-quiz" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <br>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <p>Aucun repas à venir.</p>
+    <% end %>
+  <% else %>
+    <h3>Mes réservations à venir</h3>
+    <% if @bookings.present? %>
+      <div class="cards-taste">
+        <% @bookings.each do |booking| %>
+          <% if booking.present? %>
+            <div class="cards">
+              <div class="cards-content">
+                <div class="card-text">
+                  <%= link_to 'Détail de la card', dashboard_show_path(section: 'reservations', id: booking.id) %>
+                  <p class="p-bold"><%= booking.meal.title%></p>
+                  <p class="p-normal"><%= truncate(booking.meal.description, length: 30, separator: ' ') %></p>
+                </div>
+                <div class="card-infos">
+                  <p class="p-bold">📅<%= booking.meal.date.strftime("%-d %b").downcase + "." %></p>
+                  <p class="p-bold">💸<%= number_to_currency(booking.meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
+                  <p class="p-bold">🧍‍♂️<%= booking.meal.maximum_guests %></p>
+                </div>
+              </div>
+              <div class="cards-img">
+                <% if booking.meal.photo.attached? %>
+                  <%= cl_image_tag booking.meal.photo.key, alt: "Photo de la réservation #{booking.id}", class: "img-meal" %>
+                <% else %>
+                  <p>Aucune photo disponible pour cette réservation</p>
+                <% end %>
+              </div>
+            </div>
+            <br>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <p>Aucune réservation à venir.</p>
+    <% end %>
+  <% end %>
+
+  <% if @section == 'organiser' %>
+    <h3>Mes repas passés</h3>
+    <% if @meals_pasts.present? %>
+      <div class="cards-taste">
+        <% @meals_pasts.each do |meal| %>
+          <% if meal.present? %>
+            <div class="cards">
+              <div class="cards-content">
+                <div class="card-text">
+                  <%= link_to 'Détail de la card', dashboard_show_path(section: 'organiser', id: meal.id) %>
+                  <p class="p-bold"><%= meal.title %></p>
+                  <p class="p-normal"><%= truncate(meal.description, length: 30, separator: ' ') %></p>
+                </div>
+                <div class="card-infos">
+                  <p class="p-bold">📅<%= meal.date.strftime("%-d %b").downcase + "." %></p>
+                  <p class="p-bold">💸<%= number_to_currency(meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
+                  <p class="p-bold">🧍‍♂️<%= meal.maximum_guests %></p>
+                </div>
+              </div>
+              <div class="cards-img">
+                <% if meal.photo.attached? %>
+                  <%= cl_image_tag meal.photo.key, alt: "Photo du repas #{meal.title}", class: "card-img" %>
+                <% else %>
+                  <p>Aucune photo disponible pour ce repas</p>
+                <% end %>
+                <% if meal.date.to_date == Date.today && meal.heure >= Time.now.strftime("%H:%M") %>
+                  <% if !meal.questions_exist? %>
+                    <%= link_to "Generate quiz", generate_quiz_path(meal.id),
+                        data: { turbo_method: :post },
+                        class: "btn btn-dark" %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+            <br>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <p>Aucun repas passé.</p>
+    <% end %>
+  <% else %>
+    <h3>Mes réservations passées</h3>
+    <% if @bookings_pasts.present? %>
+      <div class="cards-taste">
+        <% @bookings_pasts.each do |booking| %>
+          <% if booking.present? %>
+            <div class="cards">
+              <div class="cards-content">
+                <div class="card-text">
+                 <%= link_to 'Détail de la card', dashboard_show_path(section: 'reservations', id: booking.id) %>
+                  <p class="p-bold"><%= booking.meal.title%></p>
+                  <p class="p-normal"><%= truncate(booking.meal.description, length: 30, separator: ' ') %></p>
+                </div>
+                <div class="card-infos">
+                  <p class="p-bold">📅<%= booking.meal.date.strftime("%-d %b").downcase + "." %></p>
+                  <p class="p-bold">💸<%= number_to_currency(booking.meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
+                  <p class="p-bold">🧍‍♂️<%= booking.meal.maximum_guests %></p>
+                </div>
+              </div>
+              <div class="cards-img">
+                <% if booking.meal.photo.attached? %>
+                  <%= cl_image_tag booking.meal.photo.key, alt: "Photo de la réservation #{booking.id}", class: "img-meal" %>
+                <% else %>
+                  <p>Aucune photo disponible pour ce repas</p>
+                <% end %>
+              </div>
+            </div>
+            <br>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <p>Aucune réservation passée.</p>
+    <% end %>
+  <% end %>
