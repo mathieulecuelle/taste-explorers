@@ -4,7 +4,6 @@
       <%= image_tag "Logo.png", alt: "logo-taste_explorers", width: 200 %>
     </div>
     <div class="form-home" style="width: 308px; margin:auto;">
-    <h1>Bienvenue <%= current_user.first_name if current_user %></h1>
 
       <div data-controller="datepicker" >
         <%= simple_form_for :search, url: proposals_meals_path, method: :get do |f| %>
