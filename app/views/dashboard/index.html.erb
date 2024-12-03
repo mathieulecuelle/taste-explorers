@@ -28,20 +28,12 @@
   <% if @section == 'organiser' %>
     <% if @meals.present? %>
     <h3>Mes repas à venir</h3>
-      <div class="cards-taste-dashboard">
+      <div class="cards-taste-organiser">
         <% @meals.each do |meal| %>
           <% if meal.present? %>
-                  <% if !meal.questions_exist? %>
-                    <%= link_to generate_quiz_path(meal.id),
-                        data: { turbo_method: :post } do %>
-                        <div class="quiz">
-                        <p class="p-quiz">Lancer le quiz </p>
-                        </div>
-                        <% end %>
-                  <% end %>
           <%= link_to dashboard_show_path(section: 'organiser', id: meal.id) do%>
-            <div class="cards-dashboard">
-              <div class="cards-content-dashboard">
+            <div class="cards-organiser">
+              <div class="cards-content-organiser">
                 <div class="card-text">
                   <p class="p-bold"><%= meal.title %></p>
                   <p class="p-normal"><%= truncate(meal.description, length: 30, separator: ' ') %></p>
@@ -51,13 +43,22 @@
                   <p class="p-bold">💸<%= number_to_currency(meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
                   <p class="p-bold">🧍‍♂️<%= meal.maximum_guests %></p>
                 </div>
-              </div>
-              <div class="cards-img-dashboard">
-                <% if meal.photo.attached? %>
-                  <%= cl_image_tag meal.photo.key, alt: "Photo du repas #{meal.title}", class: "card-img" %>
-                <% else %>
-                  <%= image_tag 'pas_photo.png', alt: "#{current_user.first_name} #{current_user.last_name}", class: "card-img" %>
+               <p class="p-quiz-dispo">Quiz disponible !</p>
 
+              </div>
+              <div class="cards-img-organiser">
+                <% if !meal.questions_exist? %>
+                    <%= link_to generate_quiz_path(meal.id),
+                        data: { turbo_method: :post } do %>
+                        <div class="tag">
+                          <%= image_tag 'quiz.png', alt: "Quiz icon", class: "tag-quiz" %>
+                        </div>
+                        <% end %>
+                  <% end %>
+                <% if meal.photo.attached? %>
+                  <%= cl_image_tag meal.photo.key, alt: "Photo du repas #{meal.title}", class: "card-img-organiser img-quiz" %>
+                <% else %>
+                  <%= image_tag 'pas_photo.png', alt: "#{current_user.first_name} #{current_user.last_name}", class: "card-img-organiser img-quiz" %>
                 <% end %>
               </div>
             </div>
