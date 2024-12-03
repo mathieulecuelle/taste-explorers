@@ -1,5 +1,3 @@
-# db/seeds.rb
-
 require 'open-uri'
 require 'faker'
 Faker::Config.locale = 'fr'
@@ -28,7 +26,8 @@ specific_addresses = [
   "8 rue de l'Hôtel de Ville, 44100 Nantes",
   "4 rue de la République, 44100 Nantes",
   "12 rue du Maréchal Joffre, 44100 Nantes",
-  "5 place Royale, 44100 Nantes"
+  "5 place Royale, 44100 Nantes",
+  "Place des Lices, 83990 Saint-Tropez" # Nouvelle adresse ajoutée
 ]
 
 # Créer des utilisateurs spécifiques
@@ -178,13 +177,13 @@ meals_data = [
 ]
 
 # S'assurer que le nombre d'adresses correspond au nombre de repas
-if specific_addresses.size < meals_data.size
+if specific_addresses.size < meals_data.size + 2 # +2 pour les repas spécifiques
   puts "Erreur : Il y a moins d'adresses spécifiques que de repas."
   exit
 end
 
 meals_data.each_with_index do |meal_data, index|
-  photo = URI.parse(meal_data[:photo_url]).open
+  photo = URI.open(meal_data[:photo_url])
   meal = Meal.create!(
     title: meal_data[:title],
     description: meal_data[:description],
@@ -201,6 +200,46 @@ meals_data.each_with_index do |meal_data, index|
   meal.save!
   puts "Image uploadée pour #{meal.title}"
 end
+
+# Créer le repas à Saint-Tropez
+stp_photo_url = "https://i.postimg.cc/G3YFhXN5/st-tropez.jpg" # Remplacez par l'URL de votre photo
+stp_photo = URI.open(stp_photo_url)
+
+stp_meal = Meal.create!(
+  title: "Repas à Saint-Tropez",
+  description: "Venez déguster un délicieux repas à Saint-Tropez, au cœur de la Côte d'Azur. Profitez d'une ambiance festive et de mets raffinés dans un cadre idyllique.",
+  duration: 120, # Durée en minutes
+  location: "Place des Lices, 83990 Saint-Tropez", # Adresse spécifique ajoutée précédemment
+  price_per_person: 75.0, # Prix par personne
+  maximum_guests: 15, # Nombre maximal d'invités
+  date: Faker::Date.forward(days: 60), # Date aléatoire dans les 60 prochains jours
+  user: users.sample, # Assignation aléatoire d'un utilisateur
+  inspiration: "Française",
+  heure: Time.new(2024, 5, 20, rand(18..22), 0, 0) # Date et heure spécifiques (ajustez si nécessaire)
+)
+stp_meal.photo.attach(io: stp_photo, filename: "repas-saint-tropez.jpg", content_type: "image/jpeg")
+stp_meal.save!
+puts "Image uploadée pour #{stp_meal.title}"
+
+# Créer le repas de Noël
+noel_photo_url = "https://i.postimg.cc/V6ZVfDV6/noel.jpg" # Remplacez par l'URL de votre photo
+noel_photo = URI.open(noel_photo_url)
+
+noel_meal = Meal.create!(
+  title: "Repas de Noël",
+  description: "Célébrez Noël avec un repas festif spécial, entouré de famille et amis. Savourez des plats traditionnels et profitez d'une ambiance chaleureuse et conviviale.",
+  duration: 150, # Durée en minutes
+  location: "5 place Royale, 44100 Nantes", # Utilisez une adresse spécifique existante ou ajoutez-en une nouvelle si nécessaire
+  price_per_person: 100.0, # Prix par personne
+  maximum_guests: 20, # Nombre maximal d'invités
+  date: Date.new(2024, 12, 24), # Date spécifique du repas
+  user: users.sample, # Assignation aléatoire d'un utilisateur
+  inspiration: "Noël",
+  heure: Time.new(2024, 12, 24, 19, 0, 0) # Date et heure spécifiques
+)
+noel_meal.photo.attach(io: noel_photo, filename: "repas-de-noel.jpg", content_type: "image/jpeg")
+noel_meal.save!
+puts "Image uploadée pour #{noel_meal.title}"
 
 meals = Meal.all
 

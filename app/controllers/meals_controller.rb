@@ -2,6 +2,7 @@ class MealsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
+    @meals = Meal.all
     if params[:search].present?
       address = params[:search][:address]
       start_date = params[:search][:start_date]
@@ -13,21 +14,15 @@ class MealsController < ApplicationController
       if location
         latitude, longitude = location
         # Filtrer les meals dans un rayon de 5 km et dans la plage de dates
-        @meals = Meal.near([latitude, longitude], 5).where(date: start_date..end_date)
+        @meals = @meals.near([latitude, longitude], 5).where(date: start_date..end_date)
       else
-        # Si l'adresse n'est pas valide, retourner aucun meal ou tous les meals
-        @meals = Meal.none
-        flash[:alert] = "Adresse invalide. Veuillez réessayer."
+        @meals = @meals.where(date: start_date..end_date)
       end
-    else
-      # Si aucun paramètre de recherche n'est fourni, afficher tous les meals
-      @meals = Meal.all
     end
   end
 
   def proposals
-    # On devra ici filtrer par allergie / préférence alimentaire
-
+    @meals = Meal.all
     if params[:search].present?
       address = params[:search][:address]
       start_date = params[:search][:start_date]
@@ -38,18 +33,22 @@ class MealsController < ApplicationController
 
       if location
         latitude, longitude = location
-        # Filtrer les meals dans un rayon de 5 km et dans la plage de dates
-        @meals = Meal.near([latitude, longitude], 5).where(date: start_date..end_date)
-      else
-        # Si l'adresse n'est pas valide, retourner aucun meal ou tous les meals
-        @meals = Meal.none
-        flash[:alert] = "Adresse invalide. Veuillez réessayer."
+        # Filtrer les meals dans un rayon de 5 km
+        @meals = @meals.near([latitude, longitude], 5)
       end
-    else
-      # Si aucun paramètre de recherche n'est fourni, afficher tous les meals
-      @meals = Meal.last(3)
+
+      # Appliquer les filtres de date uniquement si les dates sont présentes
+      if start_date.present? && end_date.present?
+        @meals = @meals.where(date: start_date..end_date)
+      elsif start_date.present?
+        @meals = @meals.where('date >= ?', start_date)
+      elsif end_date.present?
+        @meals = @meals.where('date <= ?', end_date)
+      end
     end
+    @meals = @meals.order(date: :asc)
   end
+
 
   def show
     @meal = Meal.find(params[:id])
