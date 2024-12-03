@@ -3,15 +3,25 @@
     </div>
     <div class="form-home" style="width: 308px; margin:auto;">
       <div class="container">
-        <div class="button-container d-flex flex-column align-items-center">
-          <h1 class="mb-5"> Bienvenue ! </h1>
-          <div class="btn-group-vertical" role="group" aria-label="Actions">
+        <div class="button-container-action d-flex flex-column align-items-center">
+          <h1>Bienvenue <%= current_user.first_name if current_user %>!</h1>
 
-            <%= link_to raw("<i class='fas fa-search'></i> Chercher un repas"), home_path, class: "btn btn-search mb-3 w-100" %>
-            <%= link_to raw("<i class='fas fa-utensils'></i> Organiser un repas"), new_meal_path, class: "btn btn-organize w-100" %>
+          <div class="btn-group-vertical" role="group" aria-label="Actions">
+          <div class= "repas">
+            <%= link_to raw("<i class='fas fa-search'></i> Chercher un repas"), home_path, style: "display: block; margin: 1rem auto; padding: 0.5rem 1rem; background-color: #ff4500; color: white; border: none; border-radius: 12px; text-align: center;" %>
+            <%= link_to raw("<i class='fas fa-utensils'></i> Organiser un repas"), new_meal_path, style: "display: block; margin: 1rem auto; padding: 0.5rem 1rem; background-color: #ff4500; color: white; border: none; border-radius: 12px; text-align: center;" %>
+
+
+</div>
 
           </div>
+          </div>
         <p class="tagline mt-4">Plongez dans les saveurs locales et du monde autour de chez vous !</p>
+
+        <p class="quote mt-4">
+          "La cuisine est l'art de transformer des ingrédients simples en des moments inoubliables."
+        </p>
+
         </div>
       </div>
     </div>
