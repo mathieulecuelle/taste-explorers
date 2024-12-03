@@ -1,10 +1,15 @@
-<h1>Proposer un repas</h1>
+
+
+  <div class="banner-confirmation no-border" style="margin-bottom:20px;">
+    <h2 class="text-center">J'organise un repas</h2>
+  </div>
 
 <%= simple_form_for @meal do |f| %>
   <%= f.input :title, label: false, placeholder: "Titre de votre repas" %>
   <%= f.input :description, label: false, placeholder: "Description" %>
-  <p class="p-conditions">Ne donnez pas trop d'informations à vos futurs convives 😉</p>
+  <p class="p-conditions" style="margin:10px">Ne donnez pas trop d'informations à vos futurs convives 😉</p>
 
+  <label style="margin-top:20px; margin-bottom:10px;">Inspiration</label>
   <div class="category-wrapper">
     <% [
       ['🇮🇹 Italie', 'Italie'],
@@ -21,13 +26,25 @@
     <% end %>
   </div>
 
-  <%= f.input :date,
-      as: :string,
-      input_html: { data: { controller: "datepicker-norange" } },
-      label: false
-  %>
-
-  <%= f.input :heure, as: :time, label: false, default: { hour: 19, min: 30 }, input_html: { class: "form-control" } %>
+  <!-- Conteneur pour la date et l'heure sur la même ligne -->
+  <div class="d-flex gap-3 mb-3">
+    <div class="flex-fill">
+      <%= f.input :date,
+          as: :string,
+          input_html: { data: { controller: "datepicker-norange" }, class: "form-control" },
+          label: "Date",
+          placeholder: "Sélectionnez une date"
+      %>
+    </div>
+    <div class="flex-fill">
+      <%= f.input :heure,
+          as: :time,
+          label: "Heure",
+          default: { hour: 19, min: 30 },
+          input_html: { class: "form-control" }
+      %>
+    </div>
+  </div>
 
   <%= f.input :duration, label: false, placeholder: "Durée de votre repas (en heures)" %>
 

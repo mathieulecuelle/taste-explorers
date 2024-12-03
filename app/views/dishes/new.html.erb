@@ -1,17 +1,43 @@
-<h1>Ajouter un plat</h1>
+<!-- dishes/new.html.erb -->
+<h1>Ajoutez vos plats</h1>
+<p>Tout ce que vous indiquez ici ne sera pas révélé à vos convives, mais utilisé uniquement pour le quiz !</p>
+
 <%= simple_form_for [@meal, @dish], url: meal_dishes_path(@meal) do |f| %>
-  <%= f.input :course_type, collection: Dish::COURSE_TYPES, include_blank: false %>
-  <%= f.input :name %>
 
-  <%= f.button :submit %>
-<% end %>
-
-<% if @meal.dishes.count>0 %>
-  <strong>Plats ajoutés</strong>
-  <ul>
-    <% @meal.dishes.each do |dish| %>
-      <li><%= dish.course_type %> : <%= dish.name %></li>
+  <!-- Boutons Radio pour le Type de Plat avec Émojis -->
+  <label style="margin-top:20px; margin-bottom:10px;">Type de plat</label>
+  <div class="category-wrapper">
+    <% [
+      ['🍲 Entrée', 'Entrée'],
+      ['🍝 Plat', 'Plat'],
+      ['🍰 Dessert', 'Dessert']
+    ].each do |label, value| %>
+      <div class="category-item">
+        <%= f.radio_button :course_type, value, id: "course_type_#{value.downcase}", class: 'category-selector' %>
+        <label for="course_type_<%= value.downcase %>" class="category-label"><%= label %></label>
+      </div>
     <% end %>
-  </ul>
-  <%= link_to "Quitter la création de plat", root_path %>
+  </div>
+
+  <!-- Champ pour le Nom du Plat -->
+  <%= f.input :name, label: "Nom du plat" %>
+
+  <!-- Bouton de Soumission -->
+  <%= button_tag :submit, class: "button btn-one" do %>
+    + Ajouter ce plat
+  <% end %>
+
 <% end %>
+
+<!-- Section des Plats Ajoutés -->
+<div style="margin-top:40px;">
+  <% if @meal.dishes.count > 0 %>
+    <h2>Plats ajoutés</h2>
+    <ul>
+      <% @meal.dishes.each do |dish| %>
+        <li><%= dish.course_type %> : <%= dish.name %></li>
+      <% end %>
+    </ul>
+    <%= link_to "✓ J'ai terminé", dashboard_path, class: "button btn-one" %>
+  <% end %>
+</div>
