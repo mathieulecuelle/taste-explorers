@@ -50,6 +50,17 @@
   filter: brightness(50%);
 }
 
+.card-nomeal-img-home{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  width: 90%;
+  max-height: 170px;
+  object-fit: cover;
+  z-index: 1;
+  margin-inline:20px;
+}
+
 .title-nomeal{
   font-size: 25px;
   color: $light;

@@ -1,11 +1,4 @@
-.button-container {
-  display: flex;
-  text-align: center;
-  margin-top: 50px;
-  padding-bottom: 50px;
-}
-
-.btn {
+.repas{
   padding: 15px 30px;
   font-size: 18px;
   text-decoration: none;
@@ -14,13 +7,7 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-
-.container {
+.container-action {
   background: linear-gradient(to bottom, #fff6e5, #ffe4cc);
   background-size: cover;
   background-repeat: no-repeat;
@@ -39,25 +26,4 @@
   color: #555; /* Gris élégant */
   margin-top: 10px;
   line-height: 1.5;
-}
-
-.btn-search {
-  background-color: orangered;
-}
-
-.btn-search:hover {
-  background-color: orange;
-}
-
-.btn-organize {
-  background-color: orangered;
-}
-
-.btn-organize:hover {
-  background-color: orange;
-}
-
-.w-100 {
-  width: 100%;
-  max-width: 400px; /* Limite la largeur maximale */
 }
