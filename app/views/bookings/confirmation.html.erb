@@ -1,11 +1,23 @@
-<h1>Merci !</h1>
-<br>
-<h1>Votre hôte va recevoir une notification pour être averti de votre venue à son repas</h1>
+<div class="page-invite">
+<div class="header-show-invite">
+  <%= link_to proposals_meals_path do%>
+      <i class="fa-solid fa-arrow-right fa-rotate-180 return-meal"></i>
+  <%end%>
+    <%= image_tag 'fond.png', alt: "Photo", class: "img-meal-invite" %>
 
-<p>C’est le moment d’inviter quelqu’un !</p>
+  <div class="banner-invite no-border">
+    <h2 class="h2-invite text-center">Votre hôte va recevoir une notification pour être averti de votre venue à son repas, <%= current_user.first_name %></h2>
+  </div>
+</div>
+<div class="form-invite">
+<h3 class="h3-light">C’est le moment d’inviter quelqu’un !</h3>
+<div class="form-invite-bis">
 <form action="">
-  <input type="text" name="email" placeholder="L'email de la personne à inviter" size="30">
-  <input type="submit" value="Inviter" class="button btn-one">
+  <input type="text" name="email" placeholder="L'email de la personne à inviter" size="30" class="form-control">
 </form>
+  <input type="submit" value="Inviter" class="button btn-one">
+</div>
 
 <%= link_to 'Je ne souhaite inviter personne', dashboard_path, style: 'text-decoration: underline;' %>
+</div>
+</div>
