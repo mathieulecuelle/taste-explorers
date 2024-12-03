@@ -1,9 +1,5 @@
 <div class="index-meals">
-  <h1>Tous nos meals</h1>
-  <div class="input d-flex align-items-center justify-content-between">
-        <div>Rechercher un repas</div>
-        <i class="fa-solid fa-magnifying-glass"></i>
-  </div>
+  <h1>Tous nos repas disponibles</h1>
   <div class="cards-taste">
     <% @meals.each do |meal| %>
     <%= link_to meal_path(meal) do%>

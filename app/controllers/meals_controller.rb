@@ -19,6 +19,7 @@ class MealsController < ApplicationController
         @meals = @meals.where(date: start_date..end_date)
       end
     end
+    @meals = @meals.order(date: :asc)
   end
 
   def proposals

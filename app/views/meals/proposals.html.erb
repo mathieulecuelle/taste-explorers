@@ -1,35 +1,51 @@
-  <div class= "select">
-    <h1>Notre sélection</h1>
-    <p>Nous vous avons sélectionné ces repas qui vous conviendraient :</p>
-  </div>
+<div class="select">
+  <% if @meals.any? %>
+    <h1><%= @meals.size == 1 ? 'Un seul' : 'Voici les' %> repas <%= @meals.size == 1 ? 'disponible' : 'disponibles' %> <%= @meals.size == 1 ? '🙏' : '🎉' %></h1>
+
+      <% if @meals.size > 1 %>
+        <p>Nous avons trouvé ces <%= @meals.size %> repas pour vous :</p>
+        <% else %>
+        <p>Voici le seul repas que nous avons trouvé</p>
+      <% end %>
+    <% else %>
+    <h1>Aucun résultat disponible 😭</h1>
+  <% end %>
+</div>
 
 <div class="cards-taste">
+  <% if @meals.any? %>
     <% @meals.each do |meal| %>
-    <%=link_to meal_path(meal) do%>
-      <div class="cards">
-        <div class="cards-content">
-          <div class="card-text">
-            <p class="p-bold"><%= meal.title %></p>
-            <p class="p-normal"><%= truncate(meal.description, length: 30, separator: ' ') %></p>
+      <%= link_to meal_path(meal) do %>
+        <div class="cards">
+          <div class="cards-content">
+            <div class="card-text">
+              <p class="p-bold"><%= meal.title %></p>
+              <p class="p-normal"><%= truncate(meal.description, length: 30, separator: ' ') %></p>
             </div>
             <div class="card-infos">
               <p class="p-bold">📅 <%= meal.date.strftime("%-d %b").downcase + "." %></p>
-              <p class="p-bold">💸<%= number_to_currency(meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
-              <p class="p-bold">🧍‍♂️<%= meal.maximum_guests %></p>
+              <p class="p-bold">💸 <%= number_to_currency(meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
+              <p class="p-bold">🧍‍♂️ <%= meal.maximum_guests %></p>
             </div>
+          </div>
+          <div class="cards-img">
+            <% if meal.photo.attached? %>
+              <%= cl_image_tag meal.photo.key, alt: "logo-taste_explorers", width: 110, class: "card-img" %>
+            <% else %>
+              <%= image_tag 'japon.png', alt: "Pas d'image disponible", width: 110, class: "card-img" %>
+            <% end %>
+          </div>
         </div>
-        <div class="cards-img">
-        <% if meal.photo.attached? %>
-        <%= cl_image_tag meal.photo.key, alt: "logo-taste_explorers", width: 110, class:"card-img" %>
-      <% else %>
-        <%= image_tag 'japon.png', alt: 'Pas d\'image disponible', width: 110, class:"card-img" %>
-      <% end %>
-        </div>
-      </div>
-
       <% end %>
     <% end %>
-    </div>
-  <div class="more-meals">
-    <%= link_to "Voir plus de repas", meals_path, class: "button btn-one" %>
-  </div>
+  <% end %>
+</div>
+
+
+<div class="more-meals">
+  <% if @meals.any? %>
+    <%= link_to "J'ai encore faim 😇", meals_path, class: "button btn-one" %>
+  <% else %>
+    <%= link_to "Faire une nouvelle recherche", home_path, class: "button btn-one" %>
+  <% end %>
+</div>
