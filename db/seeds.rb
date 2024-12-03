@@ -67,7 +67,7 @@ ingredient_excludes = [
   'fruits de mer', 'poisson', 'oeuf', 'alcool', 'fruit à coque', 'brocoli'
 ]
 regimes = [
-  'sans produit laitier', 'sans gluten', 'sans porc', 'vegan', 'végétarien', 'pesco-végétarien'
+  'Sans lactose', 'Sans gluten', 'Sans porc', 'Vegan', 'Végé'
 ]
 
 # Créer des préférences pour chaque utilisateur

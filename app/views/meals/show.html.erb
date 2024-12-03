@@ -1,18 +1,23 @@
-<% if @meal.photo.attached? %>
-   <%= cl_image_tag @meal.photo.key, alt: "Photo du repas #{@meal.title}", class: "img-meal" %>
-<% else %>
-  <p>Aucune photo disponible pour ce repas</p>
-<% end %>
+<div class="header-show-meal">
+  <%= link_to proposals_meals_path do%>
+      <i class="fa-solid fa-arrow-right fa-rotate-180 return-meal"></i>
+  <% if @meal.photo.attached? %>
+    <%= cl_image_tag @meal.photo.key, alt: "Photo du repas #{@meal.title}", class: "img-meal-show" %>
+  <% else %>
+    <%= image_tag 'pas_photo.png', alt: "Photo du repas", class: "img-meal-show" %>
+  <% end %>
+  <%end%>
+</div>
 
 <div class="meal">
   <h1 class="heading-1 meal-heading"><%= @meal.title %></h1>
   <div class="banner-meal no-border">
     <div class="element-banner-meal">
-      <p class="p-bold">🇮🇳</p>
+          <i class="fa-solid fa-lightbulb icon-banner-show"></i>
       <p class="p-light"><%= @meal.inspiration %></p>
     </div>
     <div class="element-banner-meal element-gap">
-      <p class="p-bold">🌾</p>
+           <i class="fa-solid fa-bowl-food icon-banner-show"></i>
       <p class="p-light">
         <% diet_preference = @meal.user.diet_preference %>
         <% if diet_preference.present? %>
@@ -23,7 +28,7 @@
       </p>
     </div>
     <div class="element-banner-meal element-gap">
-      <p class="p-bold">⏱️</p>
+          <i class="fa-regular fa-clock icon-banner-show"></i>
       <p class="p-light"><%= @meal.duration %> heures</p>
     </div>
   </div>
@@ -33,25 +38,25 @@
     <p class="p-bold margin-element-meal">🍽️ <%= @meal.dishes.count %> plats</p>
   </div>
   <div class="banner-hote no-border">
+    <div class="element-banner-hote-namephoto">
     <% if @meal.user.photo.attached? %>
       <%= image_tag url_for(@meal.user.photo), alt: "Photo de #{@meal.user.first_name} #{@meal.user.last_name}", class: "img-hote" %>
     <% else %>
         <!-- CLARISSE A CHANGER LE NOM DE LA PHOTO PAR DEFAUT -->
       <%= image_tag 'user_default.png', alt: "#{current_user.first_name} #{current_user.last_name}", class: "img-hote" %>
     <% end %>
-    <div class="element-banner-hote">
       <p class="p-bold"><%= @meal.user.first_name %></p>
     </div>
     <div class="element-banner-hote">
-      <p class="p-bold">★★★★★</p>
-      <p class="p-light">24 commentaires</p>
+      <p class="p-bold">★★★★☆</p>
+      <p class="p-light text-center">24 avis</p>
     </div>
   </div>
    <div class="section-localisation">
     <h2>Localisation</h2>
     <div>
     <!-- Map -->
-    <div style="width: 100%; height: 400px;"
+    <div style="width: 100%; height: 400px; border-radius:20px;"
           data-controller="map"
           data-map-marker-value="<%= @marker.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
