@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   get "up", to: "rails/health#show", as: :rails_health_check
 
   # Root path
-  root to: "pages#home"
+  root to: "pages#choose_action"
+
+  #Rooth to homepage
+  get 'home', to: 'pages#home'
+
 
   # Meals routes
   resources :meals do
