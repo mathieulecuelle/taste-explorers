@@ -1,23 +1,74 @@
-<h1>Proposer un repas</h1>
+
+
+  <div class="banner-confirmation no-border" style="margin-bottom:20px;">
+    <h2 class="text-center">J'organise un repas</h2>
+  </div>
+
 <%= simple_form_for @meal do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <p class="p-conditions">🚨 À ne pas donner trop d’informations à vos futurs convives</p>
-  <%= f.input :inspiration %>
-  <%= f.input :date, as: :string, input_html: { data: { controller: "datepicker-norange" } } %>
-  <%= f.input :heure %>
-  <%= f.input :duration %>
-  <%= f.input :location,
-              input_html: { data: { address_autocomplete_target: "address" }, class: "d-none" },
-              wrapper_html: { data: { controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"] } },
-              label: "Où habitez-vous ?",
+  <%= f.input :title, label: false, placeholder: "Titre de votre repas" %>
+  <%= f.input :description, label: false, placeholder: "Description" %>
+  <p class="p-conditions" style="margin:10px">Ne donnez pas trop d'informations à vos futurs convives 😉</p>
+
+  <label style="margin-top:20px; margin-bottom:10px;">Inspiration</label>
+  <div class="category-wrapper">
+    <% [
+      ['🇮🇹 Italie', 'Italie'],
+      ['🇮🇳 Indien', 'Indien'],
+      ['🇫🇷 Breton', 'Breton'],
+      ['🇬🇷 Grec', 'Grec'],
+      ['🇹🇭 Thaï', 'Thaï'],
+      ['Autre', 'Autre']
+    ].each do |label, value| %>
+      <div class="category-item">
+        <%= f.radio_button :inspiration, value, id: "inspiration_#{value.downcase}", class: 'category-selector' %>
+        <label for="inspiration_<%= value.downcase %>" class="category-label"><%= label %></label>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Conteneur pour la date et l'heure sur la même ligne -->
+  <div class="d-flex gap-3 mb-3">
+    <div class="flex-fill">
+      <%= f.input :date,
+          as: :string,
+          input_html: { data: { controller: "datepicker-norange" }, class: "form-control" },
+          label: "Date",
+          placeholder: "Sélectionnez une date"
+      %>
+    </div>
+    <div class="flex-fill">
+      <%= f.input :heure,
+          as: :time,
+          label: "Heure",
+          default: { hour: 19, min: 30 },
+          input_html: { class: "form-control" }
+      %>
+    </div>
+  </div>
+
+  <%= f.input :duration, label: false, placeholder: "Durée de votre repas (en heures)" %>
+
+  <%= f.input :location, label: false,
+              input_html: {
+                data: { address_autocomplete_target: "address" },
+                class: "d-none input-with-icon location-icon"
+              },
+              wrapper_html: {
+                data: { controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"] }
+              },
               placeholder: "Entrez une adresse" %>
-  <p class="p-conditions">🚨 Nous afficherons uniquement un rayon autour de chez vous sur l’application. Les utilisateurs la recevront précisément dès la réservation validée.</p>
-  <%= f.input :price_per_person %>
-  <%= f.input :maximum_guests %>
-  <%= f.input :photo, as: :file %>
-  <p class="p-conditions">🚨 Ne mettez pas une photo de vos plats, uniquement de l'inspiration </p>
+
+  <!-- Section pour les champs côte à côte -->
+  <div class="d-flex gap-3 mb-3">
+    <%= f.input :price_per_person, label: false, placeholder: "Prix / pers." %>
+    <%= f.input :maximum_guests, label: false, placeholder: "Nb d'invités max" %>
+  </div>
+
+  <%= f.input :photo, as: :file, label: "Photo d'illustration" %>
+
+  <p class="p-conditions">Ne mettez pas une photo de vos plats, uniquement de l'inspiration</p>
+
   <div class="d-flex justify-content-center">
-  <%= f.button :submit, value: "Proposer mon repas", class: "button btn-one" %>
+    <%= f.button :submit, "Proposer mon repas", class: "button btn-one" %>
   </div>
 <% end %>

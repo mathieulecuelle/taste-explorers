@@ -45,7 +45,6 @@
   overflow: hidden;
   border-radius: 0px $M $M 0px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  max-height: 153px;
 }
 
 .card-img{
@@ -99,13 +98,78 @@
   flex:1;
 }
 
-.cards-img-dashboard{
+.cards-img-organiser{
   flex:1;
   position: relative;
   max-width: 150px;
   height: auto;
   overflow: hidden;
-  border-radius: 0px 0px $M 0px;
+  border-radius: 0px $M $M 0px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  max-height: 153px;
+}
+
+.cards-taste-organiser{
+  display: flex;
+  flex-direction: column;
+}
+
+.cards-organiser{
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  max-height: 260px;
+  margin-bottom: $M;
+}
+
+.cards-content-organiser{
+  display: flex;
+  flex-direction: column;
+  gap:$S;
+  min-width: 220px;
+  max-width: 220px;
+  padding-block: $S;
+  padding-left: $S;
+  padding-right: $XS;
+  border-radius: $M 0px 0px $M;
+  border: 1px solid #FBFBFB;
+  background-color: $light;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  flex:1;
+}
+
+.icon-img{
+  position: relative;
+  width:30px;
+}
+
+.tag{
+  position: absolute;
+  background-color: $green-light;
+  left: 67px;
+  top: 0px;
+  padding-inline: 2px;
+  padding-block: 3px;
+  z-index: 1;
+  border-radius: 14px;
+}
+
+.tag-quiz{
+  width: 60px;
+  padding: 8px;
+}
+
+.card-img-organiser{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0px $M $M 0px;
+}
+
+.p-quiz-dispo{
+  font-size: $M;
+  font-weight: bold;
+  color: $green-light;
 }

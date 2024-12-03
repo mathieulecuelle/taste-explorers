@@ -1,66 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
-
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
-
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problème interne du serveur (500) - Taste Explorers</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --dark: #001346;
+            --light: #FEFEFE;
+            --orange: #FF5502;
+            --yellow: #FEDD74;
+            --orange-400: #FFC5AD;
+            --orange-450: #FF8953;
+            --orange-500: #FE681B;
+            --yellow-400: #FFE082;
+            --yellow-450: #FCE490;
+            --yellow-500: #FFE082;
+        }
+        body {
+            background: linear-gradient(135deg, var(--yellow-400), var(--orange-400));
+            font-family: 'Arial', sans-serif;
+            color: var(--dark);
+        }
+      .error-container {
+          background: rgba(254, 254, 254, 0.9);
+          border-radius: 20px;
+          box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+          backdrop-filter: blur(10px);
+          margin-top:40px;
+          margin-bottom:40px;
+          padding-top: 2rem;  /* Réduction de la hauteur en haut */
+          padding-bottom: 2rem;  /* Réduction de la hauteur en bas */
+          width: 80%;  /* Étirement en longueur */
+          max-width: none;  /* Annuler la limitation de largeur précédente */
+      }
+      .cover-image {
+          max-width: 100%;  /* Réduire l'image de moitié */
+          height: auto;  /* Garder les proportions */
+          border-radius: 20px;
+      }
+        .brand-link {
+            color: var(--orange-500);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .brand-link:hover {
+            color: var(--orange-450);
+            text-decoration: underline;
+        }
+        .return-button {
+            background-color: var(--orange-500);
+            color: var(--light);
+        }
+        .return-button:hover {
+            background-color: var(--orange-450);
+        }
+    </style>
 </head>
-
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="error-container p-12 text-center max-w-2xl mx-4 md:mx-auto">
+      <svg class="mx-auto h-20 w-20 text-orange-500 mb-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+    </svg>
+        <h1 class="text-lg font-bold" style="color: var(--orange-500);">Problème interne du serveur !</h1>
+        <br>
+        <div class="image-container mb-8">
+          <img src="images/cover.png" alt="Image Taste Explorers" class="cover-image mx-auto">
+      </div>
+        <p class="text-md mb-8">
+          Oups, quelque chose s'est mal passé.<br>
+          Nous rencontrons un problème sur notre serveur (erreur 500).<br>
+          Nous faisons de notre mieux pour résoudre cela au plus vite.
+        </p>
+        <p class="text-sm italic" style="color: var(--dark);">
+            Continuez à explorer les cuisines du monde avec <a href="https://www.taste-explorers.me/" class="brand-link">Taste Explorers</a> !
+        </p>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
 </body>
 </html>
