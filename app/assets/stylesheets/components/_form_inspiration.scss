@@ -74,3 +74,23 @@ label {
   padding: 10px;
   border-radius: 4px;
 }
+
+
+.photo-upload-container {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.photo-upload-label {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.photo-icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.photo-upload-label span {
+  vertical-align: middle;
+}

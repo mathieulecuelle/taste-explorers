@@ -27,27 +27,29 @@
   </div>
 
   <!-- Conteneur pour la date et l'heure sur la même ligne -->
+  <label style="margin-top:20px; margin-bottom:10px;">Date et heure</label>
   <div class="d-flex gap-3 mb-3">
     <div class="flex-fill">
       <%= f.input :date,
           as: :string,
           input_html: { data: { controller: "datepicker-norange" }, class: "form-control" },
-          label: "Date",
+          label: false,
           placeholder: "Sélectionnez une date"
       %>
     </div>
     <div class="flex-fill">
       <%= f.input :heure,
           as: :time,
-          label: "Heure",
+          label: false,
           default: { hour: 19, min: 30 },
           input_html: { class: "form-control" }
       %>
     </div>
   </div>
 
-  <%= f.input :duration, label: false, placeholder: "Durée de votre repas (en heures)" %>
+  <%= f.input :duration, label: false, placeholder: "Durée estimée (en heures)" %>
 
+  <label style="margin-top:20px; margin-bottom:10px;">Détails supplémentaires</label>
   <%= f.input :location, label: false,
               input_html: {
                 data: { address_autocomplete_target: "address" },
@@ -64,9 +66,16 @@
     <%= f.input :maximum_guests, label: false, placeholder: "Nb d'invités max" %>
   </div>
 
-  <%= f.input :photo, as: :file, label: "Photo d'illustration" %>
-
+  <div class="photo-upload-container">
+  <%= f.label :photo, class: "photo-upload-label" do %>
+    <i class="fas fa-camera photo-icon"></i>
+    <span>Ajouter une photo</span>
+    <%= f.input :photo, as: :file, label: false, input_html: { class: 'd-none', accept: 'image/*' } %>
+  <% end %>
   <p class="p-conditions">Ne mettez pas une photo de vos plats, uniquement de l'inspiration</p>
+</div>
+
+
 
   <div class="d-flex justify-content-center">
     <%= f.button :submit, "Proposer mon repas", class: "button btn-one" %>
