@@ -145,17 +145,13 @@
 
 .tag{
   position: absolute;
-  background-color: $green-light;
-  left: 67px;
-  top: 0px;
-  padding-inline: 2px;
-  padding-block: 3px;
+  left: 30px;
+  top:-15px;
   z-index: 1;
-  border-radius: 14px;
 }
 
 .tag-quiz{
-  width: 60px;
+  width: 120px;
   padding: 8px;
 }
 
@@ -170,7 +166,7 @@
 }
 
 .p-quiz-dispo{
-  font-size: $M;
+  font-size: 18px;
   font-weight: bold;
-  color: $green-light;
+  color: #7C4EFF;
 }
