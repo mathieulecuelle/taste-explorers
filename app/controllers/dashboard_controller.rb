@@ -32,7 +32,9 @@ class DashboardController < ApplicationController
   def view_quiz
     @dish_index = params[:dish_id].to_i || 0  # Index du plat actuel
     @dish = @meal.dishes[@dish_index]  # Récupère le plat actuel
-    @questions = @dish.questions  # Récupère les questions du plat
+    if @dish
+      @questions = @dish.questions # Récupère les questions du plat
+    end
   end
 
   def generate_quiz

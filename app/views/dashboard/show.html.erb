@@ -1,11 +1,24 @@
 <div class="header-show-meal">
-  <%= link_to dashboard_path do%>
-      <i class="fa-solid fa-arrow-right fa-rotate-180 return-meal"></i>
-  <% if @meal.photo.attached? %>
-    <%= cl_image_tag @meal.photo.key, alt: "Photo du repas #{@meal.title}", class: "img-meal-show" %>
+
+
+  <% if @section == 'organiser' %>
+      <%= link_to dashboard_path(section: 'organiser') do%>
+         <i class="fa-solid fa-arrow-right fa-rotate-180 return-meal"></i>
+        <% if @meal.photo.attached? %>
+           <%= cl_image_tag @meal.photo.key, alt: "Photo du repas #{@meal.title}", class: "img-meal-show" %>
+        <% else %>
+         <%= image_tag 'pas_photo.png', alt: "Photo du repas", class: "img-meal-show" %>
+        <%end%>
+      <%end%>
   <% else %>
-    <%= image_tag 'pas_photo.png', alt: "Photo du repas", class: "img-meal-show" %>
-  <% end %>
+      <%= link_to dashboard_path(section: 'reservations') do%>
+      <i class="fa-solid fa-arrow-right fa-rotate-180 return-meal"></i>
+      <% if @meal.photo.attached? %>
+        <%= cl_image_tag @meal.photo.key, alt: "Photo du repas #{@meal.title}", class: "img-meal-show" %>
+      <% else %>
+        <%= image_tag 'pas_photo.png', alt: "Photo du repas", class: "img-meal-show" %>
+      <% end %>
+    <%end%>
   <%end%>
 </div>
 
@@ -51,7 +64,7 @@
             <br>
           <% end %>
         <% else %>
-          <p>Tu devras d'abord lancer le quiz avant de partager aux participants l'histoire et la culture des plats!</p>
+          <p>Tu devras d'abord lancer le quiz avant de partager aux participants l'histoire et la culture des plats !</p>
         <% end %>
       </div>
       <div>
@@ -118,7 +131,7 @@
             <br>
           <% end %>
         <% else %>  <!-- Si aucun plat n'est associé au repas -->
-          <p>Tu devras d'abord participer au quiz avant de connaître l'histoire et la culture des plats!</p>
+          <p>Tu devras d'abord participer au quiz avant de connaître l'histoire et la culture des plats !</p>
         <% end %>
       </div>
       <div>

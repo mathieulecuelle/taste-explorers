@@ -43,7 +43,9 @@
                   <p class="p-bold">💸<%= number_to_currency(meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
                   <p class="p-bold">🧍‍♂️<%= meal.maximum_guests %></p>
                 </div>
-               <p class="p-quiz-dispo">Quiz disponible !</p>
+
+              <p><%= link_to "Voir le Quiz !",view_quiz_path(meal.id), class:"p-quiz-dispo" %></p>
+
 
               </div>
               <div class="cards-img-organiser">
