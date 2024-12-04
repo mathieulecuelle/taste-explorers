@@ -1,6 +1,12 @@
 <!-- dishes/new.html.erb -->
-<h1>Ajoutez vos plats</h1>
-<p>Tout ce que vous indiquez ici ne sera pas révélé à vos convives, mais utilisé uniquement pour le quiz !</p>
+ <div class="banner no-border">
+    <div class="banner-photo">
+    <%= image_tag 'poster-repas.webp', alt: "Photo", class: "img-banner" %>
+    <div class="banner-text">
+      <h2 class="h2-banner text-center">Présentez vos plats</h2>
+    </div>
+  </div>
+</div>
 
 <%= simple_form_for [@meal, @dish], url: meal_dishes_path(@meal) do |f| %>
 

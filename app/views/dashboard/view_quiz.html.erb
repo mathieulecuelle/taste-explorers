@@ -14,10 +14,14 @@
   </div>
 
    <% if @meal.dishes.any? %>
-      <div class="card-nomeal-bis no-border">
-        <p class="title-nomeal">Quiz sur <b><%= @dish.name %></b></p>
-        <%= image_tag 'rejoindre-repas.webp', alt: "Photo du repas", class: "card-nomeal-bis-img" %>
-      </div>
+      <div class="banner no-border">
+    <div class="banner-photo">
+    <%= image_tag 'rejoindre-repas.webp', alt: "Photo", class: "img-banner" %>
+    <div class="banner-text">
+      <h2 class="h2-banner text-center">Quiz sur<br><%= @dish.name %></h2>
+    </div>
+  </div>
+</div>
 
       <div class="quiz-container" id="quiz-container">
         <% if @questions.any? %>
