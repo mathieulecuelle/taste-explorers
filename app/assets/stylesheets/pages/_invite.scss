@@ -1,0 +1,62 @@
+.banner-invite{
+  color: $light;
+  padding-block: $XL;
+  padding-inline: $M;
+}
+
+.h2-invite{
+  font-family: $headers-font;
+  font-size:26px;
+  font-weight: 400;
+}
+
+.header-show-invite{
+  display: flex;
+  flex-direction: column;
+  gap: $L;
+}
+
+.img-meal-invite{
+  position: absolute;
+  left: 0;
+  top:0;
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+  object-position: center;
+  z-index:0;
+}
+
+.page-invite{
+  display: flex;
+  flex-direction: column;
+  gap:100px;
+}
+
+.h3-light{
+  font-family: $headers-font;
+  font-weight: 400;
+  font-size: 22px;
+
+}
+
+.form-control {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.form-invite{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:$M;
+}
+
+.form-invite-bis{
+  display: flex;
+  flex-direction: column;
+  gap: $M;
+  justify-content: center;
+}
