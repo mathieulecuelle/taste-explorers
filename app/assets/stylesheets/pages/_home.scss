@@ -9,6 +9,7 @@ body{
   flex-direction: column;
   gap: $L ;
   justify-content: center;
+  height:85vh;
 }
 
 a{
@@ -37,3 +38,41 @@ a{
   margin-right: -50vw;
 }
 
+.custom-datepicker {
+  border-radius: 20px !important;
+  background-color: yellow !important;
+  border: 1px solid #ccc !important;
+  padding: 10px 15px !important;
+}
+
+/* Styles pour le calendrier flatpickr (si vous l'utilisez) */
+.flatpickr-calendar {
+  border-radius: 20px !important;
+  overflow: hidden !important;
+}
+
+.display-none{
+  display: none;
+}
+
+.form-home{
+  display: flex;
+  gap:20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flatpickr-calendar.inline{
+  background-color: #FCE490;
+}
+
+.flatpickr-day.selected.startRange, .flatpickr-day.startRange.startRange{
+  border: $orange;
+  background-color: $orange;
+}
+
+.flatpickr-day.selected.endRange, .flatpickr-day.endRange.endRange{
+  border: $orange;
+  background-color: $orange;
+}

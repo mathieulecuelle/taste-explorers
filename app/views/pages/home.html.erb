@@ -1,10 +1,10 @@
 <div class="container">
   <div class="content-home">
+    <div class="form-home" style="width: 308px; margin:auto;">
     <div class="d-flex justify-content-center">
       <%= image_tag "Logo.png", alt: "logo-taste_explorers", width: 200 %>
     </div>
-    <div class="form-home" style="width: 308px; margin:auto;">
-
+      <h2>Partez à l'aventure du goût !</h2>
       <div data-controller="datepicker" >
         <%= simple_form_for :search, url: proposals_meals_path, method: :get do |f| %>
           <div class="form-group">
@@ -20,7 +20,7 @@
                 datepicker_target: "dateRange"
               },
               placeholder: "Chosissez vos disponibilités",
-              class: "form-control",
+              class: "form-control display-none",
               readonly: true %>
             <%= f.input :start_date, as: :hidden, input_html: { data: { datepicker_target: "startDate" } } %>
             <%= f.input :end_date, as: :hidden, input_html: { data: { datepicker_target: "endDate" } } %>
