@@ -88,9 +88,8 @@ export default class extends Controller {
   #addTargetIcon() {
     const geocoderInput = this.element.querySelector('.mapboxgl-ctrl-geocoder--input');
     if (geocoderInput) {
-      const targetIcon = document.createElement('span');
-      targetIcon.innerHTML = '📍';
-      targetIcon.classList.add('geocoder-target-icon');
+      const targetIcon = document.createElement('i');
+      targetIcon.classList.add('fa-solid', 'fa-location-crosshairs', 'geocoder-target-icon');
       targetIcon.style.cursor = 'pointer';
       targetIcon.style.position = 'absolute';
       targetIcon.style.right = '30px';
@@ -100,6 +99,6 @@ export default class extends Controller {
 
       targetIcon.addEventListener('click', this.#handleTargetClick.bind(this));
     }
-  }
+}
 
 }

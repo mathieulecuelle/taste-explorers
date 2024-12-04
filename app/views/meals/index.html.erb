@@ -1,6 +1,12 @@
 <div class="index-meals">
-  <h1 style="margin: auto;
-    margin-block: 20px;">Tous les repas proposés 😍</h1>
+   <div class="banner no-border">
+    <div class="banner-photo">
+    <%= image_tag 'poster-repas.webp', alt: "Photo", class: "img-banner" %>
+    <div class="banner-text">
+      <h2 class="h2-banner text-center">Tous les repas proposés 😍</h2>
+    </div>
+  </div>
+</div>
   <div class="cards-taste">
     <% @meals.each do |meal| %>
     <%= link_to meal_path(meal) do%>
