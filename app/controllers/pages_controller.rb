@@ -4,5 +4,6 @@ class PagesController < ApplicationController
   end
 
   def choose_action
+    @users = User.all
   end
 end
