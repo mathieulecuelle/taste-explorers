@@ -136,6 +136,11 @@
       </div>
       <div>
         <h2>Personnes présentes</h2>
+        <% if @meal.user.photo.attached? && @meal.date.to_date > Date.today %>
+            <%= image_tag url_for(@meal.user.photo), alt: "Photo de #{@meal.user.first_name} #{@meal.user.last_name}", class: "img-hote" %>
+          <% else %>
+            <%= image_tag 'user_default.png', alt: "Photo de #{@meal.user.first_name} #{@meal.user.last_name}", class: "img-hote marg-element" %>
+          <% end %>
         <% @participants.each do |participant| %>
           <% if participant.photo.attached? && @meal.date.to_date > Date.today %>
             <%= image_tag url_for(participant.photo), alt: "Photo de #{participant.first_name} #{participant.last_name}", class: "img-hote" %>

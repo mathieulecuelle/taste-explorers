@@ -7,11 +7,9 @@
     </div>
   </div>
 </div>
-
 <%= simple_form_for [@meal, @dish], url: meal_dishes_path(@meal) do |f| %>
-
   <!-- Boutons Radio pour le Type de Plat avec Émojis -->
-  <label style="margin-top:20px; margin-bottom:10px;">Type de plat</label>
+  <label style="margin-top:10px; margin-bottom:10px;">Type de plat</label>
   <div class="category-wrapper">
     <% [
       ['🍲 Entrée', 'Entrée'],
@@ -27,6 +25,7 @@
 
   <!-- Champ pour le Nom du Plat -->
   <%= f.input :name, label: "Nom du plat" %>
+<p class="p-conditions" style="margin:10px">Tout ce que vous indiquez ici ne sera pas révélé à vos convives mais sera uniquement utilisé pour le Quiz lors du repas !</p>
 
   <!-- Bouton de Soumission -->
   <%= button_tag :submit, class: "button btn-one" do %>

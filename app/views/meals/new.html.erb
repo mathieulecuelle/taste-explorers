@@ -9,11 +9,11 @@
 </div>
 
 <%= simple_form_for @meal do |f| %>
-  <%= f.input :title, label: false, placeholder: "Titre de votre repas" %>
+  <%= f.input :title, label: false, placeholder: "Titre" %>
   <%= f.input :description, label: false, placeholder: "Description" %>
   <p class="p-conditions" style="margin:10px">Ne donnez pas trop d'informations à vos futurs convives 😉</p>
 
-  <label style="margin-top:20px; margin-bottom:10px;">Inspiration</label>
+  <label style="margin-top:20px; margin-bottom:10px;font-size:22px;">👨🏻‍🍳 Inspiration</label>
   <div class="category-wrapper">
     <% [
       ['🇮🇹 Italie', 'Italie'],
@@ -31,7 +31,7 @@
   </div>
 
   <!-- Conteneur pour la date et l'heure sur la même ligne -->
-  <label style="margin-top:20px; margin-bottom:10px;">Date et heure</label>
+  <label style="margin-top:20px; margin-bottom:10px;font-size:22px;">🕙 Date et heure</label>
   <div class="d-flex gap-3 mb-3">
     <div class="flex-fill">
       <%= f.input :date,
@@ -53,7 +53,7 @@
 
   <%= f.input :duration, label: false, placeholder: "Durée estimée (en heures)" %>
 
-  <label style="margin-top:20px; margin-bottom:10px;">Détails supplémentaires</label>
+  <label style="margin-top:20px; margin-bottom:10px; font-size:22px;">🌍 Détails supplémentaires</label>
   <%= f.input :location, label: false,
               input_html: {
                 data: { address_autocomplete_target: "address" },
@@ -71,7 +71,7 @@
     <%= f.input :maximum_guests, label: false, placeholder: "Nb d'invités max" %>
   </div>
 
-  <div class="photo-upload-container">
+  <div class="photo-upload-container" style="margin-top:40px; margin-bottom:40px;">
   <%= f.label :photo, class: "photo-upload-label" do %>
     <i class="fas fa-camera photo-icon"></i>
     <span>Ajouter une photo</span>
@@ -83,7 +83,7 @@
 
 
   <div class="d-flex justify-content-center">
-    <%= f.button :submit, "Proposer mon repas", class: "button btn-one" %>
+    <%= f.button :submit, "Organiser mon repas", class: "button btn-one" %>
   </div>
 <% end %>
 </div>
