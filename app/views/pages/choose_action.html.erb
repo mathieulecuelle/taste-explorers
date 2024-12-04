@@ -1,8 +1,8 @@
 <div class="d-flex justify-content-center">
-  <%= image_tag "Logo.png", alt: "logo-taste_explorers", width: 200 %>
+  <%= image_tag "Logo.png", alt: "logo-taste_explorers", width: 300 %>
 </div>
 
-<div class="form-home" style="width: 308px; margin:auto;">
+<div class="form-home" style="width: 308px; margin:auto; margin-top:60px;">
   <div class="container">
     <div class="button-container-action d-flex flex-column align-items-center">
       <h1 style="margin-top:20px;">Bienvenue <%= current_user.first_name if current_user %> !</h1>
@@ -17,15 +17,6 @@
 
     <p class="tagline">Plongez dans les saveurs locales et du monde autour de chez vous !</p>
 
-    <!--
-    <p class="mt-4">
-      "La cuisine est l'art de transformer des ingrédients simples en des moments inoubliables."
-    </p>
-    -->
-
-    <div class="card-nomeal">
-      <%= image_tag 'rejoindre-repas.webp', alt: "Photo du repas", class: "card-nomeal-img-home" %>
-    </div>
 
 
   </div>
