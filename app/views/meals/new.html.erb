@@ -5,7 +5,7 @@
   </div>
 
 <%= simple_form_for @meal do |f| %>
-  <%= f.input :title, label: false, placeholder: "Titre de votre repas" %>
+  <%= f.input :title, label: false, placeholder: "Titre" %>
   <%= f.input :description, label: false, placeholder: "Description" %>
   <p class="p-conditions" style="margin:10px">Ne donnez pas trop d'informations à vos futurs convives 😉</p>
 
@@ -78,6 +78,6 @@
 
 
   <div class="d-flex justify-content-center">
-    <%= f.button :submit, "Proposer mon repas", class: "button btn-one" %>
+    <%= f.button :submit, "Organiser mon repas", class: "button btn-one" %>
   </div>
 <% end %>

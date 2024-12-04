@@ -39,8 +39,8 @@
                   <p class="p-normal"><%= truncate(meal.description, length: 30, separator: ' ') %></p>
                 </div>
                 <div class="card-infos">
-                  <p class="p-bold">📅<%= meal.date.strftime("%-d %b").downcase + "." %></p>
-                  <p class="p-bold">💸<%= number_to_currency(meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
+                  <p class="p-bold">📅 <%= meal.date.strftime("%-d %b").downcase + "." %></p>
+                  <p class="p-bold">💸 <%= number_to_currency(meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
                   <p class="p-bold">🧍‍♂️<%= meal.maximum_guests %></p>
                 </div>
 
@@ -91,8 +91,8 @@
                   <p class="p-normal"><%= truncate(booking.meal.description, length: 30, separator: ' ') %></p>
                 </div>
                 <div class="card-infos">
-                  <p class="p-bold">📅<%= booking.meal.date.strftime("%-d %b").downcase + "." %></p>
-                  <p class="p-bold">💸<%= number_to_currency(booking.meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
+                  <p class="p-bold">📅 <%= booking.meal.date.strftime("%-d %b").downcase + "." %></p>
+                  <p class="p-bold">💸 <%= number_to_currency(booking.meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
                   <p class="p-bold">🧍‍♂️<%= booking.meal.maximum_guests %></p>
                 </div>
               </div>
@@ -133,8 +133,8 @@
                   <p class="p-normal"><%= truncate(meal.description, length: 30, separator: ' ') %></p>
                 </div>
                 <div class="card-infos">
-                  <p class="p-bold">📅<%= meal.date.strftime("%-d %b").downcase + "." %></p>
-                  <p class="p-bold">💸<%= number_to_currency(meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
+                  <p class="p-bold">📅 <%= meal.date.strftime("%-d %b").downcase + "." %></p>
+                  <p class="p-bold">💸 <%= number_to_currency(meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
                   <p class="p-bold">🧍‍♂️<%= meal.maximum_guests %></p>
                 </div>
               </div>
@@ -172,8 +172,8 @@
                   <p class="p-normal"><%= truncate(booking.meal.description, length: 30, separator: ' ') %></p>
                 </div>
                 <div class="card-infos">
-                  <p class="p-bold">📅<%= booking.meal.date.strftime("%-d %b").downcase + "." %></p>
-                  <p class="p-bold">💸<%= number_to_currency(booking.meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
+                  <p class="p-bold">📅 <%= booking.meal.date.strftime("%-d %b").downcase + "." %></p>
+                  <p class="p-bold">💸 <%= number_to_currency(booking.meal.price_per_person, unit: "€", precision: 0, format: "%n%u") %></p>
                   <p class="p-bold">🧍‍♂️<%= booking.meal.maximum_guests %></p>
                 </div>
               </div>
