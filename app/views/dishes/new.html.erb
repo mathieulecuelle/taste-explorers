@@ -1,5 +1,12 @@
 <!-- dishes/new.html.erb -->
-<h1>Ajoutez vos plats</h1>
+ <div class="banner no-border">
+    <div class="banner-photo">
+    <%= image_tag 'poster-repas.webp', alt: "Photo", class: "img-banner" %>
+    <div class="banner-text">
+      <h2 class="h2-banner text-center">Présentez vos plats</h2>
+    </div>
+  </div>
+</div>
 <%= simple_form_for [@meal, @dish], url: meal_dishes_path(@meal) do |f| %>
   <!-- Boutons Radio pour le Type de Plat avec Émojis -->
   <label style="margin-top:10px; margin-bottom:10px;">Type de plat</label>

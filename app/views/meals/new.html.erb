@@ -1,8 +1,12 @@
-
-
-  <div class="banner-confirmation no-border" style="margin-bottom:20px;">
-    <h2 class="text-center">J'organise un repas 🍕</h2>
+<div class="page-new-meal">
+<div class="banner no-border">
+    <div class="banner-photo">
+    <%= image_tag 'rejoindre-repas.webp', alt: "Photo", class: "img-banner" %>
+    <div class="banner-text">
+      <h2 class="h2-banner text-center">J'organise un repas</h2>
+    </div>
   </div>
+</div>
 
 <%= simple_form_for @meal do |f| %>
   <%= f.input :title, label: false, placeholder: "Titre" %>
@@ -60,6 +64,7 @@
               },
               placeholder: "Entrez une adresse" %>
 
+
   <!-- Section pour les champs côte à côte -->
   <div class="d-flex gap-3 mb-3">
     <%= f.input :price_per_person, label: false, placeholder: "Prix / pers." %>
@@ -81,3 +86,4 @@
     <%= f.button :submit, "Organiser mon repas", class: "button btn-one" %>
   </div>
 <% end %>
+</div>
