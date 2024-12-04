@@ -10,7 +10,7 @@
     <%=link_to root_path do%>
     <i class="fa-solid fa-house nav-icon"></i>
     <% end %>
-    <%=link_to root_path do%>
+    <%=link_to meals_path do%>
     <i class="fa-solid fa-map nav-icon"></i>
     <% end %>
     <%=link_to new_meal_path do%>
@@ -19,7 +19,7 @@
     <%=link_to dashboard_path do%>
     <i class="fa-solid fa-calendar nav-icon"></i>
     <% end %>
-    <%=link_to edit_user_registration_path do%>
+    <%=link_to dashboard_path(section: 'organiser') do%>
     <i class="fa-solid fa-user nav-icon"></i>
     <% end %>
   </div>
