@@ -6,25 +6,22 @@
           <i class="fa-solid fa-arrow-right fa-rotate-180 return"></i>
         <% end %>
       <% else %>
-        <%= link_to dashboard_path do %>
+        <%= link_to dashboard_path(section: 'organiser')  do %>
           <i class="fa-solid fa-arrow-right fa-rotate-180 return"></i>
         <% end %>
       <% end %>
-      <p class="p-light">Quiz</p>
     </div>
   </div>
 
-  <div class="banner-confirmation no-border">
-    <% if @meal.dishes.any? %>
-      <div class="quiz-title">
-        <h3><%= @dish.name %></h3> <!-- Affiche le nom du plat actuel -->
+   <% if @meal.dishes.any? %>
+      <div class="card-nomeal-bis no-border">
+        <p class="title-nomeal">Quiz sur <b><%= @dish.name %></b></p>
+        <%= image_tag 'rejoindre-repas.webp', alt: "Photo du repas", class: "card-nomeal-bis-img" %>
       </div>
-  </div> <!-- Fermeture de .banner-confirmation -->
 
       <div class="quiz-container" id="quiz-container">
         <% if @questions.any? %>
           <% @questions.each do |question| %>
-            <%= question.answer %>
             <div class="quiz-component">
               <p class="quiz-question p-bold"><%= question.question %></p>
               <div class="quiz-reponses">
@@ -36,26 +33,30 @@
               </div>
             </div>
           <% end %>
+
+          <div class="quiz-buttons">
+            <% if @dish_index + 1 < @meal.dishes.count %>
+              <%= link_to 'Plat suivant', view_quiz_path(@meal.id, dish_id: @dish_index + 1), class: 'button btn-one' %>
+            <% else %>
+              <br>
+              <%= link_to 'Quitter le quiz', dashboard_path(section: 'organiser') , class: 'button btn-one' %>
+            <% end %>
+          </div>
+
+          <% if @dish_index > 0 %>
+            <%= link_to 'Plat précédent', view_quiz_path(@meal.id, dish_id: @dish_index - 1), class: 'button btn-line' %>
+          <% end %>
+
         <% else %>
           <div class="loading-container d-flex flex-column justify-content-center align-items-center min-vh-50">
-            <p>Le quiz est en cours de génération...</p>
+          <%# CLARISSE CE TEXTE EST CACHE PAR LE TRUC QUI TOURNE "fa-solid fa-spinner" EN GENERANT LE QUIZ %>
+             <p>Le quiz est en cours de génération.
+            <br>Il sera disponible dans votre dashboard dans quelques instants !</p>
             <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
           </div>
         <% end %>
       </div>
 
-      <div class="quiz-buttons">
-        <% if @dish_index + 1 < @meal.dishes.count %>
-          <%= link_to 'Plat suivant', view_quiz_path(@meal.id, dish_id: @dish_index + 1), class: 'button btn-one' %>
-        <% else %>
-          <br>
-          <%= link_to 'Quitter le quiz', dashboard_path, class: 'button btn-one' %>
-        <% end %>
-      </div>
-
-      <% if @dish_index > 0 %>
-        <%= link_to 'Plat précédent', view_quiz_path(@meal.id, dish_id: @dish_index - 1), class: 'button btn-line' %>
-      <% end %>
     <% else %>
       <p>Aucun plat disponible pour ce repas.</p>
     <% end %>
