@@ -1,16 +1,27 @@
-<div class="select">
-  <% if @meals.any? %>
-    <h1><%= @meals.size == 1 ? 'Un seul' : 'Voici les' %> repas <%= @meals.size == 1 ? 'disponible' : 'disponibles' %> <%= @meals.size == 1 ? '🙏' : '🎉' %></h1>
+   <div class="banner no-border margin-b">
+    <div class="banner-photo">
+    <%= image_tag 'rejoindre-repas.webp', alt: "Photo", class: "img-banner" %>
+    <div class="banner-text">
+      <div class="select">
+      <% if @meals.any? %>
+    <h2 class="h2-banner text-center"><%= @meals.size == 1 ? 'Un seul' : 'Voici les' %> repas <%= @meals.size == 1 ? 'disponible' : 'disponibles' %> <%= @meals.size == 1 ? '🙏' : '🎉' %></h2>
 
       <% if @meals.size > 1 %>
-        <p>Nous avons trouvé ces <%= @meals.size %> repas pour vous :</p>
+        <p style="color:#FFFFFF;">Nous avons trouvé ces <%= @meals.size %> repas pour vous :</p>
         <% else %>
-        <p>Voici le seul repas que nous avons trouvé</p>
+        <p style="color:#FFFFFF;">Voici le seul repas que nous avons trouvé</p>
       <% end %>
     <% else %>
-    <h1>Aucun résultat disponible 😭</h1>
+    <h2 class="h2-banner text-center">Aucun résultat disponible 😭</h2>
   <% end %>
+  </div>
+    </div>
+  </div>
 </div>
+
+
+
+
 
 <div class="cards-taste">
   <% if @meals.any? %>
