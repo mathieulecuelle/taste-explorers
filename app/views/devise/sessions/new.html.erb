@@ -1,8 +1,12 @@
- <div class="header-ariane">
+<div class="banner no-border">
+    <div class="banner-photo">
+    <%= image_tag 'poster-repas.webp', alt: "Photo", class: "img-banner" %>
+    <div class="banner-text">
+      <h2 class="h2-banner text-center">Log in</h2>
+    </div>
   </div>
-  <div class="banner-confirmation no-border" style="text-align: center;">
-<h2 class="text-center mb-4">Log in</h2>
 </div>
+
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="d-flex justify-content-center">
