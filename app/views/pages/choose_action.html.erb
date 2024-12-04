@@ -17,7 +17,16 @@
 
     <p class="tagline">Plongez dans les saveurs locales et du monde autour de chez vous !</p>
 
-
+    <div class="user-profile-banner">
+  <div class="profile-images">
+    <% @users.each do |user| %>
+      <%= cl_image_tag user.photo.key, class: "profile-image" %>
+    <% end %>
+    <% @users.each do |user| %>
+      <%= cl_image_tag user.photo.key, class: "profile-image" %>
+    <% end %>
+  </div>
+</div>
 
   </div>
 </div>
