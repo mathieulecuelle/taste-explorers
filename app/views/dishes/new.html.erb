@@ -38,6 +38,6 @@
         <li><%= dish.course_type %> : <%= dish.name %></li>
       <% end %>
     </ul>
-    <%= link_to "✓ J'ai terminé", dashboard_path, class: "button btn-one" %>
+    <%= link_to "✓ J'ai terminé", dashboard_path(section: 'organiser'), class: "button btn-one" %>
   <% end %>
 </div>
