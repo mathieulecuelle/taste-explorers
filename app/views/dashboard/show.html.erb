@@ -52,6 +52,18 @@
         <p class="p-bold margin-element-meal-heading"><%= @meal.description %></p>
         <p class="p-bold margin-element-meal">🧍‍♂️<%= @meal.maximum_guests %> personnes</p>
         <p class="p-bold margin-element-meal">🍽️ <%= @meal.dishes.count %> plats</p>
+        <p class="p-subtext">
+          <% @meal.dishes.each_with_index do |dish, index| %>
+               <% if dish.course_type == 'Entrée' %>
+                      &nbsp;&nbsp;&nbsp;&nbsp;🍲 Entrée : <%= dish.name %>
+                <% elsif dish.course_type == 'Plat' %>
+                      &nbsp;&nbsp;&nbsp;&nbsp;🍝 Plat : <%= dish.name %>
+                <% else %>
+                     &nbsp;&nbsp;&nbsp;&nbsp;🍰 Dessert : <%= dish.name %>
+                <% end %>
+                  <br>
+          <% end %>
+        </p>
       </div>
       <div class="memo-show no-border">
         <h2>Histoire et culture</h2>

@@ -73,6 +73,12 @@ $headers1-font: "Nunito Sans", "Helvetica", "sans-serif";
   text-decoration: underline;
 }
 
+.p-subtext{
+  font-family: $body-font;
+  font-size:16px;
+  margin-top:2px;
+}
+
 .p-conditions{
   font-family: $body-font;
   font-size:14px;
