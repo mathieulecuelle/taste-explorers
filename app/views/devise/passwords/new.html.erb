@@ -1,18 +1,45 @@
-<h2>Forgot your password?</h2>
+<div class="banner no-border">
+    <div class="banner-photo">
+    <%= image_tag 'poster-repas.webp', alt: "Photo", class: "img-banner" %>
+    <div class="banner-text">
+      <h2 class="h2-banner text-center">Forgot your password?</h2>
+    </div>
+  </div>
+</div>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+  <div class="d-flex justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <!-- Formulaire -->
+      <div class="card p-4 shadow-sm">
+        <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-  </div>
+        <div class="form-inputs">
+          <!-- Email avec icône -->
+          <div class="form-group mb-3">
+            <div class="input-group">
+              <div class="input-group-text">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <%= f.input :email,
+                          required: true,
+                          autofocus: true,
+                          label: false,
+                          input_html: { class: "form-control", autocomplete: "email", placeholder: "Email" } %>
+            </div>
+          </div>
+        </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
+        <!-- Bouton de soumission -->
+        <div class="form-actions text-center">
+          <%= f.button :submit, "Send me reset password instructions", class: "btn btn-primary btn-block" %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
 
+<!-- Liens de Devise (inscription, connexion, etc.) -->
+<div class="text-center" style="margin-top: 20px;">
 <%= render "devise/shared/links" %>
+</div>
