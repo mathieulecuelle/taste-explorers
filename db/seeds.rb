@@ -316,7 +316,7 @@ meals_data.each_with_index do |meal_data, index|
   meal = Meal.create!(
     title: meal_data[:title],
     description: meal_data[:description],
-    duration: rand(1..4),
+    duration: rand(2..5),
     location: specific_addresses[index], # Utiliser l'adresse spécifique
     price_per_person: rand(10..100).to_f,
     maximum_guests: rand(4..15),
@@ -347,7 +347,7 @@ stp_photo = URI.open(stp_photo_url)
 stp_meal = Meal.create!(
   title: "Repas à Saint-Tropez",
   description: "Venez déguster un délicieux repas à Saint-Tropez, au cœur de la Côte d'Azur. Profitez d'une ambiance festive et de mets raffinés dans un cadre idyllique.",
-  duration: rand(1..4), # Durée en minutes
+  duration: rand(2..5), # Durée en minutes
   location: "Place des Lices, 83990 Saint-Tropez", # Adresse spécifique ajoutée précédemment
   price_per_person: 75.0, # Prix par personne
   maximum_guests: 10, # Nombre maximal d'invités
@@ -376,7 +376,7 @@ noel_photo = URI.open(noel_photo_url)
 noel_meal = Meal.create!(
   title: "Repas de Noël",
   description: "Célébrez Noël avec un repas festif spécial, entouré de famille et amis. Savourez des plats traditionnels et profitez d'une ambiance chaleureuse et conviviale.",
-  duration: rand(1..4), # Durée en minutes
+  duration: rand(2..5), # Durée en minutes
   location: "5 place Royale, 44100 Nantes", # Utilisez une adresse spécifique existante ou ajoutez-en une nouvelle si nécessaire
   price_per_person: 100.0, # Prix par personne
   maximum_guests: 10, # Nombre maximal d'invités
