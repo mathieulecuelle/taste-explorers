@@ -1,17 +1,24 @@
 <div class="page-facture">
-  <div class="header-ariane">
+    <div class="header-ariane">
+      <%= link_to meal_path(@booking.meal) do%>
     <i class="fa-solid fa-arrow-right fa-rotate-180 return"></i>
+    <%end%>
     <p class="p-light">Confirmation</p>
   </div>
-  <div class="banner-confirmation no-border">
-    <h2 class="text-width">Vous êtes sur le point de réserver votre place, <%= current_user.first_name %></h2>
+   <div class="banner no-border">
+    <div class="banner-photo">
+    <%= cl_image_tag @booking.meal.photo.key, alt: "Photo", class: "img-banner", style:"object-position:center;" %>
+    <div class="banner-text">
+      <h2 class="h2-banner text-center"><%= current_user.first_name %>, vous êtes sur le point de réserver votre place</h2>
+    </div>
   </div>
+</div>
   <div class="facturation-confirmation">
-    <h3>Récapitulatif</h3>
-    <div class="facturation-texts">
+    <h3>Récapitulatif pour <strong><%= @booking.meal.title %></strong></h3>
+    <div class="facturation-texts" style="margin-top:20px;">
       <div class="info-facture">
       <p class="p-bold">📅 <%= @booking.meal.date %></p>
-      <p class="p-bold">📍 <%= @booking.meal.location %></p>
+      <p class="p-bold"><i class="fa-solid fa-location-dot" style="color:red;"></i> <%= @booking.meal.location %></p>
       </div>
     </div>
     <div class="factures">
@@ -22,12 +29,12 @@
       </div>
       <div class="text-facture">
         <p class="p-facture">Frais de service</p>
-        <p class="p-facture">25€</p>
+        <p class="p-facture">3€</p>
       </div>
       <div class="line"></div>
       <div class="text-facture">
         <p class="p-facture">Total</p>
-        <p class="p-facture"><%= @booking.meal.price_per_person + 25 %>€</p>
+        <p class="p-facture"><%= @booking.meal.price_per_person + 3 %>€</p>
       </div>
     </div>
   </div>

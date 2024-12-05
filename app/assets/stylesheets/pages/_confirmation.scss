@@ -1,5 +1,6 @@
 .header-ariane{
   display: flex;
+  margin-top: 20px;
   align-items: center;
   gap: 105px;
 }
@@ -53,5 +54,5 @@
 .page-facture{
   display: flex;
   flex-direction: column;
-  gap:$XL;
+  gap:$L;
 }
