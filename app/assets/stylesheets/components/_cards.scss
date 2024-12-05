@@ -8,13 +8,14 @@
   display: flex;
   justify-content: center;
   align-items: stretch;
-  max-height: 240px;
+  height: 120px;
 }
 
 .cards-content{
   display: flex;
   flex-direction: column;
   gap:$S;
+  justify-content: center;
   min-width: 230px;
   max-width: 280px;
   padding-block: $M;
