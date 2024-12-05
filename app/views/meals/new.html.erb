@@ -67,7 +67,7 @@
 
   <!-- Section pour les champs côte à côte -->
   <div class="d-flex gap-3 mb-3">
-    <%= f.input :price_per_person, label: false, placeholder: "Prix / pers." %>
+    <%= f.input :price_per_person, label: false, placeholder: "Prix € / pers." %>
     <%= f.input :maximum_guests, label: false, placeholder: "Nb d'invités max" %>
   </div>
 
@@ -77,7 +77,7 @@
     <span>Ajouter une photo</span>
     <%= f.input :photo, as: :file, label: false, input_html: { class: 'd-none', accept: 'image/*' } %>
   <% end %>
-  <p class="p-conditions">Ne mettez pas une photo de vos plats, uniquement de l'inspiration</p>
+  <p class="p-conditions">Ne mettez pas une photo de vos plats, gardez la surprise !</p>
 </div>
 
 
